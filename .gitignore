@@ -1,1 +1,4 @@
-data
+/data
+/out
+.idea/workspace.xml
+.idea/inspectionProfiles
