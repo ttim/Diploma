@@ -26,13 +26,13 @@ public class GraphCreator {
         Map<Long, List<Long>> catToSubcats = new TreeMap<Long, List<Long>>();
         Map<Long, List<Long>> subcatToCats = new TreeMap<Long, List<Long>>();
         for (List<String> data : CsvUtils.readCsv(subcatsInfoCsv, '|', '\'')) {
-            Category subCategory = Categories.INSTANCE.getByPageId(Long.parseLong(data.get(0)));
+            Category subCategory = Categories.RAW.getByPageId(Long.parseLong(data.get(0)));
 
             if (subCategory != null) {
                 long categoryId = Long.parseLong(data.get(1));
                 long subCategoryId = subCategory.id;
 
-                if (Categories.INSTANCE.getById(subCategoryId) != null && Categories.INSTANCE.getById(categoryId) != null) {
+                if (Categories.RAW.getById(subCategoryId) != null && Categories.RAW.getById(categoryId) != null) {
                     if (!catToSubcats.containsKey(categoryId)) {
                         catToSubcats.put(categoryId, new ArrayList<Long>());
                     }

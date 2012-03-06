@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.*;
 
 public class Categories implements Iterable<Category> {
-    public static Categories INSTANCE = new Categories(new File("./data/enwiki-latest-category-p.csv"));
+    public static Categories RAW = new Categories(new File("./data/enwiki-latest-category-p.csv"));
 
     private List<Category> categories;
 
@@ -15,6 +15,8 @@ public class Categories implements Iterable<Category> {
     private Map<Long, Category> pageIdToCategory;
 
     public Categories(File categoriesCsv) {
+        System.out.println("Init from " + categoriesCsv);
+
         categories = new ArrayList<Category>();
         nameToIdMap = new HashMap<String, Long>();
         idToCategoryMap = new HashMap<Long, Category>();

@@ -41,7 +41,7 @@ public class CategoryLinksPreprocessing {
             String categoryTitle = data.get(1);
             categoryTitle = categoryTitle.substring(1, categoryTitle.length() - 1);
 
-            if (!Categories.INSTANCE.containsName(categoryTitle)) {
+            if (!Categories.RAW.containsName(categoryTitle)) {
                 if (!badCategories.contains(categoryTitle)) {
 //                    System.out.println("!Not contains " + categoryTitle);
                     badCategories.add(categoryTitle);
@@ -49,7 +49,7 @@ public class CategoryLinksPreprocessing {
                 ignored++;
             } else {
                 out.println(
-                        pageId + "|" + Categories.INSTANCE.getByName(categoryTitle).id + "|" + data.get(6)
+                        pageId + "|" + Categories.RAW.getByName(categoryTitle).id + "|" + data.get(6)
                 );
             }
         }
