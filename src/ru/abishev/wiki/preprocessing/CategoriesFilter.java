@@ -26,7 +26,36 @@ public class CategoriesFilter {
         return size;
     }
 
+    public static Set<Long> categoriesToRemove() {
+        Set<Long> rootsToRemove = new HashSet<Long>();
+        rootsToRemove.add(Categories.RAW.getByName("Container_categories").id);
+        rootsToRemove.add(Categories.RAW.getByName("Tracking_categories").id);
+        rootsToRemove.add(Categories.RAW.getByName("Hidden_categories").id);
+        rootsToRemove.add(Categories.RAW.getByName("Redirect-Class_articles").id);
+//        rootsToRemove.add(Categories.RAW.getByName("Hidden_categories").id);
+
+        Set<Long> result = new HashSet<Long>();
+        for (long id : rootsToRemove) {
+            result.add(id);
+            result.addAll(SubCategories.RAW.getSubCats(id));
+        }
+
+        // and some other categories
+        for (Category category : Categories.RAW) {
+            if (category.name.toLowerCase().contains("sockpuppet") ||
+                    category.name.toLowerCase().endsWith("_templates") ||
+                    category.name.toLowerCase().startsWith("WikiProject_")) {
+                result.add(category.id);
+            }
+        }
+
+        return result;
+    }
+
     public static Set<Long> getReachableCategories(long startId) {
+        Set<Long> toRemove = categoriesToRemove();
+        System.out.println("To remove: " + toRemove.size());
+
         Set<Long> categories = new HashSet<Long>();
         Set<Long> newCategories = new HashSet<Long>();
         newCategories.add(startId);
@@ -40,14 +69,15 @@ public class CategoriesFilter {
 
             if (SubCategories.RAW.getSubCats(newCat) != null) {
                 for (long id : SubCategories.RAW.getSubCats(newCat)) {
-                    if (!categories.contains(id)) {
+                    if (!categories.contains(id) && !toRemove.contains(id)) {
                         newCategories.add(id);
                     }
                 }
             }
 
             if ((counter++) % 1000 == 0) {
-                System.out.println("Current categories size " + categories.size());
+                System.out.format("Current categories size %d; new categories size: %d%n",
+                        categories.size(), newCategories.size());
             }
         }
 
