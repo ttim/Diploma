@@ -32,7 +32,7 @@ public class CategoriesFilter {
         rootsToRemove.add(Categories.RAW.getByName("Tracking_categories").id);
         rootsToRemove.add(Categories.RAW.getByName("Hidden_categories").id);
         rootsToRemove.add(Categories.RAW.getByName("Redirect-Class_articles").id);
-//        rootsToRemove.add(Categories.RAW.getByName("Hidden_categories").id);
+        rootsToRemove.add(Categories.RAW.getByName("All_redirect_categories").id);
 
         Set<Long> result = new HashSet<Long>();
         for (long id : rootsToRemove) {
@@ -42,9 +42,14 @@ public class CategoriesFilter {
 
         // and some other categories
         for (Category category : Categories.RAW) {
-            if (category.name.toLowerCase().contains("sockpuppet") ||
-                    category.name.toLowerCase().endsWith("_templates") ||
-                    category.name.toLowerCase().startsWith("WikiProject_")) {
+            String name = category.name.toLowerCase();
+
+            if (name.contains("sockpuppet") ||
+                    name.endsWith("_templates") ||
+                    name.startsWith("wikiproject_") ||
+                    name.contains("wikipedia books") ||
+                    name.contains("timeline") ||
+                    name.contains("spoken")) {
                 result.add(category.id);
             }
         }
