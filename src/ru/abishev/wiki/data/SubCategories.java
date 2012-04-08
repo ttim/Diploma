@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class SubCategories {
-    public static SubCategories RAW = new SubCategories(new File("./data/enwiki-latest-categorylinks-subcats.csv"));
+    public static SubCategories RAW = new SubCategories(new File("./data/categorylinks-subcats.csv"));
     
     private Map<Long, List<Long>> catToSubcats = new TreeMap<Long, List<Long>>();
     private Map<Long, List<Long>> subcatToCats = new TreeMap<Long, List<Long>>();

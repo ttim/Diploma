@@ -27,8 +27,4 @@ public class PagesPreprocessor {
         }
         out.flush();
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        process(new File("./data/enwiki-latest-page.csv"), new PrintWriter(new File("./data/enwiki-latest-page-p.csv")));
-    }
 }

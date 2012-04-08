@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.*;
 
 public class Pages implements Iterable<Page> {
-    public static final Pages INSTANCE = new Pages(new File("./data/enwiki-latest-page-p.csv"));
+    public static final Pages INSTANCE = new Pages(new File("./data/preprocessed/page.csv"));
     
     private List<Page> pages;
     private Map<String, Page> nameToPageInMain;

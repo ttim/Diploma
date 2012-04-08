@@ -40,8 +40,4 @@ public class CategoriesPreprocessing {
 
         out.flush();
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        process(new File("./data/csv/enwiki-latest-category.csv"), new PrintWriter(new File("./data/enwiki-latest-category-p.csv")));
-    }
 }

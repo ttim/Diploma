@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.*;
 
 public class Categories implements Iterable<Category> {
-    public static Categories RAW = new Categories(new File("./data/enwiki-latest-category-p.csv"));
+    public static Categories RAW = new Categories(new File("./data/preprocessed/category.csv"));
 
     private List<Category> categories;
 
@@ -36,7 +36,7 @@ public class Categories implements Iterable<Category> {
             if (!nameToIdMap.containsKey(category.name)) {
                 nameToIdMap.put(category.name, category.id);
             } else {
-                throw new RuntimeException(category.name);
+//                throw new RuntimeException(category.name);
             }
             idToCategoryMap.put(category.id, category);
             pageIdToCategory.put(category.pageId, category);

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 public class CategoryLinksPreprocessing {
-    public static void preprocessCategoryLinks(File input, File output) throws FileNotFoundException {
+    public static void process(File input, File output) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(output);
 
         int processedCount = 0;
@@ -58,9 +58,5 @@ public class CategoryLinksPreprocessing {
 
         System.out.println("Bad categories size " + badCategories.size());
         System.out.println("Ignored " + ignored);
-    }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        preprocessCategoryLinks(new File("./data/csv/enwiki-latest-categorylinks.csv"), new File("./data/enwiki-latest-categorylinks-p.csv"));
     }
 }

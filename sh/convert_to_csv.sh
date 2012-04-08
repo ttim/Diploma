@@ -1,15 +1,13 @@
-cd ../data
-
 echo "Convert to csv"
 
-rm -r -f csv
-mkdir csv
+rm -r -f ./data/csv
+mkdir ./data/csv
 
 echo "Convert category.sql"
-../sh/sql2csv.sh sql/category.sql csv/category.csv
+./sh/sql2csv.sh ./data/sql/category.sql ./data/csv/category.csv
 
 echo "Convert categorylinks.sql"
-../sh/sql2csv.sh sql/categorylinks.sql csv/categorylinks.csv
+./sh/sql2csv.sh ./data/sql/categorylinks.sql ./data/csv/categorylinks.csv
 
 echo "Convert page.sql"
-../sh/sql2csv.sh sql/page.sql csv/page.csv
+./sh/sql2csv.sh ./data/sql/page.sql ./data/csv/page.csv
