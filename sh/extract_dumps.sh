@@ -14,3 +14,7 @@ mv ./data/downloads/categorylinks.sql ./data/sql/
 echo "Extract page.sql.gz"
 gzip -k -d ./data/downloads/page.sql.gz
 mv ./data/downloads/page.sql ./data/sql/
+
+echo "Extract pagelinks.sql.gz"
+gzip -k -d ./data/downloads/pagelinks.sql.gz
+mv ./data/downloads/pagelinks.sql ./data/sql/

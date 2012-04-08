@@ -11,3 +11,6 @@ echo "Convert categorylinks.sql"
 
 echo "Convert page.sql"
 ./sh/sql2csv.sh ./data/sql/page.sql ./data/csv/page.csv
+
+echo "Convert pagelinks.sql"
+./sh/sql2csv.sh ./data/sql/pagelinks.sql ./data/csv/pagelinks.csv
