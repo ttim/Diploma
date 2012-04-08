@@ -4,6 +4,7 @@ import ru.abishev.wiki.preprocessing.CategoriesPreprocessing;
 import ru.abishev.wiki.preprocessing.CategoryLinksPreprocessing;
 import ru.abishev.wiki.preprocessing.PagesPreprocessor;
 import ru.abishev.wiki.preprocessing.WikiSqlToCsvConverter;
+import ru.abishev.wiki.processing.GraphCreator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,6 +42,13 @@ public class Runner {
             System.out.println("preprocess categorylinks: " + input.getAbsolutePath() + " to " + output.getAbsolutePath());
 
             CategoryLinksPreprocessing.process(input, output);
+        } else if ("create_graph".equals(command)) {
+            File input = new File(args[1]), output = new File(args[2]);
+            System.out.println("create categories graph: " + input.getAbsolutePath() + " to " + output.getAbsolutePath());
+
+            PrintWriter out = new PrintWriter(output);
+            GraphCreator.createGraph(input, out);
+            out.close();
         }
     }
 }

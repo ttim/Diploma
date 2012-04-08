@@ -1,0 +1,1 @@
+java -cp "./out/artifacts/Diploma_jar/Diploma.jar" ru.abishev.Runner create_graph "./data/preprocessed/categorylinks_subcats.csv" "./data/graph.csv"

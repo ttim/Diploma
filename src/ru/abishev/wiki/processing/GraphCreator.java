@@ -102,9 +102,4 @@ public class GraphCreator {
 
         out.flush();
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        createGraph(new File("./data/enwiki-latest-categorylinks-subcats.csv"),
-                new PrintWriter(new File("./data/enwiki-catgraph.csv")));
-    }
 }
