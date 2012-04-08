@@ -18,6 +18,5 @@ grep "page" ./data/preprocessed/categorylinks.csv > ./data/preprocessed/category
 echo "Subcats"
 grep "subcat" ./data/preprocessed/categorylinks.csv > ./data/preprocessed/categorylinks_subcats.csv
 
-
-
-
+echo "Filter pagelinks (I need only links from main to main)"
+java -cp "./out/artifacts/Diploma_jar/Diploma.jar" ru.abishev.Runner filter_pagelinks "./data/csv/pagelinks.csv" "./data/preprocessed/pagelinks.csv"

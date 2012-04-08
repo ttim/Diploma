@@ -1,9 +1,6 @@
 package ru.abishev;
 
-import ru.abishev.wiki.preprocessing.CategoriesPreprocessing;
-import ru.abishev.wiki.preprocessing.CategoryLinksPreprocessing;
-import ru.abishev.wiki.preprocessing.PagesPreprocessor;
-import ru.abishev.wiki.preprocessing.WikiSqlToCsvConverter;
+import ru.abishev.wiki.preprocessing.*;
 import ru.abishev.wiki.processing.GraphCreator;
 
 import java.io.File;
@@ -48,6 +45,13 @@ public class Runner {
 
             PrintWriter out = new PrintWriter(output);
             GraphCreator.createGraph(input, out);
+            out.close();
+        } else if ("filter_pagelinks".equals(command)) {
+            File input = new File(args[1]), output = new File(args[2]);
+            System.out.println("filter pagelinks: " + input.getAbsolutePath() + " to " + output.getAbsolutePath());
+
+            PrintWriter out = new PrintWriter(output);
+            PagelinksPreprocessor.process(input, out);
             out.close();
         }
     }
