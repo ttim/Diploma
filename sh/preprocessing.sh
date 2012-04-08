@@ -10,4 +10,14 @@ java -cp "./out/artifacts/Diploma_jar/Diploma.jar" ru.abishev.Runner preprocess_
 echo "Preprocess categorylinks (Sync with categories)"
 java -cp "./out/artifacts/Diploma_jar/Diploma.jar" ru.abishev.Runner preprocess_categorylinks "./data/csv/categorylinks.csv" "./data/preprocessed/categorylinks.csv"
 
+echo "Divide categorylinks to 3 parts (files, subcats, pages)"
+echo "Files"
+grep "file" ./data/preprocessed/categorylinks.csv > ./data/preprocessed/categorylinks_files.csv
+echo "Pages"
+grep "page" ./data/preprocessed/categorylinks.csv > ./data/preprocessed/categorylinks_pages.csv
+echo "Subcats"
+grep "subcat" ./data/preprocessed/categorylinks.csv > ./data/preprocessed/categorylinks_subcats.csv
+
+
+
 
