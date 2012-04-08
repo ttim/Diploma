@@ -1,4 +1,4 @@
-package ru.abishev.commandline;
+package ru.abishev.wiki.preprocessing;
 
 import ru.abishev.utils.FileUtils;
 import ru.abishev.utils.Utils;
@@ -88,25 +88,5 @@ public class WikiSqlToCsvConverter {
         }
 
         out.flush();
-    }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        File input = new File(args[0]), output = new File(args[1]);
-        System.out.println("Convert " + input.getAbsolutePath() + " to " + output.getAbsolutePath());
-
-        convert(input, output);
-//        String folder = "./data";
-
-//        convert(folder, "enwiki-latest-category");
-//        convert(folder, "enwiki-latest-iwlinks");
-//        convert(folder, "enwiki-latest-categorylinks");
-//        convert(folder, "enwiki-latest-page");
-
-//        for (List<String> arg : CsvUtils.readCsvIgnoreFirstLine(new File(folder+"\\enwiki-latest-category.csv"), '|', '\'')) {
-//            if (arg.size() != 6) {
-//                throw new RuntimeException(arg.toString());
-//            }
-////            System.out.println(Utils.join(arg, " "));
-//        }
     }
 }
