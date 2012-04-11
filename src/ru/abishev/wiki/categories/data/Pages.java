@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Pages implements Iterable<Page> {
     public static final Pages INSTANCE = new Pages(new File("./data/preprocessed/page.csv"));
-    
+
     private List<Page> pages;
     private Map<String, Page> nameToPageInMain;
     private Map<String, Page> nameToPageInCategories;
@@ -26,9 +26,13 @@ public class Pages implements Iterable<Page> {
         idToPage = new HashMap<Long, Page>();
         for (Page page : pages) {
             if (page.namespace == 0) {
-                nameToPageInMain.put(page.title, page);
+                if (nameToPageInMain.containsKey(page.title.toLowerCase())) {
+//                    System.out.println("=(" + page.title);
+                    // todo: ?
+                }
+                nameToPageInMain.put(page.title.toLowerCase(), page);
             } else {
-                nameToPageInCategories.put(page.title, page);
+                nameToPageInCategories.put(page.title.toLowerCase(), page);
             }
             idToPage.put(page.id, page);
         }
@@ -45,11 +49,15 @@ public class Pages implements Iterable<Page> {
         return idToPage.get(id);
     }
 
+    private String convertForSearch(String s) {
+        return s.toLowerCase().replaceAll(" ", "_");
+    }
+
     public Page getByTitleInMain(String title) {
-        return nameToPageInMain.get(title);
+        return nameToPageInMain.get(convertForSearch(title));
     }
 
     public Page getByTitleInCategories(String title) {
-        return nameToPageInCategories.get(title);
+        return nameToPageInCategories.get(convertForSearch(title));
     }
 }

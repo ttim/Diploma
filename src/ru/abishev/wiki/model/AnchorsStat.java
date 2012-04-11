@@ -1,11 +1,9 @@
 package ru.abishev.wiki.model;
 
 import org.jetbrains.annotations.Nullable;
+import sun.security.provider.certpath.CollectionCertStore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AnchorsStat {
     public static final int NO_PAGE_ID = -1;
@@ -15,11 +13,15 @@ public class AnchorsStat {
     public AnchorsStat() {
     }
 
-    public void addAnchorToStat(String fromWord, int toPageId) {
+    public void addAnchorToStat(String fromWord, long toPageId) {
         if (!stats.containsKey(fromWord)) {
             stats.put(fromWord, new AnchorStat(fromWord));
         }
         stats.get(fromWord).addStat(toPageId);
+    }
+
+    public Set<String> getAllWords() {
+        return stats.keySet();
     }
 
     @Nullable
@@ -30,14 +32,14 @@ public class AnchorsStat {
 
     public static class AnchorStat {
         private final String word;
-        private List<Integer> pages = new ArrayList<Integer>();
+        private List<Long> pages = new ArrayList<Long>();
         private List<Integer> counts = new ArrayList<Integer>();
 
         AnchorStat(String word) {
             this.word = word;
         }
 
-        void addStat(int pageId) {
+        void addStat(long pageId) {
             for (int i = 0; i < pages.size(); i++) {
                 if (pages.get(i) == pageId) {
                     counts.set(i, counts.get(i) + 1);
@@ -54,8 +56,8 @@ public class AnchorsStat {
             return word;
         }
 
-        public Map<Integer, Integer> getStat() {
-            Map<Integer, Integer> stat = new HashMap<Integer, Integer>();
+        public Map<Long, Integer> getStat() {
+            Map<Long, Integer> stat = new HashMap<Long, Integer>();
             for (int i = 0; i < pages.size(); i++) {
                 stat.put(pages.get(i), counts.get(i));
             }

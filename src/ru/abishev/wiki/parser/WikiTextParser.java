@@ -15,11 +15,17 @@ public class WikiTextParser {
     private static final Pattern REDIRECT_PATTERN = Pattern.compile("#REDIRECT\\s+\\[\\[(.*?)\\]\\]");
     private static Pattern STUB_PATTERN = Pattern.compile("\\-stub\\}\\}");
     private static Pattern DISAMBIGUATION_PAGE_PATTERN = Pattern.compile("\\{\\{disambig\\}\\}");
+    private static Pattern CATEGORY_PATTERN = Pattern.compile("\\[\\[Category:(.*?)\\]\\]", Pattern.MULTILINE);
+    private static Pattern LINKS_PATTERN = Pattern.compile("\\[\\[(.*?)\\]\\]", Pattern.MULTILINE);
 
     private final String wikiText;
 
     public WikiTextParser(String wikiText) {
         this.wikiText = wikiText;
+    }
+
+    public String getWikiText() {
+        return wikiText;
     }
 
     public boolean isStub() {
@@ -43,14 +49,9 @@ public class WikiTextParser {
         return null;
     }
 
-    public String getWikiText() {
-        return wikiText;
-    }
-
     public List<String> parseCategories() {
         List<String> pageCats = new ArrayList<String>();
-        Pattern catPattern = Pattern.compile("\\[\\[Category:(.*?)\\]\\]", Pattern.MULTILINE);
-        Matcher matcher = catPattern.matcher(wikiText);
+        Matcher matcher = CATEGORY_PATTERN.matcher(wikiText);
         while (matcher.find()) {
             String[] temp = matcher.group(1).split("\\|");
             pageCats.add(temp[0]);
@@ -58,21 +59,23 @@ public class WikiTextParser {
         return pageCats;
     }
 
-    public List<String> parseLinks() {
-        List<String> pageLinks = new ArrayList<String>();
+    public List<Link> parseLinks() {
+        List<Link> links = new ArrayList<Link>();
 
-        Pattern catPattern = Pattern.compile("\\[\\[(.*?)\\]\\]", Pattern.MULTILINE);
-        Matcher matcher = catPattern.matcher(wikiText);
+        Matcher matcher = LINKS_PATTERN.matcher(wikiText);
         while (matcher.find()) {
-            String[] temp = matcher.group(1).split("\\|");
-            if (temp == null || temp.length == 0) continue;
-            String link = temp[0];
-            if (link.contains(":") == false) {
-                pageLinks.add(link);
+            String[] link = matcher.group(1).split("\\|");
+            if (link == null || link.length == 0 || link[0].contains(":")) {
+                continue;
+            }
+            if (link.length == 1) {
+                links.add(new Link(link[0], link[0]));
+            } else if (link.length == 2) {
+                links.add(new Link(link[1], link[0]));
             }
         }
 
-        return pageLinks;
+        return links;
     }
 
     public String parsePlainText() {
@@ -149,6 +152,24 @@ public class WikiTextParser {
             return matcher.group(1);
         }
         return null;
+    }
+
+    public static class Link {
+        public final String text;
+        public final String page;
+
+        Link(String text, String page) {
+            this.text = text;
+            this.page = page;
+        }
+
+        @Override
+        public String toString() {
+            return "Link{" +
+                    "text='" + text + '\'' +
+                    ", page='" + page + '\'' +
+                    '}';
+        }
     }
 
     public static class InfoBox {

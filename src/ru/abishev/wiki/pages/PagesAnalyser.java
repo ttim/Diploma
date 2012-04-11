@@ -3,14 +3,18 @@ package ru.abishev.wiki.pages;
 import edu.jhu.nlp.wikipedia.PageCallbackHandler;
 import edu.jhu.nlp.wikipedia.WikiPage;
 import edu.jhu.nlp.wikipedia.WikiXMLSAXParser;
+import ru.abishev.wiki.categories.data.Pages;
 import ru.abishev.wiki.model.AnchorsStat;
 import ru.abishev.wiki.parser.WikiTextParser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Map;
 
 public class PagesAnalyser {
-    public static void analyseDump(File bz2XmlDump, final int maxPagesCount) throws Exception {
-        AnalyserHandler handler = new AnalyserHandler(maxPagesCount);
+    public static void analyseDump(File bz2XmlDump, File statOutput, final int maxPagesCount) throws Exception {
+        AnalyserHandler handler = new AnalyserHandler(statOutput, maxPagesCount);
         WikiXMLSAXParser.parseWikipediaDump(bz2XmlDump.getAbsolutePath(), handler);
         handler.finish();
     }
@@ -18,10 +22,13 @@ public class PagesAnalyser {
     private static class AnalyserHandler implements PageCallbackHandler {
         private final int maxPagesCount;
         private final AnchorsStat stat = new AnchorsStat();
+        private final File statOutput;
+
         int processedCount = 0;
 
-        AnalyserHandler(int maxPagesCount) {
+        AnalyserHandler(File statOutput, int maxPagesCount) {
             this.maxPagesCount = maxPagesCount;
+            this.statOutput = statOutput;
         }
 
         @Override
@@ -38,15 +45,40 @@ public class PagesAnalyser {
                 return;
             }
 
-            System.out.println(wikiPage.getLinks());
+            for (WikiTextParser.Link link : parser.parseLinks()) {
+                if (Pages.INSTANCE.getByTitleInMain(link.page) != null) {
+                    stat.addAnchorToStat(link.text, Pages.INSTANCE.getByTitleInMain(link.page).id);
+                }
+            }
         }
 
         public void finish() {
-            int v = 1; // just for breakpoint
+            System.out.println("Finishing");
+
+            try {
+                PrintWriter output = new PrintWriter(statOutput);
+
+                for (String fromWord : stat.getAllWords()) {
+                    Map<Long, Integer> anchorStat = stat.getAnchorsStat(fromWord).getStat();
+                    int count = 0;
+                    for (int _count : anchorStat.values()) {
+                        count += _count;
+                    }
+                    output.print(fromWord + "/" + count + ":");
+                    for (long pageId : anchorStat.keySet()) {
+                        output.print(" " + pageId + "/" + anchorStat.get(pageId));
+                    }
+                    output.println();
+                }
+
+                output.close();
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
     public static void main(String[] args) throws Exception {
-        analyseDump(new File("./data/downloads/pages-articles.xml.bz2"), 20);
+        analyseDump(new File("./data/downloads/pages-articles.xml.bz2"), new File("./data/stat.txt"), 20);
     }
 }
