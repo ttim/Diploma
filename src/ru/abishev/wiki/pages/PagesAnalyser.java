@@ -4,6 +4,7 @@ import edu.jhu.nlp.wikipedia.PageCallbackHandler;
 import edu.jhu.nlp.wikipedia.WikiPage;
 import edu.jhu.nlp.wikipedia.WikiXMLSAXParser;
 import ru.abishev.wiki.model.AnchorsStat;
+import ru.abishev.wiki.parser.WikiTextParser;
 
 import java.io.File;
 
@@ -31,7 +32,9 @@ public class PagesAnalyser {
                 System.exit(0);
             }
 
-            if (wikiPage.isRedirect()) {
+            WikiTextParser parser = new WikiTextParser(wikiPage.getWikiText());
+
+            if (parser.parseRedirectText() != null) {
                 return;
             }
 
