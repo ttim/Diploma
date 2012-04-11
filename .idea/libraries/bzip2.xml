@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="bzip2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/bzip2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/bzip2.src.zip!/" />
+    </SOURCES>
+  </library>
+</component>

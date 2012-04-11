@@ -1,5 +1,7 @@
 package ru.abishev.wiki.model;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,16 +10,22 @@ import java.util.Map;
 public class AnchorsStat {
     public static final int NO_PAGE_ID = -1;
 
+    private Map<String, AnchorStat> stats = new HashMap<String, AnchorStat>();
+
     public AnchorsStat() {
     }
 
     public void addAnchorToStat(String fromWord, int toPageId) {
-
+        if (!stats.containsKey(fromWord)) {
+            stats.put(fromWord, new AnchorStat(fromWord));
+        }
+        stats.get(fromWord).addStat(toPageId);
     }
 
-    public AnchorsStat getAnchorsStat(String fromWord) {
-        // todo: should be immutable
-        return null;
+    @Nullable
+    public AnchorStat getAnchorsStat(String fromWord) {
+        // todo: copy on return?
+        return stats.get(fromWord);
     }
 
     public static class AnchorStat {
