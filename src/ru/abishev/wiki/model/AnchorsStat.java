@@ -5,29 +5,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WordsStat {
+public class AnchorsStat {
     public static final int NO_PAGE_ID = -1;
 
-
-
-    public WordsStat() {
+    public AnchorsStat() {
     }
 
-    public void addWordToStat(String word, int pageId) {
+    public void addAnchorToStat(String fromWord, int toPageId) {
 
     }
 
-    public WordStat getWordStat(String word) {
+    public AnchorsStat getAnchorsStat(String fromWord) {
         // todo: should be immutable
         return null;
     }
 
-    public static class WordStat {
+    public static class AnchorStat {
         private final String word;
         private List<Integer> pages = new ArrayList<Integer>();
         private List<Integer> counts = new ArrayList<Integer>();
 
-        WordStat(String word) {
+        AnchorStat(String word) {
             this.word = word;
         }
 
