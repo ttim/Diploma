@@ -1,7 +1,6 @@
 package ru.abishev.wiki.model;
 
 import org.jetbrains.annotations.Nullable;
-import sun.security.provider.certpath.CollectionCertStore;
 
 import java.util.*;
 

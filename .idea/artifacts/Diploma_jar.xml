@@ -2,7 +2,15 @@
   <artifact type="jar" name="Diploma:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Diploma_jar</output-path>
     <root id="archive" name="Diploma.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="Diploma" />
+      <element id="module-output" name="common" />
+      <element id="module-output" name="pages_service" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/wikixmlj-r43.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/annotations.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/bzip2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

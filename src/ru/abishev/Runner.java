@@ -2,6 +2,7 @@ package ru.abishev;
 
 import ru.abishev.wiki.categories.preprocessing.*;
 import ru.abishev.wiki.categories.processing.GraphCreator;
+import ru.abishev.wiki.pages.PagesPreparer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,8 +10,8 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class Runner {
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("Runner args: "+ Arrays.toString(args));
+    public static void main(String[] args) throws Exception {
+        System.out.println("Runner args: " + Arrays.toString(args));
 
         // todo: use apache cli?
         String command = args[0];
@@ -53,6 +54,11 @@ public class Runner {
             PrintWriter out = new PrintWriter(output);
             PagelinksPreprocessor.process(input, out);
             out.close();
+        } else if ("prepare_pages".equals(command)) {
+            File input = new File(args[1]), output = new File(args[2]);
+            System.out.println("prepare pages: " + input.getAbsolutePath() + " to " + output.getAbsolutePath());
+
+            PagesPreparer.preparePages(input, output);
         }
     }
 }

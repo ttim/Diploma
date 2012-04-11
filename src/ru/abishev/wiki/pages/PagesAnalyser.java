@@ -1,8 +1,8 @@
 package ru.abishev.wiki.pages;
 
-import edu.jhu.nlp.wikipedia.PageCallbackHandler;
-import edu.jhu.nlp.wikipedia.WikiPage;
-import edu.jhu.nlp.wikipedia.WikiXMLSAXParser;
+import ru.abishev.wiki.parser.AnalyserRunner;
+import ru.abishev.wiki.parser.WikiDumpAnalyser;
+import ru.abishev.wiki.parser.WikiPage;
 import ru.abishev.wiki.parser.WikiTextParser;
 import ru.abishev.wiki.categories.data.Pages;
 import ru.abishev.wiki.model.AnchorsStat;
@@ -14,36 +14,25 @@ import java.util.Map;
 
 public class PagesAnalyser {
     public static void analyseDump(File bz2XmlDump, File statOutput, final int maxPagesCount) throws Exception {
-        AnalyserHandler handler = new AnalyserHandler(statOutput, maxPagesCount);
-        WikiXMLSAXParser.parseWikipediaDump(bz2XmlDump.getAbsolutePath(), handler);
-        handler.finish();
+        AnalyserRunner.analyseDump(new AnalyserHandler(statOutput), bz2XmlDump, maxPagesCount, true);
     }
 
-    private static class AnalyserHandler implements PageCallbackHandler {
-        private final int maxPagesCount;
+    private static class AnalyserHandler implements WikiDumpAnalyser {
         private final AnchorsStat stat = new AnchorsStat();
         private final File statOutput;
 
-        int processedCount = 0;
-
-        AnalyserHandler(File statOutput, int maxPagesCount) {
-            this.maxPagesCount = maxPagesCount;
+        AnalyserHandler(File statOutput) {
             this.statOutput = statOutput;
         }
 
         @Override
-        public void process(WikiPage wikiPage) {
-            if (processedCount++ > maxPagesCount) {
-                // todo: =(
-                finish();
-                System.exit(0);
-            }
-            if (processedCount % 1000 == 0) {
-                System.out.println(processedCount + " articles processed");
-            }
+        public void start() throws Exception {
+            // nothing
+        }
 
-
-            WikiTextParser parser = new WikiTextParser(wikiPage.getWikiText());
+        @Override
+        public void analysePage(WikiPage page) throws Exception {
+            WikiTextParser parser = new WikiTextParser(page.text);
 
             if (parser.parseRedirectText() != null) {
                 return;
@@ -57,8 +46,6 @@ public class PagesAnalyser {
         }
 
         public void finish() {
-            System.out.println("Finishing");
-
             try {
                 PrintWriter output = new PrintWriter(statOutput);
 

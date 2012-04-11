@@ -8,19 +8,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="wikixmlj-r43" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$APPLICATION_HOME_DIR$/lib/annotations.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="bzip2" level="project" />
     <orderEntry type="module" module-name="common" />
     <orderEntry type="module" module-name="pages_service" />
+    <orderEntry type="library" name="annotations" level="project" />
   </component>
 </module>
 
