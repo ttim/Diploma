@@ -1,7 +1,8 @@
 package ru.abishev;
 
+import ru.abishev.wiki.categories.preprocessing.*;
 import ru.abishev.wiki.preprocessing.*;
-import ru.abishev.wiki.processing.GraphCreator;
+import ru.abishev.wiki.categories.processing.GraphCreator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
