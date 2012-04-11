@@ -19,6 +19,8 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="bzip2" level="project" />
+    <orderEntry type="module" module-name="common" />
+    <orderEntry type="module" module-name="pages_service" />
   </component>
 </module>
 

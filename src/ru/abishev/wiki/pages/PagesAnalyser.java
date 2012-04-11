@@ -3,9 +3,9 @@ package ru.abishev.wiki.pages;
 import edu.jhu.nlp.wikipedia.PageCallbackHandler;
 import edu.jhu.nlp.wikipedia.WikiPage;
 import edu.jhu.nlp.wikipedia.WikiXMLSAXParser;
+import ru.abishev.wiki.parser.WikiTextParser;
 import ru.abishev.wiki.categories.data.Pages;
 import ru.abishev.wiki.model.AnchorsStat;
-import ru.abishev.wiki.parser.WikiTextParser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,6 +38,10 @@ public class PagesAnalyser {
                 finish();
                 System.exit(0);
             }
+            if (processedCount % 1000 == 0) {
+                System.out.println(processedCount + " articles processed");
+            }
+
 
             WikiTextParser parser = new WikiTextParser(wikiPage.getWikiText());
 
@@ -79,6 +83,6 @@ public class PagesAnalyser {
     }
 
     public static void main(String[] args) throws Exception {
-        analyseDump(new File("./data/downloads/pages-articles.xml.bz2"), new File("./data/stat.txt"), 20);
+        analyseDump(new File("./data/downloads/pages-articles.xml.bz2"), new File("./data/stat.txt"), 5000);
     }
 }

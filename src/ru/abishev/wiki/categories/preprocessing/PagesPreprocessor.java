@@ -3,7 +3,6 @@ package ru.abishev.wiki.categories.preprocessing;
 import ru.abishev.utils.CsvUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
 
