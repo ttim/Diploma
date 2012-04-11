@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PagesAnalyser {
     public static void analyseDump(File bz2XmlDump, File statOutput, final int maxPagesCount) throws Exception {
-        AnalyserRunner.analyseDump(new AnalyserHandler(statOutput), bz2XmlDump, maxPagesCount, true);
+        AnalyserRunner.analyseXmlDump(new AnalyserHandler(statOutput), bz2XmlDump, maxPagesCount, true);
     }
 
     private static class AnalyserHandler implements WikiDumpAnalyser {

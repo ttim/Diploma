@@ -3,6 +3,7 @@ package ru.abishev;
 import ru.abishev.wiki.categories.preprocessing.*;
 import ru.abishev.wiki.categories.processing.GraphCreator;
 import ru.abishev.wiki.pages.PagesPreparer;
+import ru.abishev.wiki.parser.Converter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,6 +60,11 @@ public class Runner {
             System.out.println("prepare pages: " + input.getAbsolutePath() + " to " + output.getAbsolutePath());
 
             PagesPreparer.preparePages(input, output);
+        } else if ("convert_dump".equals(command)) {
+            File input = new File(args[1]), output = new File(args[2]);
+            System.out.println("convert dump: " + input.getAbsolutePath() + " to " + output.getAbsolutePath());
+
+            Converter.convertDump(input, output);
         }
     }
 }

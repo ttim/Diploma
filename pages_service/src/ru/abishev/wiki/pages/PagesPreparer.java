@@ -38,7 +38,7 @@ public class PagesPreparer implements WikiDumpAnalyser {
     }
 
     public static void preparePages(File wikiDump, File indexOutput) throws Exception {
-        AnalyserRunner.analyseDump(new PagesPreparer(indexOutput), wikiDump, Integer.MAX_VALUE, true);
+        AnalyserRunner.analyseXmlDump(new PagesPreparer(indexOutput), wikiDump, Integer.MAX_VALUE, true);
     }
 
 //    public static void main(String[] args) throws Exception {
