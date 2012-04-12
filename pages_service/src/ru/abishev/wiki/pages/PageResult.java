@@ -33,7 +33,12 @@ public class PageResult {
     }
 
     public static PageResult fromString(String data) {
-        String[] parsedData = data.split("\\|");
+        String[] parsedData = new String[6];
+        for (int i = 0; i < 5; i++) {
+            parsedData[i] = data.substring(0, data.indexOf("|"));
+            data = data.substring(data.indexOf("|") + 1);
+        }
+        parsedData[5] = data;
         return new PageResult(
                 Long.parseLong(parsedData[0]),
                 parsedData[1],
