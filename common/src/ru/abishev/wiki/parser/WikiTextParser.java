@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * This class without any kind of caching, be aware, it's just only parsing!
  */
 public class WikiTextParser {
-    private static final Pattern REDIRECT_PATTERN = Pattern.compile("#REDIRECT\\s+\\[\\[(.*?)\\]\\]");
+    private static final Pattern REDIRECT_PATTERN = Pattern.compile("#REDIRECT\\s+\\[\\[(.*?)\\]\\]", Pattern.CASE_INSENSITIVE);
     private static Pattern STUB_PATTERN = Pattern.compile("\\-stub\\}\\}");
     private static Pattern DISAMBIGUATION_PAGE_PATTERN = Pattern.compile("\\{\\{disambig\\}\\}");
     private static Pattern CATEGORY_PATTERN = Pattern.compile("\\[\\[Category:(.*?)\\]\\]", Pattern.MULTILINE);
