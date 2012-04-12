@@ -37,11 +37,11 @@ public class PagesPreparer implements WikiDumpAnalyser {
         writer.close();
     }
 
-    public static void preparePages(File wikiDump, File indexOutput) throws Exception {
-        AnalyserRunner.analyseXmlDump(new PagesPreparer(indexOutput), wikiDump, Integer.MAX_VALUE, true);
+    public static void preparePages(File wikiSimpleDump, File indexOutput) throws Exception {
+        AnalyserRunner.analyseSimpleDump(new PagesPreparer(indexOutput), wikiSimpleDump, Integer.MAX_VALUE, true);
     }
 
-//    public static void main(String[] args) throws Exception {
-//        preparePages(Pathes.WIKI_ARTICLES_DUMP, Pathes.PAGES_INDEX);
-//    }
+    public static void main(String[] args) throws Exception {
+        preparePages(Pathes.WIKI_ARTICLES_SIMPLE_DUMP, Pathes.PAGES_INDEX);
+    }
 }
