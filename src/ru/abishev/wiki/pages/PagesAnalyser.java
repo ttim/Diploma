@@ -44,7 +44,9 @@ public class PagesAnalyser {
             for (WikiTextParser.Link link : parser.parseLinks()) {
                 PageResult pageResult = client.getPageForName(link.page);
                 if (pageResult == null || pageResult.isBad()) {
-                    pageResult = client.getPageForName(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
+                    if (link.page.length() > 0) {
+                        pageResult = client.getPageForName(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
+                    }
                 }
                 if (pageResult == null || pageResult.isBad()) {
                     badCount++;
@@ -91,6 +93,6 @@ public class PagesAnalyser {
     }
 
     public static void main(String[] args) throws Exception {
-        analyseDump(new File("./data/pages-articles.dump"), new File("./data/stat.txt"), 1000000);
+        analyseDump(new File("./data/pages-articles.dump"), new File("./data/stat.txt"), Integer.MAX_VALUE);
     }
 }
