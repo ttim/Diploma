@@ -33,7 +33,7 @@ public class RedirectsNormalizer {
                 badCount++;
             } else {
                 goodCount++;
-                output.println(link.text + "|" + pageResult.finalTitle);
+                output.println(link.text + "|" + pageResult.finalPageId);
             }
             if ((badCount + goodCount) % 100000 == 0) {
                 System.out.println("Bad count: " + badCount + "; good count: " + goodCount);
