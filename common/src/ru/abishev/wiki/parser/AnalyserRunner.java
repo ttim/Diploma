@@ -63,7 +63,7 @@ public class AnalyserRunner {
             if (num == maxArticlesCount) {
                 break;
             }
-            if (num % 1000 == 0 && printDebugInfo) {
+            if (num % 10000 == 0 && printDebugInfo) {
                 System.out.println(num + " articles is analysed");
             }
         }

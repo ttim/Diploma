@@ -91,6 +91,7 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-jdk14:1.5.10" level="project" />
     <orderEntry type="library" name="Maven: thrift:libthrift:0.5.0" level="project" />
     <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.0.b2" level="project" />
+    <orderEntry type="library" name="trove:trove:2.0.2" level="project" />
   </component>
 </module>
 

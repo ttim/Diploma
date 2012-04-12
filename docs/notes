@@ -1,3 +1,4 @@
 circular categories
 not tree structure in categories
 should be service like architecture (up page resolver each time - too long...)
+too big pages server - my own hashmap impl, using bytes instead of strings

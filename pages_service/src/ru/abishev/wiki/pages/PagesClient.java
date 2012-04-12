@@ -30,7 +30,7 @@ public class PagesClient {
         HttpResponse response = httpClient.apply(request).get();
         if (response.getStatus().getCode() == 200) {
             PageResult result = PageResult.fromString(response.getContent().toString(Charset.forName("utf-8")));
-            return result.pageId == 0 ? null : result;
+            return result.isBad() ? null : result;
         } else {
             throw new IOException();
         }

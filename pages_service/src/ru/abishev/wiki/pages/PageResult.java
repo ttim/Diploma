@@ -1,6 +1,8 @@
 package ru.abishev.wiki.pages;
 
 public class PageResult {
+    public static final PageResult BAD_RESULT = new PageResult(0, "", false, "", 0, "");
+
     // 0 in case of nothing
     public long pageId;
 
@@ -24,6 +26,10 @@ public class PageResult {
     public String toString() {
         // use | as separator
         return pageId + "|" + title + "|" + isRedirect + "|" + redirectTo + "|" + finalPageId + "|" + finalTitle;
+    }
+
+    public boolean isBad() {
+        return pageId == 0;
     }
 
     public static PageResult fromString(String data) {

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="trove:trove:2.0.2" type="repository">
+    <properties maven-id="trove:trove:2.0.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/trove-2.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

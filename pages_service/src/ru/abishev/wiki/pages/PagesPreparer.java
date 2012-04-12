@@ -29,7 +29,10 @@ public class PagesPreparer implements WikiDumpAnalyser {
     @Override
     public void analysePage(WikiPage page) {
         String redirectTo = new WikiTextParser(page.text).parseRedirectText();
-        writer.println(page.id + "|" + page.title + "|" + (redirectTo == null ? "" : redirectTo));
+        // select only Category: and Main pages
+        if (page.title.indexOf(':') == -1 || page.title.startsWith("Category:")) {
+            writer.println(page.id + "|" + page.title + "|" + (redirectTo == null ? "" : redirectTo));
+        }
     }
 
     @Override
