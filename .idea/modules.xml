@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Diploma.iml" filepath="$PROJECT_DIR$/Diploma.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finagle/finagle.iml" filepath="$PROJECT_DIR$/finagle/finagle.iml" />
       <module fileurl="file://$PROJECT_DIR$/pages_service/pages_service.iml" filepath="$PROJECT_DIR$/pages_service/pages_service.iml" />
     </modules>
   </component>
