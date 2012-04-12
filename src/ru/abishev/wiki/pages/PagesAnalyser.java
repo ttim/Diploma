@@ -10,16 +10,19 @@ import ru.abishev.wiki.model.AnchorsStat;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.sql.ClientInfoStatus;
 import java.util.Map;
 
 public class PagesAnalyser {
     public static void analyseDump(File bz2XmlDump, File statOutput, final int maxPagesCount) throws Exception {
-        AnalyserRunner.analyseXmlDump(new AnalyserHandler(statOutput), bz2XmlDump, maxPagesCount, true);
+        AnalyserRunner.analyseSimpleDump(new AnalyserHandler(statOutput), bz2XmlDump, maxPagesCount, true);
     }
 
     private static class AnalyserHandler implements WikiDumpAnalyser {
         private final AnchorsStat stat = new AnchorsStat();
         private final File statOutput;
+        private PagesClient client;
+        private int badCount = 0, goodCount = 0;
 
         AnalyserHandler(File statOutput) {
             this.statOutput = statOutput;
@@ -27,7 +30,7 @@ public class PagesAnalyser {
 
         @Override
         public void start() throws Exception {
-            // nothing
+            client = new PagesClient();
         }
 
         @Override
@@ -39,14 +42,26 @@ public class PagesAnalyser {
             }
 
             for (WikiTextParser.Link link : parser.parseLinks()) {
-                if (Pages.INSTANCE.getByTitleInMain(link.page) != null) {
-                    stat.addAnchorToStat(link.text, Pages.INSTANCE.getByTitleInMain(link.page).id);
+                PageResult pageResult = client.getPageForName(link.page);
+                if (pageResult == null || pageResult.isBad()) {
+                    pageResult = client.getPageForName(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
+                }
+                if (pageResult == null || pageResult.isBad()) {
+                    badCount++;
+                } else {
+                    goodCount++;
+                    stat.addAnchorToStat(link.text, pageResult.finalPageId);
+                }
+                if ((badCount + goodCount) % 10000 == 0) {
+                    System.out.println("Bad count: " + badCount + "; good count: " + goodCount);
                 }
             }
         }
 
         public void finish() {
             try {
+                client.release();
+
                 PrintWriter output = new PrintWriter(statOutput);
 
                 for (String fromWord : stat.getAllWords()) {
@@ -70,6 +85,6 @@ public class PagesAnalyser {
     }
 
     public static void main(String[] args) throws Exception {
-        analyseDump(new File("./data/downloads/pages-articles.xml.bz2"), new File("./data/stat.txt"), 5000);
+        analyseDump(new File("./data/pages-articles.dump"), new File("./data/stat.txt"), 5000);
     }
 }
