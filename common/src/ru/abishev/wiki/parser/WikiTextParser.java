@@ -158,7 +158,7 @@ public class WikiTextParser {
         public final String text;
         public final String page;
 
-        Link(String text, String page) {
+        public Link(String text, String page) {
             this.text = text;
             this.page = page;
         }

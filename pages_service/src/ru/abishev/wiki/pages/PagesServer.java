@@ -57,7 +57,7 @@ public class PagesServer extends Service<HttpRequest, HttpResponse> {
         System.out.println("Server is running!");
     }
 
-    private class State {
+    public static class State {
         // todo: read from file index!
         private static final int MAX_TITLES_COUNT = 10500000;
         private static final int MAX_PAGE_ID = 35500000;

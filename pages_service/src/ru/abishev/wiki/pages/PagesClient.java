@@ -40,7 +40,7 @@ public class PagesClient {
             PageResult result = PageResult.fromString(response.getContent().toString(Charset.forName("utf-8")));
             result = result.isBad() ? null : result;
 
-            if (cache.size() > 100000) {
+            if (cache.size() > 1000000) {
                 cache.clear();
             }
             cache.put(name, result);
