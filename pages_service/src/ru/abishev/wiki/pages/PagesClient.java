@@ -10,9 +10,12 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PagesClient {
     private final Service<HttpRequest, HttpResponse> httpClient;
+    private final Map<String, PageResult> cache = new HashMap<String, PageResult>();
 
     public PagesClient(int port) {
         httpClient = ClientBuilder.safeBuild(
@@ -27,11 +30,22 @@ public class PagesClient {
     }
 
     public PageResult getPageForName(String name) throws IOException {
+        if (cache.containsKey(name)) {
+            return cache.get(name);
+        }
+
         HttpRequest request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/?name=" + URLEncoder.encode(name));
         HttpResponse response = httpClient.apply(request).get();
         if (response.getStatus().getCode() == 200) {
             PageResult result = PageResult.fromString(response.getContent().toString(Charset.forName("utf-8")));
-            return result.isBad() ? null : result;
+            result = result.isBad() ? null : result;
+
+            if (cache.size() > 100000) {
+                cache.clear();
+            }
+            cache.put(name, result);
+
+            return result;
         } else {
             throw new IOException();
         }
