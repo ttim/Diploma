@@ -35,34 +35,38 @@ public class PagesAnalyser {
 
         @Override
         public void analysePage(WikiPage page) throws Exception {
-            WikiTextParser parser = new WikiTextParser(page.text);
+            try {
+                WikiTextParser parser = new WikiTextParser(page.text);
 
-            if (parser.parseRedirectText() != null) {
-                return;
-            }
+                if (parser.parseRedirectText() != null) {
+                    return;
+                }
 
-            for (WikiTextParser.Link link : parser.parseLinks()) {
-                PageResult pageResult = client.getPageForName(link.page);
-                if (pageResult == null || pageResult.isBad()) {
-                    if (link.page.length() > 0) {
-                        pageResult = client.getPageForName(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
+                for (WikiTextParser.Link link : parser.parseLinks()) {
+                    PageResult pageResult = client.getPageForName(link.page);
+                    if (pageResult == null || pageResult.isBad()) {
+                        if (link.page.length() > 0) {
+                            pageResult = client.getPageForName(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
+                        }
+                    }
+                    if (pageResult == null || pageResult.isBad()) {
+                        badCount++;
+                    } else {
+                        goodCount++;
+                        stat.addAnchorToStat(link.text, pageResult.finalPageId);
+                    }
+                    if ((badCount + goodCount) % 10000 == 0) {
+                        System.out.println("Bad count: " + badCount + "; good count: " + goodCount);
                     }
                 }
-                if (pageResult == null || pageResult.isBad()) {
-                    badCount++;
-                } else {
-                    goodCount++;
-                    stat.addAnchorToStat(link.text, pageResult.finalPageId);
-                }
-                if ((badCount + goodCount) % 10000 == 0) {
-                    System.out.println("Bad count: " + badCount + "; good count: " + goodCount);
-                }
-            }
 
-            if (stat.getAllWords().size() > 500000) {
-                // compress it!
-                System.out.println("Compressing");
-                stat.compress();
+                if (stat.getAllWords().size() > 500000) {
+                    // compress it!
+                    System.out.println("Compressing");
+                    stat.compress();
+                }
+            } catch (Exception e) {
+                System.out.println(":-( " + e);
             }
         }
 
