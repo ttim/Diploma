@@ -56,6 +56,12 @@ public class PagesAnalyser {
                     System.out.println("Bad count: " + badCount + "; good count: " + goodCount);
                 }
             }
+
+            if (stat.getAllWords().size() > 500000) {
+                // compress it!
+                System.out.println("Compressing");
+                stat.compress();
+            }
         }
 
         public void finish() {
@@ -85,6 +91,6 @@ public class PagesAnalyser {
     }
 
     public static void main(String[] args) throws Exception {
-        analyseDump(new File("./data/pages-articles.dump"), new File("./data/stat.txt"), 5000);
+        analyseDump(new File("./data/pages-articles.dump"), new File("./data/stat.txt"), 1000000);
     }
 }

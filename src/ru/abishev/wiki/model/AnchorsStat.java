@@ -23,6 +23,19 @@ public class AnchorsStat {
         return stats.keySet();
     }
 
+    public void compress() {
+        Set<String> keys = new HashSet<String>(stats.keySet());
+        for (String key : keys) {
+            int count = 0;
+            for (int _count : stats.get(key).counts) {
+                count += _count;
+            }
+            if (count < 10) {
+                stats.remove(key);
+            }
+        }
+    }
+
     @Nullable
     public AnchorStat getAnchorsStat(String fromWord) {
         // todo: copy on return?
