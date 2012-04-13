@@ -11,6 +11,7 @@
     <orderEntry type="module" module-name="common" />
     <orderEntry type="module" module-name="pages_service" />
     <orderEntry type="library" name="annotations" level="project" />
+    <orderEntry type="library" name="twitter4j" level="project" />
   </component>
 </module>
 
