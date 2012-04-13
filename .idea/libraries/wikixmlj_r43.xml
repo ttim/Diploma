@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="wikixmlj-r43">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/wikixmlj-r43.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/wikixmlj-r43-src.zip!/src" />
+    </SOURCES>
+  </library>
+</component>
