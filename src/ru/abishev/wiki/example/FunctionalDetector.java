@@ -53,7 +53,7 @@ public class FunctionalDetector {
         TwitterStream twitterStream = new TwitterStreamFactory(cb.build()).getInstance();
         StatusListener listener = new StatusListener() {
             public void onStatus(Status status) {
-                if (detector.rate(status.getText()) > 2) {
+                if (detector.rate(status.getText()) >= 5) {
                     System.out.println(detector.rate(status.getText()) + "@" + status.getUser().getScreenName() + " - " + status.getText());
                 }
             }
