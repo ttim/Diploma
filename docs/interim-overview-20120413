@@ -1,1 +1,14 @@
 code
+    wiki
+        wiki sql -> csv converter
+        wiki articles xml -> java serialized data dump (reading speed-up ~10 times)
+        wiki categories graph creator
+        some optimization for removing cycles from categories
+        collecting anchors for pages
+        collecting for pages redirects, implementing class/service for title->id (using redirects) mapping
+
+    as example
+        collecting all income anchors to "Functional Programming" category
+        simple "functional programming" filter for twitter sample stream (not working =( )
+
+
