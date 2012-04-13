@@ -26,19 +26,51 @@ code
     articles
         Learn to link with wikipedia
             http://www.cs.waikato.ac.nz/~ihw/papers/08-DNM-IHW-LearningToLinkWithWikipedia.pdf&ei=SmGIT-yoBYGSOq_zmbwJ (not working)
+            Тут (если память не изменяет) пытались научится выделять ссылки из текста (помоему это были новости с гугл.news) с помощью википедии.
+            Для всех статей считалось по каким словам на них ссылаются. Еще для слов подсчитавалась отношение как часто по нему идет ссылка/не идет ссылка.
+            +Был предложен способ борьбы с неоднозначными словами (в качестве примера приводилась слово tree - programming || biology?)?
+            Способ такой: сначала выделаются однозначные слова, а потом по ним неоднозначные классифицируются, для этого они как-то считали похожесть страниц, не помню =(
+            Вообще для страниц высчитавали какие-то показатели и на это потом натравляли разные алгоритмы классификации.
+            Плохо что ссылка не работает =(
+
+        Improving Short-Text Classification Using Unlabeled Background Knowledge to Assess Document Similarity
+            http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5244&rep=rep1&type=pdf&ei=DmaIT9qUIdHoOcS4yL0J
+            К сожалению, не очень релевантная статья. Основная идея: для подсчета расстояния между документами вместо исходной метрики
+            (у них это cos между векторами слов из текстов) используется новая. Вот такая:
+            new_dist(d1, d2) = max{for background_document:background docs} dist(d1, background_document) * dist(background_document, d2).
+            Итог: сильно улучшенный error rate.
 
         Short Text Classification in Twitter to Improve Information Filtering
             http://www.cse.ohio-state.edu/~hakan/publications/TweetClassification.pdf
+            Классифицируют на: News (N), Events (E), Opinions (O), Deals (D), and  Private Messages (PM)
+            Идея: юзать вместо bag-of-words который в случае short-text несостоятелен (что логично), какие-то иные features. В их случае
+            это: presence of shortening of words and slangs, time-event phrases, opinioned words, emphasis on words, currency and percentage signs,
+                “@username” at the beginning of the tweet, and “@username” within the tweet
+            В качестве классификатора юзают Naïve Bayes classifier in WEKA
+            Результат: bow/bow-a/их = 70/80/90%. bow-a - это bow с учетом автора. То есть автор очень важен, и очень сильно определяет класс.
+            На чем то подобном я и собираюсь построить свой классификатор.
 
         Discovering Context: Classifying tweets through a semantic transform based on Wikipedia
             http://personal.stevens.edu/~ysakamot/research/hcii2011transform.pdf
+            В этой статье кластеризуют твиты. Для этого нужно расстояние. Вводят такое:
+            dist(tweet1, tweet2) = dist2(nearest_wiki_page(tweet1), nearest_wiki_page(tweet2)).
+            dist2 == shortest category path between page1 and page2
+            nearest_wiki_page считается на основе запросов в вики по словам твитта (так считаются претенденты), а потом подсчета
+            ранга для каждой странице основываясь на ее словах.
+            Результат: в сравнении с edit distance и latent semantic analyses: (0.93 / 0.67 / 0.67) (0.87 / 0.13 / 0.73) (0.8 / 0.6 / 0.8) - это три тесткейса.
+
+            Еще в этой статье были ссылки хорошие + можно юзать english stop words из lsa библиотеки для R
 
         Tweets Mining Using WIKIPEDIA and Impurity Cluster Measurement
             https://www.universityoftexasatdallascomets.com/~lkhan/papers/new/ICISI-2010.pdf
+            Еще одна =( статья.
+            Основная идея: увеличить bag of words для твитта, используя search сниппеты полученные из википедии.
+            Ну и позитивный (вики нам помогла!) исход всего этого дела.
 
         Еще прочитал две статьи про sentiments, обе были ни о чем. (Найду ссылки, добавлю)
         Еще читал статью (тоже ссылку потерял), где сравнивались классификаторы на основе википедии и всякие svm, naive bayes, еще что-то.
-        Википедия была лучше всех причем хорошим таким. Ссылку найду.
+        Википедия была лучше всех =). Ссылку найду. Если память не изменяет тут вики по сути использовалась чтобы сделать что-то наподобие
+        space reduction для текстов.
 
         Analysis and Classication of Twitter messages
             http://know-center.tugraz.at/wp-content/uploads/2010/12/Master-Thesis-Christopher-Horn.pdf
