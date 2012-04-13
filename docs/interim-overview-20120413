@@ -11,4 +11,35 @@ code
         collecting all income anchors to "Functional Programming" category
         simple "functional programming" filter for twitter sample stream (not working =( )
 
+    links
+        graph painters
+            http://www.yworks.com/en/downloads.html
+            http://www.visualcomplexity.com/vc/project_details.cfm?id=679&index=679&domain=
+            http://gephi.org/2010/openord-new-layout-plugin-the-fastest-algorithm-so-far/
 
+        http://research.microsoft.com/en-us/projects/twahpic/
+        http://www.freebase.com
+        http://dbpedia.org/
+
+        http://www.cs.technion.ac.il/~gabr/resources/code/wikiprep/
+
+    articles
+        Learn to link with wikipedia
+            http://www.cs.waikato.ac.nz/~ihw/papers/08-DNM-IHW-LearningToLinkWithWikipedia.pdf&ei=SmGIT-yoBYGSOq_zmbwJ (not working)
+
+        Short Text Classification in Twitter to Improve Information Filtering
+            http://www.cse.ohio-state.edu/~hakan/publications/TweetClassification.pdf
+
+        Discovering Context: Classifying tweets through a semantic transform based on Wikipedia
+            http://personal.stevens.edu/~ysakamot/research/hcii2011transform.pdf
+
+        Tweets Mining Using WIKIPEDIA and Impurity Cluster Measurement
+            https://www.universityoftexasatdallascomets.com/~lkhan/papers/new/ICISI-2010.pdf
+
+        Еще прочитал две статьи про sentiments, обе были ни о чем. (Найду ссылки, добавлю)
+        Еще читал статью (тоже ссылку потерял), где сравнивались классификаторы на основе википедии и всякие svm, naive bayes, еще что-то.
+        Википедия была лучше всех причем хорошим таким. Ссылку найду.
+
+        Analysis and Classication of Twitter messages
+            http://know-center.tugraz.at/wp-content/uploads/2010/12/Master-Thesis-Christopher-Horn.pdf
+            Не прочитал. Надо прочитать.
