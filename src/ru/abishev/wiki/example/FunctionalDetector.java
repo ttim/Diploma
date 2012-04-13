@@ -27,12 +27,10 @@ public class FunctionalDetector {
     public int rate(String s) {
         int count = 0;
         for (String w : splitOnPunctuation(s)) {
-            Integer curCount = stat.get(w.toLowerCase());
-            if (curCount != null && curCount > 1 && w.length() > 3) {
-                count++;
+            if (w.length() > 3 && stat.containsKey(w.toLowerCase())) {
+                count += stat.get(w.toLowerCase());
             }
         }
-
         return count;
     }
 
@@ -53,7 +51,7 @@ public class FunctionalDetector {
         TwitterStream twitterStream = new TwitterStreamFactory(cb.build()).getInstance();
         StatusListener listener = new StatusListener() {
             public void onStatus(Status status) {
-                if (detector.rate(status.getText()) >= 5) {
+                if (detector.rate(status.getText()) >= 1000) {
                     System.out.println(detector.rate(status.getText()) + "@" + status.getUser().getScreenName() + " - " + status.getText());
                 }
             }
