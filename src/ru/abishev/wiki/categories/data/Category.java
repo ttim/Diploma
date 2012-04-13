@@ -25,4 +25,16 @@ public class Category {
                 ", id=" + id +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
+
+        if (id != category.id) return false;
+
+        return true;
+    }
 }

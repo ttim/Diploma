@@ -1,7 +1,6 @@
 package ru.abishev.wiki.pages;
 
 import ru.abishev.utils.CsvUtils;
-import ru.abishev.wiki.parser.WikiTextParser;
 import ru.abishev.wiki.model.AnchorsStat;
 
 import java.io.File;
@@ -20,6 +19,9 @@ public class PagesAnalyser2 {
                 System.out.println(":-( " + anchor);
                 continue;
             }
+            if (num > 10000000) {
+                break;
+            }
 
             if (num++ % 2000000 == 0) {
                 System.out.println("Analyse " + num + " link");
@@ -33,6 +35,8 @@ public class PagesAnalyser2 {
                 System.out.println("Size after compression: " + stat.getAllWords().size());
             }
         }
+
+        stat.compress();
 
         PrintWriter output = new PrintWriter(statOutput);
 
