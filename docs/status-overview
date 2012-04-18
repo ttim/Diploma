@@ -42,6 +42,7 @@ code
 
         Short Text Classification in Twitter to Improve Information Filtering
             http://www.cse.ohio-state.edu/~hakan/publications/TweetClassification.pdf
+            Более подробно (как master thesis): http://etd.ohiolink.edu/send-pdf.cgi/Sriram%20Bharath.pdf?osu1275406094
             Классифицируют на: News (N), Events (E), Opinions (O), Deals (D), and  Private Messages (PM)
             Идея: юзать вместо bag-of-words который в случае short-text несостоятелен (что логично), какие-то иные features. В их случае
             это: presence of shortening of words and slangs, time-event phrases, opinioned words, emphasis on words, currency and percentage signs,
