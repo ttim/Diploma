@@ -30,7 +30,7 @@ public class AnchorsStat {
             for (int _count : stats.get(key).counts) {
                 count += _count;
             }
-            if (count < 10) {
+            if (count == 1) {
                 stats.remove(key);
             }
         }
