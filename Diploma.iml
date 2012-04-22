@@ -9,10 +9,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="common" />
-    <orderEntry type="module" module-name="pages_service" />
     <orderEntry type="library" name="annotations" level="project" />
     <orderEntry type="library" name="twitter4j" level="project" />
     <orderEntry type="library" name="guava-11.0.2" level="project" />
+    <orderEntry type="library" name="PersistentObjectsClient-1.0" level="project" />
   </component>
 </module>
 

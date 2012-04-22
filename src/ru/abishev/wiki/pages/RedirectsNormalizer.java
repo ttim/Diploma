@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RedirectsNormalizer {
     public static void normalizeAnchors(File anchorsCsv, File anchorsNormalizedCsv) throws Exception {
-        PagesServer.State pagesClient = new PagesServer.State(new File("./data/pages-index.csv"));
+        PagesRedirecter redirecter = new PagesRedirecter(new File("./data/pages-index.csv").getAbsolutePath(), false);
 
         PrintWriter output = new PrintWriter(anchorsNormalizedCsv);
 
@@ -22,10 +22,10 @@ public class RedirectsNormalizer {
 
             WikiTextParser.Link link = new WikiTextParser.Link(anchor.get(0), anchor.get(1));
 
-            PageResult pageResult = pagesClient.doRequest(link.page);
+            PagesRedirecter.PageResult pageResult = redirecter.redirectPage(link.page);
             if (pageResult == null || pageResult.isBad()) {
                 if (link.page.length() > 0) {
-                    pageResult = pagesClient.doRequest(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
+                    pageResult = redirecter.redirectPage(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
                 }
             }
 

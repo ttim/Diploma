@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PersistentObjectsClient-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/PersistentObjectsClient-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

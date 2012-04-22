@@ -1,16 +1,15 @@
 package ru.abishev.wiki.pages;
 
+import ru.abishev.persistentobjects.client.PersistentObjects;
 import ru.abishev.wiki.parser.AnalyserRunner;
 import ru.abishev.wiki.parser.WikiDumpAnalyser;
 import ru.abishev.wiki.parser.WikiPage;
 import ru.abishev.wiki.parser.WikiTextParser;
-import ru.abishev.wiki.categories.data.Pages;
 import ru.abishev.wiki.model.AnchorsStat;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.sql.ClientInfoStatus;
 import java.util.Map;
 
 public class PagesAnalyser {
@@ -21,7 +20,7 @@ public class PagesAnalyser {
     private static class AnalyserHandler implements WikiDumpAnalyser {
         private final AnchorsStat stat = new AnchorsStat();
         private final File statOutput;
-        private PagesClient client;
+        private PagesRedirecter redirecter;
         private int badCount = 0, goodCount = 0;
 
         AnalyserHandler(File statOutput) {
@@ -30,7 +29,8 @@ public class PagesAnalyser {
 
         @Override
         public void start() throws Exception {
-            client = new PagesClient();
+            PersistentObjects.setRemotePort(5678);
+            redirecter = new PagesRedirecter(new File("./data/pages-index.csv").getAbsolutePath(), true);
         }
 
         @Override
@@ -43,10 +43,10 @@ public class PagesAnalyser {
                 }
 
                 for (WikiTextParser.Link link : parser.parseLinks()) {
-                    PageResult pageResult = client.getPageForName(link.page);
+                    PagesRedirecter.PageResult pageResult = redirecter.redirectPage(link.page);
                     if (pageResult == null || pageResult.isBad()) {
                         if (link.page.length() > 0) {
-                            pageResult = client.getPageForName(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
+                            pageResult = redirecter.redirectPage(Character.toTitleCase(link.page.charAt(0)) + link.page.substring(1));
                         }
                     }
                     if (pageResult == null || pageResult.isBad()) {
@@ -72,7 +72,7 @@ public class PagesAnalyser {
 
         public void finish() {
             try {
-                client.release();
+                PersistentObjects.shutdown();
 
                 PrintWriter output = new PrintWriter(statOutput);
 

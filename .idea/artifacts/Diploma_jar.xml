@@ -9,7 +9,6 @@
       <element id="module-output" name="common" />
       <element id="module-output" name="pages_service" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/annotations.jar" path-in-jar="/" />
-      <element id="library" level="project" name="Maven: com.twitter:finagle-core:1.9.0" />
     </root>
   </artifact>
 </component>

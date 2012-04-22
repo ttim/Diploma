@@ -6,7 +6,6 @@ import ru.abishev.wiki.pages.PagesPreparer;
 import ru.abishev.wiki.parser.Converter;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
