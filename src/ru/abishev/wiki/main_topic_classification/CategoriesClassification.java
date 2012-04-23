@@ -1,6 +1,7 @@
-package ru.abishev.wiki.categories;
+package ru.abishev.wiki.main_topic_classification;
 
 import com.google.common.collect.Sets;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.abishev.wiki.categories.data.Categories;
 import ru.abishev.wiki.categories.data.Category;
@@ -8,7 +9,7 @@ import ru.abishev.wiki.categories.data.SubCategories;
 
 import java.util.*;
 
-public class MTCCollector {
+public class CategoriesClassification {
     public static List<Category> getSubcategories(@Nullable Category category) {
         if (category == null || SubCategories.RAW.getSubCats(category.id) == null) {
             return Collections.emptyList();
@@ -78,10 +79,71 @@ public class MTCCollector {
         return catToRoot;
     }
 
+    private static double[] add(@NotNull double[] fst, @Nullable double[] snd) {
+        double[] result = new double[fst.length];
+
+        for (int i = 0; i < fst.length; i++) {
+            result[i] += fst[i];
+            if (snd != null) {
+                result[i] += snd[i];
+            }
+        }
+
+        return result;
+    }
+
+    public static Map<Category, Category> getInnerCategories2(List<Category> roots) {
+        Map<Category, double[]> rank = new HashMap<Category, double[]>();
+        Map<Category, double[]> currentRank = new HashMap<Category, double[]>();
+
+        double sum = 1000000;
+
+        // init
+        for (Category root : roots) {
+            currentRank.put(root, new double[roots.size()]);
+            currentRank.get(root)[roots.indexOf(root)] = sum / roots.size();
+        }
+
+        while (sum > 300) {
+            System.out.println("Current sum " + sum);
+
+            // add currentRank to rank
+            for (Category category : currentRank.keySet()) {
+                rank.put(category, add(currentRank.get(category), rank.get(category)));
+            }
+
+            // update currentRank
+            Map<Category, double[]> newRank = new HashMap<Category, double[]>();
+            for (Category category : currentRank.keySet()) {
+                List<Category> subCats = getSubcategories(category);
+                double[] addition = new double[roots.size()];
+                for (int i = 0; i < roots.size(); i++) {
+                    addition[i] = currentRank.get(category)[i] / subCats.size();
+                }
+                for (Category subCat : subCats) {
+                    newRank.put(subCat, add(addition, newRank.get(subCat)));
+                }
+            }
+
+            currentRank = newRank;
+            // calc sum
+            sum = 0;
+            for (double[] p : currentRank.values()) {
+                for (double v : p) {
+                    sum += v;
+                }
+            }
+        }
+
+        return null;
+    }
+
+
     public static void main(String[] args) {
         List<Category> mtcCategories = getMainTopicClassificationCategories();
 //        mtcCategories.remove(Categories.RAW.getByName("Mathematics"));
 //        mtcCategories.add(0, Categories.RAW.getByName("Mathematics"));
         Map<Category, Category> categoryToRoot = getInnerCategories(mtcCategories, Sets.newHashSet(Categories.RAW.getByName("Chronology")));
+        categoryToRoot = getInnerCategories2(mtcCategories);
     }
 }

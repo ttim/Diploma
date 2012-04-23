@@ -1,15 +1,14 @@
-package ru.abishev.wiki.pages;
+package ru.abishev.wiki.main_topic_classification;
 
 import com.google.common.collect.Sets;
 import ru.abishev.utils.CsvUtils;
-import ru.abishev.wiki.categories.MTCCollector;
 import ru.abishev.wiki.categories.data.Categories;
 import ru.abishev.wiki.categories.data.Category;
 
 import java.io.File;
 import java.util.*;
 
-public class MTCPagesCollector {
+public class PagesClassification {
     public static Map<Integer, Category> getRootToPageIdsMap(File categoryLinksPagesCsv, Map<Category, Category> catToRoot) {
         Map<Integer, Category> pageToRoot = new HashMap<Integer, Category>();
 
@@ -31,7 +30,7 @@ public class MTCPagesCollector {
     }
 
     public static void main(String[] args) {
-        Map<Category, Category> catToRoot = MTCCollector.getInnerCategories(MTCCollector.getMainTopicClassificationCategories(), Sets.newHashSet(Categories.RAW.getByName("Chronology")));
+        Map<Category, Category> catToRoot = CategoriesClassification.getInnerCategories(CategoriesClassification.getMainTopicClassificationCategories(), Sets.newHashSet(Categories.RAW.getByName("Chronology")));
         Map<Integer, Category> pageToRoot = getRootToPageIdsMap(new File("./data/preprocessed/categorylinks_pages.csv"), catToRoot);
     }
 }
