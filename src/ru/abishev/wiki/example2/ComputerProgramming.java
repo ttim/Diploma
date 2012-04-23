@@ -1,9 +1,8 @@
-package ru.abishev.wiki.example;
+package ru.abishev.wiki.example2;
 
 import ru.abishev.utils.CsvUtils;
 import ru.abishev.wiki.categories.data.Categories;
 import ru.abishev.wiki.categories.data.Category;
-import ru.abishev.wiki.categories.data.Pages;
 import ru.abishev.wiki.categories.processing.CategoriesFilter;
 
 import java.io.File;
@@ -14,19 +13,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class FunctionalProgramming {
-    public static Set<Category> collectFunctionalProgrammingCategories() {
+public class ComputerProgramming {
+    public static Set<Category> collectComputerProgrammingCategories() {
         Set<Category> categories = new HashSet<Category>();
-        for (long id : CategoriesFilter.getReachableCategories(Categories.RAW.getByName("Functional_programming").id)) {
+        for (long id : CategoriesFilter.getReachableCategories(Categories.RAW.getByName("Computer_programming").id)) {
             categories.add(Categories.RAW.getById(id));
         }
         return categories;
     }
 
-    public static Set<Long> collectFunctionalProgrammingArticles() {
+    public static Set<Long> collectComputerProgrammingArticles() {
         Set<Long> result = new HashSet<Long>();
         Set<Long> categories = new HashSet<Long>();
-        for (Category c : collectFunctionalProgrammingCategories()) {
+        for (Category c : collectComputerProgrammingCategories()) {
             categories.add(c.id);
         }
         int count = 0;
@@ -88,12 +87,12 @@ public class FunctionalProgramming {
 //        out.close();
 
         Set<Long> articles = new HashSet<Long>();
-        for (List<String> data : CsvUtils.readCsv(new File("./data/fprog_ids.csv"), '|', '"')) {
+        for (List<String> data : CsvUtils.readCsv(new File("./data/prog_ids.csv"), '|', '"')) {
             articles.add(Long.parseLong(data.get(0)));
         }
 
         List<String> anchors = collectAnchors(articles);
-        PrintWriter out = new PrintWriter(new File("./data/fprog_anchors.csv"));
+        PrintWriter out = new PrintWriter(new File("./data/prog_anchors.csv"));
         for (String anchor : anchors) {
             out.println(anchor);
         }

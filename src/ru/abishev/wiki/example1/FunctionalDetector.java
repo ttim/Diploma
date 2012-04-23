@@ -1,4 +1,4 @@
-package ru.abishev.wiki.example;
+package ru.abishev.wiki.example1;
 
 import ru.abishev.utils.CsvUtils;
 import twitter4j.*;
@@ -41,14 +41,7 @@ public class FunctionalDetector {
     public static void main(String[] args) {
         final FunctionalDetector detector = new FunctionalDetector(new File("./data/fprog_anchors.csv"));
 
-        ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(false)
-                .setOAuthConsumerKey("Y1hyeYgJbvh1pc9gytNoLQ")
-                .setOAuthConsumerSecret("B3bXWDNlTuGGMCuNuSXmN7rA7P6TSNxJr1Mey77lNE")
-                .setOAuthAccessToken("9549002-R08HVFqreXkrZqYCtksAkSO94sRH9QmjhqkFFeiZ0")
-                .setOAuthAccessTokenSecret("hyfromxOP0hIq0H1wr9fPJw5x4TPoCQmyE8dsZGtt0");
-
-        TwitterStream twitterStream = new TwitterStreamFactory(cb.build()).getInstance();
+        TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
         StatusListener listener = new StatusListener() {
             public void onStatus(Status status) {
                 if (detector.rate(status.getText()) >= 1000) {
