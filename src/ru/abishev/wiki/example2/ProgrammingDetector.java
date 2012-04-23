@@ -17,6 +17,8 @@ public class ProgrammingDetector {
                 addToValue(progStat, w.toLowerCase(), 1);
             }
         }
+        progStat.remove("http");
+        progStat.remove("www");
         System.out.println("Words loaded (prog): " + progStat.size());
 
         for (List<String> data : CsvUtils.readCsv(allAnchorsStatFile, '|', '"')) {
