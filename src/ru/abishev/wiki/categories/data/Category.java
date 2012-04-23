@@ -37,4 +37,9 @@ public class Category {
 
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        return (int) id;
+    }
 }
