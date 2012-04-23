@@ -23,7 +23,7 @@ public class MTCCollector {
         return getSubcategories(Categories.RAW.getByName("Main_topic_classifications"));
     }
 
-    public static Map<Category, Set<Category>> getInnerCategories(List<Category> roots) {
+    public static Map<Category, Category> getInnerCategories(List<Category> roots) {
         Map<Category, Integer> catToLength = new HashMap<Category, Integer>();
         Map<Category, Category> catToRoot = new HashMap<Category, Category>();
 
@@ -69,15 +69,7 @@ public class MTCCollector {
         System.out.println("inner collisions count / delta sum: " + innerCollisionsCount + " / " + innerDelta);
         System.out.println("outer collisions count / delta sum: " + outerCollisionsCount + " / " + outerDelta);
 
-        // calc result
-        Map<Category, Set<Category>> result = new HashMap<Category, Set<Category>>();
-        for (Category root : roots) {
-            result.put(root, new HashSet<Category>());
-        }
-        for (Map.Entry<Category, Category> categoryToRoot : catToRoot.entrySet()) {
-            result.get(categoryToRoot.getValue()).add(categoryToRoot.getKey());
-        }
-        return result;
+        return catToRoot;
     }
 
     public static void main(String[] args) {
