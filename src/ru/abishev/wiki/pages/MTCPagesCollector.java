@@ -1,5 +1,6 @@
 package ru.abishev.wiki.pages;
 
+import com.google.common.collect.Sets;
 import ru.abishev.utils.CsvUtils;
 import ru.abishev.wiki.categories.MTCCollector;
 import ru.abishev.wiki.categories.data.Categories;
@@ -30,7 +31,7 @@ public class MTCPagesCollector {
     }
 
     public static void main(String[] args) {
-        Map<Category, Category> catToRoot = MTCCollector.getInnerCategories(MTCCollector.getMainTopicClassificationCategories());
+        Map<Category, Category> catToRoot = MTCCollector.getInnerCategories(MTCCollector.getMainTopicClassificationCategories(), Sets.newHashSet(Categories.RAW.getByName("Chronology")));
         Map<Integer, Category> pageToRoot = getRootToPageIdsMap(new File("./data/preprocessed/categorylinks_pages.csv"), catToRoot);
     }
 }

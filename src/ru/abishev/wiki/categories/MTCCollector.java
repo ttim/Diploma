@@ -1,5 +1,6 @@
 package ru.abishev.wiki.categories;
 
+import com.google.common.collect.Sets;
 import org.jetbrains.annotations.Nullable;
 import ru.abishev.wiki.categories.data.Categories;
 import ru.abishev.wiki.categories.data.Category;
@@ -81,6 +82,6 @@ public class MTCCollector {
         List<Category> mtcCategories = getMainTopicClassificationCategories();
 //        mtcCategories.remove(Categories.RAW.getByName("Mathematics"));
 //        mtcCategories.add(0, Categories.RAW.getByName("Mathematics"));
-//        Map<Category, Set<Category>> categoriesByRoot = getInnerCategories(mtcCategories);
+        Map<Category, Category> categoryToRoot = getInnerCategories(mtcCategories, Sets.newHashSet(Categories.RAW.getByName("Chronology")));
     }
 }
