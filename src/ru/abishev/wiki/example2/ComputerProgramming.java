@@ -16,7 +16,7 @@ import java.util.Set;
 public class ComputerProgramming {
     public static Set<Category> collectComputerProgrammingCategories() {
         Set<Category> categories = new HashSet<Category>();
-        for (long id : CategoriesFilter.getReachableCategories(Categories.RAW.getByName("Computer_programming").id)) {
+        for (long id : CategoriesFilter.getReachableCategories(Categories.RAW.getByName("Programming_languages").id)) {
             categories.add(Categories.RAW.getById(id));
         }
         return categories;
@@ -69,14 +69,12 @@ public class ComputerProgramming {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-//        Set<Category> categories = collectFunctionalProgrammingCategories();
-//        // http://en.wikipedia.org/wiki/Category:Spreadsheet_software =)
+//        Set<Category> categories = collectComputerProgrammingCategories();
 //        System.out.println(categories.size() + " / " + categories);
 
-        // collect articles
-//        Set<Long> articles = collectFunctionalProgrammingArticles();
+//        Set<Long> articles = collectComputerProgrammingArticles();
 //
-//        PrintWriter out = new PrintWriter(new File("./data/fprog_ids.csv"));
+//        PrintWriter out = new PrintWriter(new File("./data/prog_ids.csv"));
 //        for (long id : articles) {
 //            if (Pages.INSTANCE.getById(id) == null) {
 //                System.out.println("Bad " + id);
