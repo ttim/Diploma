@@ -23,16 +23,19 @@ public class MTCCollector {
         return getSubcategories(Categories.RAW.getByName("Main_topic_classifications"));
     }
 
-    public static Map<Category, Category> getInnerCategories(List<Category> roots) {
+    public static Map<Category, Category> getInnerCategories(List<Category> roots, Set<Category> forbidden) {
         Map<Category, Integer> catToLength = new HashMap<Category, Integer>();
         Map<Category, Category> catToRoot = new HashMap<Category, Category>();
 
         // init by roots
+        Set<Category> current = new HashSet<Category>();
         for (Category root : roots) {
-            catToLength.put(root, 0);
-            catToRoot.put(root, root);
+            if (!forbidden.contains(root)) {
+                catToLength.put(root, 0);
+                catToRoot.put(root, root);
+                current.add(root);
+            }
         }
-        Set<Category> current = new HashSet<Category>(roots);
         int currentLength = 0;
 
         int innerCollisionsCount = 0, outerCollisionsCount = 0;
@@ -45,20 +48,22 @@ public class MTCCollector {
 
             for (Category category : current) {
                 for (Category subCat : getSubcategories(category)) {
-                    if (catToLength.containsKey(subCat)) {
-                        // ?
-                        int delta = currentLength - catToLength.get(subCat);
-                        if (catToRoot.get(subCat).equals(catToRoot.get(category))) {
-                            innerCollisionsCount++;
-                            innerDelta += delta;
+                    if (!forbidden.contains(subCat)) {
+                        if (catToLength.containsKey(subCat)) {
+                            // ?
+                            int delta = currentLength - catToLength.get(subCat);
+                            if (catToRoot.get(subCat).equals(catToRoot.get(category))) {
+                                innerCollisionsCount++;
+                                innerDelta += delta;
+                            } else {
+                                outerCollisionsCount++;
+                                outerDelta += delta;
+                            }
                         } else {
-                            outerCollisionsCount++;
-                            outerDelta += delta;
+                            catToLength.put(subCat, currentLength);
+                            catToRoot.put(subCat, catToRoot.get(category));
+                            newCats.add(subCat);
                         }
-                    } else {
-                        catToLength.put(subCat, currentLength);
-                        catToRoot.put(subCat, catToRoot.get(category));
-                        newCats.add(subCat);
                     }
                 }
             }

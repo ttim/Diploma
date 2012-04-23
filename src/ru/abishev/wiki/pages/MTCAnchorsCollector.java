@@ -1,7 +1,9 @@
 package ru.abishev.wiki.pages;
 
+import com.google.common.collect.Sets;
 import ru.abishev.utils.CsvUtils;
 import ru.abishev.wiki.categories.MTCCollector;
+import ru.abishev.wiki.categories.data.Categories;
 import ru.abishev.wiki.categories.data.Category;
 
 import java.io.File;
@@ -41,7 +43,7 @@ public class MTCAnchorsCollector {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        Map<Category, Category> catToRoot = MTCCollector.getInnerCategories(MTCCollector.getMainTopicClassificationCategories());
+        Map<Category, Category> catToRoot = MTCCollector.getInnerCategories(MTCCollector.getMainTopicClassificationCategories(), Sets.newHashSet(Categories.RAW.getByName("Chronology")));
         Map<Integer, Category> pageToRoot = getRootToPageIdsMap(new File("./data/preprocessed/categorylinks_pages.csv"), catToRoot);
         processAnchors(new File("./data/stat_5_sorted.txt"), new File("./data/roots_anchors.txt"), pageToRoot);
     }
