@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WordsCollector {
-    public static void analyseDump(File bz2XmlDump, File anchorsOutput, final int maxPagesCount) throws Exception {
-        AnalyserRunner.analyseSimpleDump(new AnalyserHandler(anchorsOutput), bz2XmlDump, maxPagesCount, true);
+    public static void analyseDump(File textDump, File wordsOutput, final int maxPagesCount) throws Exception {
+        AnalyserRunner.analyseSimpleDump(new AnalyserHandler(wordsOutput), textDump, maxPagesCount, true);
     }
 
     private static class AnalyserHandler implements WikiDumpAnalyser {
@@ -30,16 +30,8 @@ public class WordsCollector {
         @Override
         public void analysePage(WikiPage page) throws Exception {
             try {
-                WikiTextParser parser = new WikiTextParser(page.text);
-
-                if (parser.parseRedirectText() != null) {
-                    return;
-                }
-
-                for (String word : splitOnPunctuation(parser.parsePlainText().toLowerCase())) {
-                    if (word.trim().length() > 2) {
-                        output.println(word.trim());
-                    }
+                for (String word : splitOnPunctuation(page.text.toLowerCase())) {
+                    output.println(word);
                 }
             } catch (Exception e) {
                 System.out.println(":-( " + e);
