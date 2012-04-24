@@ -6,12 +6,12 @@ import java.io.File;
 
 public class TwitterProgrammingDetector {
     public static void main(String[] args) {
-        final ProgrammingDetector detector = new ProgrammingDetector(new File("./data/prog_anchors.csv"), new File("./data/stat_5.txt"));
+        final ProgrammingDetector detector = ProgrammingDetector.INSTANCE;
 
         TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
         StatusListener listener = new StatusListener() {
             public void onStatus(Status status) {
-                if (detector.rate(status.getText()) >= 0.2) {
+                if (detector.rate(status.getText()) >= 0.04) {
                     System.out.println(detector.rate(status.getText()) + "@" + status.getUser().getScreenName() + " - " + status.getText());
                 }
             }
