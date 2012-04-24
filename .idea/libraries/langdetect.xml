@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="langdetect">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/langdetect.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsonic-1.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/lang-detect.src.zip!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsonic-1.2.0.jar!/" />
+    </SOURCES>
+  </library>
+</component>

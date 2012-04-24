@@ -1,5 +1,7 @@
 package ru.abishev.wiki.example2;
 
+import com.cybozu.labs.langdetect.LangDetectException;
+import ru.abishev.language.LanguageDetector;
 import ru.abishev.utils.CsvUtils;
 
 import java.io.File;
@@ -48,6 +50,19 @@ public class ProgrammingDetector {
     }
 
     public double rate(String s) {
+        String lang;
+        try {
+            lang = LanguageDetector.detect(s);
+        } catch (LangDetectException e) {
+            // todo: ?
+            e.printStackTrace();
+            return 0;
+        }
+
+        if (!lang.equals("en")) {
+            return 0;
+        }
+
         double count = 0;
         for (String w : splitOnPunctuation(s)) {
             if (w.length() > 3 && progStat.containsKey(w.toLowerCase())) {
