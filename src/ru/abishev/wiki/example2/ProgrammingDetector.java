@@ -55,7 +55,7 @@ public class ProgrammingDetector {
             lang = LanguageDetector.detect(s);
         } catch (LangDetectException e) {
             // todo: ?
-            e.printStackTrace();
+//            e.printStackTrace();
             return 0;
         }
 

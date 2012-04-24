@@ -11,7 +11,7 @@ public class TwitterProgrammingDetector {
         TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
         StatusListener listener = new StatusListener() {
             public void onStatus(Status status) {
-                if (detector.rate(status.getText()) >= 0.04) {
+                if (detector.rate(status.getText()) >= 0.03) {
                     System.out.println(detector.rate(status.getText()) + "@" + status.getUser().getScreenName() + " - " + status.getText());
                 }
             }
