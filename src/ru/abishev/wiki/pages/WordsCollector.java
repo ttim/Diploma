@@ -18,6 +18,8 @@ public class WordsCollector {
         private final File anchorsOutput;
         private PrintWriter output;
 
+        private Map<String, Integer> statistic = new HashMap<String, Integer>();
+
         AnalyserHandler(File anchorsOutput) {
             this.anchorsOutput = anchorsOutput;
         }
@@ -31,7 +33,23 @@ public class WordsCollector {
         public void analysePage(WikiPage page) throws Exception {
             try {
                 for (String word : splitOnPunctuation(page.text.toLowerCase())) {
-                    output.println(word);
+                    if (word.trim().length() > 2) {
+                        String w = word.trim();
+                        if (statistic.containsKey(w)) {
+                            statistic.put(w, statistic.get(w) + 1);
+                        } else {
+                            statistic.put(w, 1);
+                        }
+                    }
+                }
+
+                if (statistic.size() > 1000000) {
+                    // dump
+                    System.out.println("Dump");
+                    for (Map.Entry<String, Integer> entry : statistic.entrySet()) {
+                        output.println(entry.getValue() + "|" + entry.getKey());
+                    }
+                    statistic.clear();
                 }
             } catch (Exception e) {
                 System.out.println(":-( " + e);
@@ -43,7 +61,7 @@ public class WordsCollector {
         }
 
         private String[] splitOnPunctuation(String w) {
-            return w.split("[ ,.!?:\"\\(\\)\\|/=]");
+            return w.split("[ ,.!?:\"\\(\\)\\|/=\\[\\]#{}';<>]");
         }
     }
 
