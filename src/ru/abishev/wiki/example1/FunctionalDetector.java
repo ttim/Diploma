@@ -7,6 +7,8 @@ import twitter4j.conf.ConfigurationBuilder;
 import java.io.File;
 import java.util.*;
 
+import static ru.abishev.utils.StringUtils.splitOnPunctuation;
+
 public class FunctionalDetector {
     public Map<String, Integer> stat = new HashMap<String, Integer>();
 
@@ -32,10 +34,6 @@ public class FunctionalDetector {
             }
         }
         return count;
-    }
-
-    private String[] splitOnPunctuation(String w) {
-        return w.split("[ ,.!?:\"]");
     }
 
     public static void main(String[] args) {

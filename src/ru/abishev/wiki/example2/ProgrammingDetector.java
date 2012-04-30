@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static ru.abishev.utils.StringUtils.splitOnPunctuation;
+
 public class ProgrammingDetector {
     public static final ProgrammingDetector INSTANCE = new ProgrammingDetector(new File("./data/prog_anchors.csv"), new File("./data/stat_5.txt"), new File("./data/all-words-stat.txt"));
 
@@ -66,18 +68,14 @@ public class ProgrammingDetector {
         double count = 0;
         for (String w : splitOnPunctuation(s)) {
             if (w.length() > 3 && progStat.containsKey(w.toLowerCase())) {
-                if (!allStat.containsKey(w.toLowerCase())) {
+                if (!allAnchorsStat.containsKey(w.toLowerCase())) {
                     System.out.println("oO " + w);
                 } else {
-                    count += progStat.get(w.toLowerCase()) * 1.0 / allStat.get(w.toLowerCase());
+                    count += progStat.get(w.toLowerCase()) * 1.0 / allAnchorsStat.get(w.toLowerCase());
                 }
             }
         }
         return count;
-    }
-
-    private String[] splitOnPunctuation(String w) {
-        return w.split("[ ,.!?:\"\\(\\)\\|/=\\[\\]#{}';<>]");
     }
 
     public static void main(String[] args) {
