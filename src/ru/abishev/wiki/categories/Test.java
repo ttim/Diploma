@@ -4,6 +4,7 @@ import ru.abishev.twitter.Tweets;
 import ru.abishev.wiki.categories.data.Category;
 import ru.abishev.wiki.linkifier.*;
 import twitter4j.Status;
+import twitter4j.Tweet;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -33,11 +34,17 @@ public class Test {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // collect pages
         List<Integer> pages = new ArrayList<Integer>();
-        for (Status status : Tweets.DHH_200_TWEETS) {
-            for (AnchorStatistic anchor : linkifier.linkify(status.getText())) {
+//        for (Status status : Tweets.DHH_200_TWEETS) {
+//            for (AnchorStatistic anchor : linkifier.linkify(status.getText())) {
+//                pages.add(anchor.pageId);
+//            }
+//        }
+        for (Tweet tweet : Tweets.VISUAL_STUDIO_HASHTAG_TWEETS) {
+            for (AnchorStatistic anchor : linkifier.linkify(tweet.getText())) {
                 pages.add(anchor.pageId);
             }
         }
+
         System.out.println("Pages count: " + pages.size());
 
         // collect categories with stat
