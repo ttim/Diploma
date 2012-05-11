@@ -10,7 +10,7 @@ public class Dumper {
         PrintWriter output = new PrintWriter("./train/" + screenName + ".source.txt");
         Twitter twitter = new TwitterFactory().getInstance();
         for (Status status : twitter.getUserTimeline(screenName, new Paging(1, 300))) {
-            output.println(status.getText().replaceAll("\n", " "));
+            output.println(status.getText().replaceAll("\n", " ")+"\t"+status.getId());
         }
         output.close();
     }

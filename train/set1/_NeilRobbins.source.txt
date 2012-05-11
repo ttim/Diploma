@@ -1,0 +1,200 @@
+RT @chaliy: Anybody to speak about #erlang for #kievaltnet ? RT or suggest somebody	200920037991784450
+Found an interesting article by Pat Helland from last months #acm queue that I'd missed http://t.co/VwgRvrpN - it's on idempotence	200568900197433344
+Really interesting, short, talk about stuxnet http://t.co/TRCSexDY - sounds a really amazing feat of software dev.	200538738445651968
+@Imaji Happy Birthday John!!! Let's have a beer when I'm in London next week to celebrate?	200527443562467328
+RT @mikehadlow: Great post on how the rise of Cloud and PaaS is revolutionizing IT http://t.co/zp2cUlDS	199847939055689728
+No matter what I do, the form inexplicably (it gives no reason) fails validation - just asks me 'Please check if all fields are correct'	199846970217603072
+Is the 'Eurostar Frequent Traveller Application' form the worst web form I've ever encountered? Probably not, but it's got me wondering.	199846734896185344
+@Squire_Matt not personally. London has a healthy python community IIRC, there used to be regular dojos I think. Would be a gd place to look	199604756719738881
+@cs_andrews rogue pasty smugglers?	199490724759224320
+@jenstirrup hi, @AdaTheDev suggested you might be able to share some opinions on tableau?	198406065266761729
+@AdaTheDev thanks	198405629117857792
+Anyone out there worked with a BI tool called Tableau? Interested in any experience/opinions.	198404555984207872
+RT @srstrong: Looking for someone for a dev support role based in Marbella - ideally keen and young, we will provide the training / ment ...	197711775251181568
+@sarkie_dave sounds like you have a winner then	197385807743561728
+@sarkie_dave that going back some :) Not that I know of, OOTB. Thinking about it, you'd almost want a git like repo with an index over it.	197384423711309824
+@colin_jack sadly, that's the conclusion I come to too.	197299228735848448
+@Grumpydev I hadn't tried that - I'll give it a go, thanks for the tip	197299170984472577
+If #amazon want to make their windows #kindle reader more usable, let me run multiple instances, or at least have n books concurrently open.	197278770082750466
+So far it's been my background to coding for most of the day, & I'm still only just over half way through Siegfried.	195918594696163328
+Wagner's Ring Cycle really is awesome - but it seems like the Deutsche Grammophon recoding I have skips - on my iPhone? Hope its the device.	195918332136914946
+@helephant sorry :)	195773848258478080
+@helephant we don't have a GUI, just an API, so it's easier. Plain old nunit for us.	195772779352702976
+& with that test suite all green I'm as certain as I can be, for now, that the bug I've been working on for the last 7 hours is fixed. Phew!	195644793416724480
+Best decision I made on my project of the last 15 months was to invest in acceptance tests. We have > 1600 now & they are our thin red line.	195644020440055808
+@tim_g_robinson when in the future I look for a new role, I'll want it to be in an environment where functional langs are typically used.	195618738169589760
+@tim_g_robinson I wish someone on the C# language team would :)	195618245137534976
+If #Microsoft had any respect for their developer community & customers they'd admit #tfs is a disaster & advise on & support migration away	195603167151525888
+@demisbellot most of the time, whatever I'm serialising shouldn't be mutated after deserialisation. Just used as input to a function.	195600303725363200
+@demisbellot not that I don't appreciate the effort put into them, including by you, just wish they'd work w/types with ctors & no setters.	195600066864627712
+@demisbellot I know, the bete noir of my life right now. They're all borked from my pov. I want to give a deserialisation fn that uses ctor	195599611631640578
+@ashic I think that the day I've mastered Haskell like I have C# I'll have made it as a dev :)	195597524747296768
+@ONE75 not disagreeing - more thinking I hope it's that they didn't think than they knew & chose that approach anyway	195597344115392513
+@ashic I've been doing a fair bit of scheme & erlang recently & much prefer the simplicity of these langs so far.	195595883440648193
+@ashic yeah - I've made a few abortive attempts to get some Haskell on, I always get to a point where I just don't get it anymore.	195595753329135616
+@ONE75 I hope that's why, I really do	195595534474543104
+@ashic if C# could support/recognise immutable types (& then optimise their usage in compiler) we'd have a massively better language.	195595055929626624
+@ashic definitely - the more I try and learn/use functional langs - the more I find cherished ideas on how I code challenged and overthrown.	195594740819963905
+@demisbellot I can see that, I've done similar for readability in a kind of builder - I guess these days named ctor arguments could be used.	195594439471800320
+@demisbellot If an object is just a typed tuple to be mutated however then fine, but if it's not used like that it should support its usage.	195592418685501441
+@demisbellot besides, using object initialiser ends up with more code in every usage than a ctor.	195592228725465088
+@demisbellot he should apply that to blog posts :) Balance has to be struck, but in langs like C# terseness is 2nd to understandability IMO	195591876542345216
+@demisbellot saving on typing always turns out to be the worst economy I find.	195590739076448256
+@demisbellot or that it's state is valid for usage (its preconditions fulfilled)	195590583031574528
+@demisbellot surely the ability to look at a type and know that after instantiation it won't be mutated is worth something?	195590472159334401
+@demisbellot I find that so hard to understand I can only think we're talking at cross purposes.	195590223609069569
+@demisbellot I'm guessing/hoping that's sarcastic, right?	195589628944846848
+@nbarnwell glad I'm not alone in hating it though.	195589300631519232
+@nbarnwell I can't understand why they would. Client fulfils pre-conditions, client get's post-conditions. Shouldn't care how it happens.	195589228682424320
+Write the class with an explicit ctor, readonly backing fields, and expose only necessary getters. == much easier to reason about.	195588597116702721
+Point in case: C# class, auto-properties, all set on construction, never after, all set using  an object initializer, no ctor. Why?	195588271793901569
+The necessity to ensure that code is easily reasoned about is massively underrated I find. Studying Meyer should be damn near obligatory.	195586497079029760
+@RorySmithTimes but then who would the next England manager be?	195560145873408000
+@RobAshton @Cranialstrain @anthonysteele when it locked up my browser for 5 seconds I started to think that it was an ironic site.	195093954528673792
+@_jimmys @RobAshton @Cranialstrain @AnthonySteele me too - I'm a specialist in stupid :)	195090113846452224
+@Cranialstrain @robashton @anthonysteele it depends a lot on what you want to learn & why - general programming, or a specific capability.	195090020338642945
+@_jimmys @RobAshton @Cranialstrain @AnthonySteele to be fair I've never seen a language that a dev couldn't make crap from :) #justsaying	195089729098760192
+@RobAshton @Cranialstrain @AnthonySteele thanks, but meh - in the context of delivering a project then maybe, but not for learning choices.	195088959330725889
+@Cranialstrain @RobAshton I didn't understand - what's a bike shed discussion?	195074419528445952
+@Cranialstrain agree - wasn't a dig at py for websites (more a dig at js for anything else - but that's another story)	195073062251675648
+@erujolc agreed - pretty sure that's already the case, think he knows some py already anyway	195072347735195648
+@Squire_Matt yep - bash certainly got mentioned	195062645462798336
+@shaochenyu yeah - I can relate to that	195062525514100736
+@shaochenyu the ruby you use when working with Chef (at least so far for me) is so trivial, it doesn't feel like you're working with a lang.	195060871255425024
+@shaochenyu I'd definitely recommend looking at chef - from my experiments with it, you don't really need to learn ruby to get going.	195060712245166081
+@xavierdecoster I'll talk to you on twitter when you come back to LLN and work here again :p	195057963831001088
+@stack72 @Grumpydev I'm so tempted to retweet that with "one out over" inserted at a suitable place :)	195057754556207104
+I was asked by a sysadmin yesterday whether he should learn python or javascript. I said python unless he wants to make websites. Opinions?	195057419678781441
+@Grumpydev nice :) You might not be that far off.	195056870648594433
+OH "I love the smell of powershell in the morning" - clearly my team have issues ;)	195056537264336896
+The problem now is, there's a bunch I want to do, and I have no time to do even one really properly. Not that this stops me signing up.	195055760533757952
+Top-notch free online courses are clearly like buses. You wait for ages for one & then coursera & http://t.co/LlACwqOW arrive at same time..	195055437454917633
+Best #Wagner #DerRingdesNibelungen on #itunes? Recommendations appreciated.	194725248820719616
+@Grumpydev @RobAshton I kind of assume any agreement which is so long they know no customer will ever read it isn't legally enforceable? :)	194374039664463872
+Now coding (well blog writing) to the theme from Rocky #tooawesome	194372046174687232
+@RobAshton yep - their business model is amazing. I pay them over the odds for devices that let me spend money at their shop. #purewin	194371903757090816
+Bought some music on iTunes for the first time yesterday. Wow Apple make it easy to buy stuff. Next up, Toni Braxton!	194370563563732992
+Surprised that wireshark shows dropbox still active even though I have exited the service.	193285190934736896
+Installed silverlight 5 dev tools last night & now have to repair VisualStudio & reapply the service pack. I never get these issues w/emacs.	192561592922152960
+RT @natpryce: Designing software is difficult. But it's a hell of a lot easier than not designing software.	192556024350257153
+The evils that follow a sacrifice of good development practices & principles grow exponentially.	192305172184178688
+@nbarnwell @hhariri slightly relieved to know it's not just me.	192290636655894528
+@hhariri just read it now - some good advice there. I have some backup on my Mac, but I should probably put something more substantial in.	192290583572787200
+@hhariri hunting for it now	192289911305543680
+My gmail is down with a '93' code :( Hope it's back soon.	192289613631594496
+. @MarkNijhof says "Shoot for the stars, you may end up on the moon" - not if you're North Korea Mark, not if you're North Korea.	190766545222369280
+RT @dkberman: Remember this day. 551-day-old Instagram is worth $1 billion. 116-year-old New York Times Co.: $967 million.	190763334616875008
+RT @stack72: Something just caused an alarm at London Waterloo tube station. Alarms and sirens were going and everyone asked to evacuate ...	190722802591080448
+@davybrion ah, but it's a good 'un	190722534751219712
+@emmaguy yep - them's the lyrics :)	190722477868056576
+@md_oppenheimer it just loops away :)	190722438978482176
+. @premierinn net result is I won't create an account, because your pointlessly idiosyncratic password policy means I'd not remember it.	190497157655166977
+Dear @premierinn, your password policy is annoying - https://t.co/onIqP9FN	190496915354427393
+Got a new coding song in my head - Milkshake by Kelis, but swap any mention of a 'Milkshake' for 'Code'. #win	190482215099056128
+@stucampbell I did that in the pre-nuget world where everything was simpler if not always easier.	190126477449244672
+@ashic personally, the more I use package managers, the less I want to use package managers.	190103339483152384
+I just did a check-in and magically, the nuget packages folder got added to source control. Argggghhh!	190101387420504064
+@ashic tfs is all awesome - between it and lotus notes I'm guaranteed to have my mind blown every day!	190096298647625728
+How to do something as simple as a gitignore in #tfs? Google just throws up stupid answers on StackOverflow & not a lot else.	190086425679626240
+RT @Mikewagg: @NeilRobbins good to see they have improved the experience. When I last used it you'd only get one empty dialog box! :)	190083362151612418
+@IWillCode nice, it's like it wants you to keep working - a cunning feature!	190083142458163200
+@JohnnoNolan me too - just so much win!	190082932759740416
+#TFS and #VisualStudio - even more awesome together! http://t.co/YtoJ0QRd	190082633106071553
+@PlamenB congrats to you and Dani	190065026684567552
+Quick correction to the earlier tweet - beach is of course Crosby beach	189089079818858496
+@Daneel3001 frankly, given how cold it was I found him quite intimidating.	189077616651796481
+Been to the street where they filmed 'Bread' today. No sign of Ma Bosworth or Joey. Going back in a bit.	189071611675148288
+Making nice with one of Anthony Gormley's men on the beach on Speke http://t.co/o2UMjdV1	189070488163721216
+@hhariri yep, back working full time from the clients London office in June.	188697086693343233
+@dbelcham yeah, best save up if you're buying booze there!	188696890269896704
+@dbelcham where are you heading to? Back to North America?	188696535461150720
+Going in a bar in Liverpool and buying 2 'beers' for about €10 is a sharp reminder of a big thing I'll miss about Belgium.	188695591998595073
+@md_oppenheimer nah, my Missus is at least one more :)	188688559140638721
+@stack72 well, I'm outside a bar on the Albert Dock and it's not protected, so...	188655847780519936
+In Liverpool for the weekend. Great to be somewhere where free WiFi is the norm.	188655256253636608
+Another 'how to IoC/DI & not use containers' discussion on #GOOS list started - http://t.co/PHVg5AvA The @jbrains answer is gd 4 C# too.	188019717502541824
+@kellabyte have a look at the Acunu Castle stuff if you haven't already - very cool stuff from uber-smart people	187925090665644032
+@stack72 v2 I think	187886447204892672
+@MarkNijhof http://t.co/K7MO97iH	187654591146504192
+RT @richhickey: @NeilRobbins #Datomic was not inspired by CQRS, but shares some principles with it, principles that predate both.	187613373280681984
+@al3xandru figured you probably had - thanks for the link	187586585309626370
+@abdullin Definitely, re lang. I find it interesting because I wouldn't use the term or lang these days, so I'd like to know their reasons.	187586517777121280
+@abdullin @ashic just me being overly sensitive	187586098833260545
+@ashic @abdullin sorry if I'm getting a little shirty, just feel a touch patronised (though I don't doubt it wasn't intended that way).	187557467511730176
+@abdullin @ashic Frankly though, I didn't come to this view through ignorance of history of patterns, cqrs, etc... Only perhaps of datomic.	187557003122585600
+@abdullin @ashic I thought it interesting that, if they know and chose not to use the language of CQRS world, they did so for a reason.	187556664768086017
+@abdullin @ashic But, from a cursory initial reading of the whitepaper & their site, it looks very similar, & I don't think its coincidence.	187556315273494529
+@abdullin @ashic Maybe I'm wrong and they were oblivious. Maybe they thought it's not really similar, maybe I'm wrong & it is not similar.	187556101393367041
+@abdullin @ashic sweet jesus - very aware of all of these things. Looking at their design it seems *a lot* closer than that.	187555815232765952
+@ashic really? Wasn't aware.	187552632255168512
+@ashic I don't think this is a 'not heard of' thing - I could be wrong, but I don't think so.	187551538384871424
+I guess from a marketing point of view it makes perfect sense.	187551105637552130
+I'm intrigued a little that in their clearly very CQRS inspired database Datomic don't mention that anywhere & recast the language.	187550717521825792
+@al3xandru seen this? http://t.co/b38zZpcZ	187549317169561600
+@md_oppenheimer I know :( It's a hate hate relationship.	187508014192922624
+RT @yreynhout: @NeilRobbins They probably have a TM on it: "Email done wrong"	187500019287457795
+@ChristopherRaa maybe, but the system has more impact on the results than the parts within it (eg Red bead experiment)	187499992934649856
+RT @davybrion: @NeilRobbins customers to IBM are what people are to the Matrix	187499800575488000
+Sorry to keep on, but every time I have to write a detailed email in #LotusNotes I figure #IBM must *really* hate their customers.	187499141532880896
+@GraemeF nice paper aeroplane	187492652705517568
+Discovered reading Tacitus: Narnia is in Italy - go figure http://t.co/81Ox8IFy	187488365053091840
+RT @andistuder: watch Makoto Inoue on #dRuby as presented at @lrug @skillsmatter http://t.co/D3vIAvYu #websm	187481483232026625
+Over spec'd validation rules are very annoying. Looking at you #barclaycard. You don't like my phone no cause its foreign, not invalid chars	187307885955522562
+RT @alanstevens: People with no integrity don't think they have no integrity. They think they are shrewd.	185153980383498240
+RT @ajlopez: How Emacs changed my life http://t.co/wzbWCINM by @yukihiro_matz	185127417994674176
+@jonharrop a maybe monad and don't divide by 0 - but I'm guessing you know that better than me & that I'm missing something in your question	185126509802041345
+Struggled a bit this evening getting my first compojure app running (still not) - but on the plus side, got my emacs setup a bit sweeter.	185124961642479617
+Installed the marmalade package manager for emacs. My emacs just got nicer. Happy.	185109048641859584
+How does those 2 nasty numpties survive? In fact how did they get on the show? #apprentice	185108263027736577
+This year, whilst most of the blokes seem unimpressive, the women all (bar maybe 1) seem absolutely & in every way, thick. #apprentice	185102516009189376
+@Squire_Matt One of the things I miss most living in Belgium is the Australian way with words - look forward to a beer to 3 when I'm back :)	185059244326920193
+RT @Squire_Matt: @NeilRobbins TFS should be taken down the back paddock and shot. Repeatedly.	185059091738140673
+@ChristopherRaa indeed :)	184957911263485952
+@ChristopherRaa absolutely agree, what's scary for me is that they're right	184956040201248768
+@simonech all of which features are crap	184948997054676992
+@AnthonySteele absolutely - see my reply to @markrendle just now.	184948457579094016
+@markrendle that's basically what I meant. I don't think MS are wrong about there being a market. Just scary that anyone would buy/use it.	184948241228500993
+It's scary to think, that in a world of github (let alone BitBucket & Launchpad), Microsoft think they can make money from hosted TFS.	184947824599896065
+RT @RobAshton: Reminder, #openhackbe is the 28th April - register here: https://t.co/KjPQru0p	184927090657865728
+I actually feel sorry for Bogdan right now. Hope he's English, a top quality keeper at least in this match. #COYS	184736929827389440
+@ijrussell I'm told that I'm not the first to suggest this. Turns out the Germans have tried to persuade them of it over the years too. :)	184665607847940096
+Trying to persuade my Flemish colleagues that you can't call an accent a language. 'fess up - Dutch == Deutsche. :)	184629603338428416
+@ptrelford hitting keys & running tests - that's the quick & easy bit regardless of language I find (but I'll grant fn'al can simplify)	184377475546099715
+@ptrelford a) liaising with stakeholders b) working out how to solve problems effectively with the right trade-offs c) communicating choices	184377249460518912
+@kellabyte where my original tweet came from was a view that all the nosql projects being written on JVM have reinvigorated its OSS big time	184373884013903873
+@kellabyte All these other things are just justifications for a worse technical option. And I get the superiority generally of CLR platform.	184373167484174336
+@kellabyte Yes there may be existing cultural attachments/skillsets/investments. But from a clean sheet PoV I can't think why not JVM.	184372938752016384
+@kellabyte I hear you, & accepting lots of what you're saying, still hold that CLR despite tech merits is a poor choice from tech PoV vs JVM	184372685525106689
+@kellabyte Absolutely, but I'd be interested to know the tech benefits that introducing CLR into a JVM world wins that pay for the costs?	184371027516723200
+@kellabyte But every piece of interop comes at a cost. That's why the first law of distributed systems is as it is, right?	184370698381299712
+@kellabyte but doesn't that imply distribution & as we know, that comes with many costs, not least latency, but also complexity	184370497012764672
+@kellabyte If you want to build something which, for instance, would benefit from a Java lib that's not on CLR only choice is costly interop	184370162571550720
+@kellabyte I don't think that argument transfers to the use of libraries. Even if you're using C++ with SQL Server you still use TDS interop	184369927065579520
+@kellabyte ... the quality of the libs & newer langs on the JVM give it the edge (a good edge at that) for a lot of things.	184369691689619457
+@kellabyte true, & there can be a myriad of non-technical reasons for picking one over other, but technically they're so similar I think...	184369518649425922
+@yevhen thanks for the tip, I'll check it out	184369047721349120
+@davybrion yeah, I've been enjoying that. It's great to be able to mark things through the day, then read them on the iPad in the evening.	184367134321803264
+@kellabyte much as I like the CLR, appreciate C# and increasingly F#, earn a crust with those techs & exist largely within that community	184366946588962816
+@kellabyte Can do that of course, but it comes at something of a cost I think relative to just using the JVM, esp. w/langs like scala now.	184366723460366336
+@kellabyte mistook the context for this tweet. Thought it was instapaper vs. delicious (hence my prior tweet)	184366365388447747
+@fuzzyness haven't looked at Pinboard.in - will take a peek - thanks for the tip	184366061372710912
+@al3xandru @kellabyte maybe I'll find a place for both after I've been using Instapaper for longer.	184365903612362752
+If you're wondering, right now that comes from looking at Storm & seeing it can leverage's Zookeeper. ++more examples out there though.	184324183176646657
+Yet again, because of this, working in the CLR world - whatever the relative technical merits of CLR over JVM - feels like a poor relation.	184323775544819712
+Explosion of OSS libs & other progs in the JVM world born out of nosql systems seems to have revitalised JVM OSS beyond crappy enterprise.	184323384652480512
+Sites like this are just another reason why github adds so much more awesome on top of git http://t.co/Izy5bhqo	184317846942261248
+@alastairs and WTF is it so slow when sending data using it.	184317036720177153
+RT @alastairs: Why is PowerShell remoting so complicated when SSH is so simple?	184316931539615746
+Started using instapaper last week. Can't imagine ever using delicious again now. I'm massively late to the party again I guess.	184316543788781568
+RT @jchyip: Boyd's OODA loop https://t.co/w8C1YZCV	184235638718074880
+Ok #SQLServer people of the world. Somewhere between #Denali & 2012 RTM I lost the dmv dm_db_log_space_usage - any ideas?	184216102748954624
+RT @peteskomoroch: Physicists discovered red wine turns certain materials into superconductors, Beaujolais works best: http://t.co/agPwN9DE	183677331758530560
+Not a disaster to get the draw at Chelski. Closes a hard run of games. A much kinder run of fixtures for the rest of the season now. #COYS	183583013282648065
+@samverschooten :D at Millwall? I used to live a mile or so from the ground. Who are you with? Home or away end? Enjoy authentic London!	183582558922096640
+RT @camertron: An engineer walks into a bar and orders 1.0E20 root beers. Bartender: “That’s a root beer float”. Engineer: “In that case ...	183472451219488769
+RT @stevehebert: "it is amazing what you can accomplish when you do not care who gets the credit." -H. Truman	183205943293657088
+RT @mickdelaney: flying freedom!!! http://t.co/aisXTj1r	183204952666152961
+Really glad that @erujolc sent me the link to 'The Twelve-Factor App' site - very interesting. I'll have to spend some time digesting it.	183204416239833088
+Just discovered Vagrant - no doubt I'm late to the party again. Looks v. interesting & worth further investigation. http://t.co/BPxnLJh9	183202543302742018
+@kellabyte me too - one of the great things of trying to show other people things are the learning experiences when they challenge & show	183194955668402179
+RT @erujolc: @NeilRobbins would be immensly difficult to follow the 12 factor methodology without a pkg manager http://t.co/bvful5Gz	183189230124662784
