@@ -1,0 +1,200 @@
+@olivierlacan it's coming!	200969919905529856
+My transition lenses scumburned me today :( https://t.co/posK6Gir	200733320097705984
+@hone02 cccccccccc @tenderlove	200622938507051008
+@tenderlove ZOMG	200618670890823681
+@mpapis everyone loves semver until they're the one who wants a breaking change	200464800973717504
+@mpapis the format has no extensibility (there is no concept of comments)... can mod in 2.0, but it will break compat with bundler 1.x	200464741678854144
+@mpapis the Gemfile.lock format is a stable format that we cannot change without breaking portability @fnichol @rbates @thedeadserious	200463762707324928
+@dkubb the feature as it exists currently requires a specific version (but not patch level) @tpope	200445255651299328
+@littlecalculist the TC39 wiki structure is half the problem. Better benefit descriptions would help a lot.	200423175723565059
+@robinberjon we should get coffee when you're in SF @divya	200422109900578816
+@tpope it lets bundled fail fast when you're using the wrong version	200421859009904640
+@gazoombo say more	200341850274533376
+rvm added support for the new ruby version feature in bundler! https://t.co/jVAe4twG	200333251297021953
+@jfire ember-data does @josevalim	200316313141383168
+@rbates yep! bundle platform --ruby done and done @thedeadserious	200295439587753984
+@TheDeadSerious bundler will give an error if your current Ruby version doesn't match. rvm and rbenv support is forthcoming	200290806064623616
+@mpapis excited to integrate this solution into Bundler 1.3! @evanphx	199715840583671808
+@luke0x :trollface: @ga @emberjs	199547178102947840
+@luislavena very cool. I will be trying this out soon. Does it handle static compilation? @mpapis @wayneeseguin @drnic	199370794281865217
+RT @wifelette: Things I need: design help on an awesome SF @jquery Conference Tee. Got some free time and skills? Pretty please? Ping me!	198579791862038528
+@joshpeek so you were never able to repro the fix for Windows-1252?	198563343181676544
+@chenluois any progress updates on Mou? I'm eagerly awaiting the next version!	198550439111823360
+@joshpeek very interesting. I could swear we reproed the fix. Do you see a failure with Rails? @samruby @nzkoz	198497316175491072
+@joshpeek yeah	198268362420273152
+@joshpeek interesting. That should work...	198196147209240576
+@joshpeek I watched the video... can I see the source of the form?	198188579552374785
+@joshpeek the fix or the bug?	198188509629128704
+@speakerdeck are there any plans for being able to put dates on uploaded talks?	198186641091858432
+The slides for my talk "It's Harder than it Looks" at AirBnB last night are now up: http://t.co/7u04Psdr	198185870933757953
+@mikegehard in ruby, asset pipeline or rake-pipeline	198108478693318656
+@tnm it was an OH ;) @moonpolysoft	197786529790300161
+OH: "I've finally figured out Hacker News. It's startup fan fiction"	197769106232057856
+RT @tomdale: I wrote a blog post about why the recent anti-best-practices stance in the JavaScript community makes me sad: http://t.co/s ...	197768673950306305
+One example of how Tokaido is reducing failure scenarios: static compilation. Check it out: https://t.co/LZIyY6ZP	197465733804994560
+Any chance I can crash on someone's couch in Boston for BackboneConf? #hoping	197416489022783490
+@commadelimited yep!	197392769151545344
+And tokaido now statically builds with all its dependencies! https://t.co/Uab7dA4G	197370504481472513
+@coreyhaines what I'm proposing is "tap if truthy" @raganwald @andrewa2	197093288988250113
+@coreyhaines take a page from Smalltalk: Post.find_by_id(1).if_true { |obj| }@raganwald @andrewa2	197092038087409664
+@coreyhaines what is the benefit of this? @raganwald @andrewa2	197087373270581248
+@billl_murry if only it was that simple @raganwald	196999123801604096
+@steveklabnik also, it's gone in Rails 4 due to this vulnerability	196750244388671488
+@Cadwallion Awesome. I plan to work on serializers this week. I have some more ideas :D @hypomodern @steveklabnik	196731774569689088
+@Cadwallion any luck on this? @hypomodern @steveklabnik	196726659070705664
+@steveklabnik the blog post implies that the answer is <some hand wavy> solution other than Rails. I argue the solution is Rails.	196724476652687362
+@steveklabnik that blog post is largely a counterpoint to my talk at RailsConf, no?	196723291359162368
+@steveklabnik yeah I think we need both :) @schneems @therealadam	196720557847347201
+@jacobian people often think you need X% of a community contribbing to be successful. Reality: it's a small constant number	196631842013724673
+@addy_osmani what does "technically a pattern" mean?	196631015421259776
+@sleeptillseven Thor has no dependencies	196621769099059200
+@joefiorini something like that yeah ;) @justinko	196486627881791491
+@joefiorini the secret is getting a lot of help! Thanks @sferik :) /@justinko	196453852554338305
+New Thor website at http://t.co/BU3PnbsE :D Will be getting docs on actions (FS manipulation) and shell (output) soon!	196430409813340160
+RT @sferik: Spent today pairing with @wycats to push thor 0.15.0 over the finish line. Fixed a ton of bugs. Get it while it's hot: https ...	196429170660749314
+@shizowell :trollface: @garybernhardt	196331169418190848
+@mperham email me @josevalim and @tenderlove	196329010517651457
+@jamesarosen you'd use puma, not unicorn @tenderlove	196328313302687744
+@garybernhardt why don't you just use lisp?	196328189570711553
+@jamesarosen @tenderlove and I have been talking about making that work on Rails without EM	196327990035103745
+@littlecalculist Java XML=>HTML DOM as well @joshbloch	196278946608848896
+RT @littlecalculist: "Transliterated APIs are almost always broken." — @joshbloch, unwittingly talking about WebGL ;-P	196278858788507654
+@pwnall yep!	196253878877044737
+@gaffo sure :)	196138430240006145
+@homakov what's GDS?	196117937550147584
+@anildigital nice! I'm thinking about talking up general-purpose futures for this problem :)	196115408267390978
+@mhartl AWESOME!	196111505069064192
+@anildigital what do you do with the response?	196111474446438400
+Do you make multiple HTTP requests in your Rails actions? If so, can you gist me what you're doing?	196108142386487296
+@merbist agreed @TheAmazingRando	195961628167118848
+@avdi _why had some code that did it (evil.rb). Please do not use it. @joshsusser	195956776980586496
+@Cadwallion Awesome! I'm psyched @hypomodern @steveklabnik	195935692629614592
+@hypomodern awesome! @steveklabnik @cadwallion	195932725549613056
+@hypomodern definitely interested in seeing the use-case. Like I said in my talk, real usage will make it better @steveklabnik @cadwallion	195932495068401665
+@hypomodern associations just call methods on the serializer, so you can add stuff; also, there are methods you can override @steveklabnik	195932422997684225
+@hypomodern what issues are you hitting?	195931623882104832
+RT @tenderlove: I'm excited about active record in master: https://t.co/HYM4efre	195930950494994433
+@dhh government delegating its force monopoly to private actors is hardly capitalism	195928770723586048
+RT @bostonrb: Here is the actual queueing API that was not part of the the @wycats commit from before https://t.co/nnPobsyZ	195917452343914497
+My slides: http://t.co/G4j1Xdrl	195241369009258497
+@tectonic awesome! @ryanbrunner	195236571589521408
+@richievos static compilation complicates matters :/	195235707139272704
++10000000 on @ryanbigg's lightning talk!	195230053712396288
+@steveklabnik not as a parameter to a method @josevalim	195226191068790784
+@vanstee we have a solution in ember-data, but it needs a Ruby-side library	195206064482955266
+@ryanbigg CONFIRM! @tenderlove	195202356185530368
+The Rails office hour queue is blocking... we have successfully helped 7 of 8 people... Come make that 8 of 9!	194875043669487617
+RT @olivierlacan: There's going to be a panel with a bunch of Rails core team members like @tenderlove and @wycats at 5:30 tonight at @r ...	194859863812210689
+@tsaleh I don't think they're intended to be portable, so no... .bundle is definitely not portable	194855174139944961
+@hij1nx by that line of reasoning, *most* software is flawed @krwindham @indexzero @maciejmalecki @marak	194832792004206593
+@hij1nx because it punts solving the security concern to the user, it is flawed @krwindham @indexzero @maciejmalecki @marak	194832365263126528
+@hij1nx the fact that it's a small codebase IS the problem @krwindham @indexzero @maciejmalecki @marak	194831805218684928
+@hij1nx the flaws are conceptual and inherent and would require a scope-change to fix @indexzero @maciejmalecki	194795978308583427
+@hij1nx this discussion was the result of a talk I gave. @indexzero @maciejmalecki	194795976882532352
+@andreiursan if you read the code, you will find that most common web security problems are not handled @hij1nx	194780507714752512
+@MSch iirc you can configure the generators to use the app's namespace	194594346186719232
+@MSch what if you wanted an Application model? Adding new reserved names is bad.	194593208959893504
+@hone02 yo... that blue in your slides is way too blue O_O	194533091056959489
+@dhh hehe. I hope you realize that binary distributions are not easy-bake ovens ;)  @obie	194453332826402817
+@obie if it is, he didn't read the description on the tin: "My goal is for this mode to be something I personally would use" @dhh	194450751131631616
+RT @hone02: inspired from coaching at @railsgirls recently, I'm going to be holding rails office hours on the @heroku couches during bre ...	194436959844835328
+@hij1nx my comparison was with Connect @andreiursan	194435332794613760
+@andreiursan also, CSRF was just one example ;) There are many others like IP spoofing, timing attacks, secure cookies, etc. @hij1nx	194402203262398464
+@andreiursan I don't see any extra CSRF stuff here. A solution that doesn't help with form building can't be automatic @hij1nx	194401208897781762
+@andreiursan if you have to think about it, you're vulnerable @hij1nx	194400399300636673
+@andreiursan what is union middleware? @hij1nx @railsberry	194399351538319361
+@bascule where are you? @wifelette	194272724917563394
+@marcweil dyn.js @tomdale	194160068579688451
+@bassistance we'll talk more later, but it's of course easy with sequential code; it was a modeling question	193909867898085377
+@indirect YEEHAW @hone02	193834094843535361
+@bensonk42 think bigger ;)	193766915255181312
+@bensonk42 In your opinion, JavaScript is the best possible language?	193765115802292224
+@bensonk42 I use it on the client because I have to and thank my lucky stars we didn't end up with Java. On the server, I pick what's best	193762598016126976
+@bensonk42 You know I work on JavaScript libraries and frameworks, right?	193761554167115776
+@bensonk42 I took a look at the Todos tutorial and my eyes were bleeding @recluce	193759602460991490
+@bensonk42 there isn't as much code reuse as you'd think @recluce	193758516429852674
+@bensonk42 if the language is JavaScript, it's somewhat unappealing to me @recluce	193753390730330112
+@brmichel right... but then you can't pipe that output into other inputs -- seems like a fundamental constraint	193752086310158336
+@jonleighton I think it would be useful to clearly outline your goals (faster tests, e.g.) -- problem is actions often ARE coupled to HTTP	193746174644207618
+@jonleighton I'll be on a plane :(	193744697884291072
+An example of this is including the SHA of a built file in its final output name	193741906751143938
+Anyone know how to model a build process (using rake, e.g.) where an output file name is not known until a previous file is built? gist plz!	193741385147498497
+@jonleighton usually it just means more thinking is required @fxn @garybernhardt @tenderlove	193741053931692033
+@jonleighton the lack of obvious alternatives does not mean that suboptimal solutions are correct ;) @fxn @garybernhardt @tenderlove	193741022168227840
+@matthewwithanm I replied	193738581804711936
+@adman65 can you hop onto IRC so we can discuss polymorphic associations in AMS?	193737929196175361
+@jonleighton the issue you raised is valid, but the approach is overkill :( @fxn @garybernhardt @tenderlove	193736254909722624
+@jonleighton I was referencing your talk ;) @fxn @garybernhardt @tenderlove	193736041788751873
+@korch I'm not on the half that wants to convert Rails into Java ;) that doesn't mean we can't have good modular code	193698567846760448
+@JEG2 it was a response to a couple lightning talks that said "IT'S FREE!!!!" and people cheered. I was sad inside ;) @deryldoucette	193698230318542849
+@dennismajor1 the symptoms are every conference I attend	193682361249046529
+@bensonk42 WAT	193635111147802624
+The problem with Rails today is that 1/2 the people are afraid Rails is turning into Java and the other 1/2 are trying to turn it into Java	193629465375547392
+RT @spastorino: I've released rails-api, Rails for API applications http://t.co/8HhyMSxM	193467479379550210
+@derickbailey Hehe... it was a response to a lightning talk - I make exceptions for ppl with a history of maintenance on OSS projects	193384553258287105
+I wish people working on ambitious projects would charge for them so I have faith in them continuing to exist for the long haul	193382169920540672
+@szarski can't connect at all	193266011653419009
+@szarski no :(	193263084721283073
+RT @jede: My notes from @wycats 's talk #railsberry http://t.co/mTmCnSVl	193262951573098497
+@squeedee +1 @holman	193078062055833600
+@commadelimited that is bad! It's on github but it should be on the main site. Will get some focused time for handlebars ASAP @cfjedimaster	193016146017001473
+@issackelly you still need {% csrf_token %} right?	192997555364298753
+@ryanyogan I don't actually use Django ;) I'm writing a talk about why these things are hard and curious about the various approaches	192980075757584384
+@ryanyogan I'm most interested in Django defaults :)	192979671565078529
+Can anyone point me to some docs about the CSRF defaults in Django? From https://t.co/zjWMBcfb it seems it's disabled by default	192978435574996992
+@adman65 sure!	192971487555223552
+@jbverschoor Example of using the simple futures for parallel HTTP requests https://t.co/l4gUJR72	192936023473389568
+@skanev using proxies also has the side-effect of necessarily shadowing methods like "cancel", etc.	192930574288166912
+@skanev most futures I've seen have a "result" concept; example: http://t.co/9eqTg0lE	192929438885871618
+@skanev is this better? https://t.co/l4gUJR72	192927345215148033
+@skanev yeah I was being lame... it's more like a Deferred... hold on :)	192922552451072000
+A simple future implementation in Ruby leveraging the existing Thread API: https://t.co/l4gUJR72	192921158935515138
+@jonsterling maybe github could add support for EditorConfig? http://t.co/fpurviP0 /cc @holman	192900231862562816
+@holman says to shoot people who use hard tabs. Why do people hate hard tabs? Is there actually a reason?	192897973313740800
+RT @Railsberry: @josevalim just did a talk on concurrency, functional languages; featured explosions. #railsberry	192892053024288769
+@_gareth nope! I work for @tildeio	192365567078969344
+@_gareth launchpad? @dhh @will_j	192346435684024321
+@RomyOnRuby the trick is keeping the distance between the two small... keep shipping!	192333921604747264
+yes | we-can	192311681983057920
+@littlecalculist it's ok... in clojure, you can argue about whether to use ,'s or not in lists ;) @chneukirchen	192287666690211841
+RT @peepcode: Arranged a PeepCode Play by Play for early May with a guy who goes by the name of @wycats. https://t.co/aoZ1u6jp	192271052125126658
+@jonsterling as a person running a business that employs people, health insurance gets me here faster, lower taxes does not @badler	192129723533496320
+RT @badler: you know what would be awesome for incentivizing ppl to take risks and start their own businesses? universal single payer he ...	192117020840574977
+@happymrdave soon I hope :) gotta go through the tickets before I do that but not aware of any blockers	192116731320348672
+@RomyOnRuby :(	192095327954796544
+@judsonlester that's the actual difference between the commands...	192090681265750016
+@judsonlester because the install command means conservative and the update command means liberal.	192089140035198976
+@drichards saw your comment on the webivore post... now very curious what I said that zinged you :)	191979792655065089
+@brynary Email?	191978361382383616
+@tdreyno what is the kindle quote feature?	191966933086777344
+RT @carllerche: Poe's law should be amended to include JS semicolon debates.	191956641346895872
+@BrendanEich absolutely. Trade offs everywhere. Question is what produces smallest cost. @polotek	191942475672326145
+@BrendanEich another point: easier to explain ; at end of statement than ;( and ;[ to new developers.	191934827103141888
+@BrendanEich I'm a "Rubyist" and find things like "semis sometimes" worse when in Ruby mindset. Mistakes easier when symmetry is partial	191922831561461763
+@BrendanEich I'm surprised that people prefer ;[ ;( etc. to just terminating with a semicolon @izs @mranney	191912661347352576
+@BrendanEich for me it's purely anecdotal, but I agree that it would be interesting to see. @izs @mranney	191912469390831617
+@BrendanEich http://t.co/6yTJKZjn (Matz on simplicity at OSCON in 2003)	191906687203028992
+@BrendanEich it's coherent but requires more rules loaded into human RAM while coding. Rather keep RAM for other things @izs @mranney	191906061358342144
+@BrendanEich because the opportunity for bugs when treating ASI as significant newlines is great, and many of us have been bitten by it	191905653151907840
+@DamonOehlman the npm package should just ship the compiled output, and def not depend on Ruby o_O @pamelafox	191713091627651072
+@judsonlester the default (what happens when you type "bundle") is "conservative". "install" is too. You do update when you want all	191668628167458816
+@judsonlester the default is "bundle" or "bundle install" -- what makes you think that "bundle update" is the default? @obie	191647558752415745
+"My two cents: be careful not to use ASI as if it gave JS significant newlines" @brendaneich	191641928406810624
+@judsonlester bundle update is useful if you want to start over and re-resolve everything. If you don't want that, don't do that. @obie	191641747917504512
+"ASI is a syntactic error correction procedure. If you code as if it were a  significant-newline rule, you'll get into trouble" @brendaneich	191641658704670721
+@cowboy I think people know that ;) My identity as an open source advocate is more important here ;) @addy_osmani	191536414394040321
+@cowboy I don't have an agenda except to avoid the exploitation of other web developers :P @addy_osmani	191534857606799361
+@cowboy There is something very poisonous about the fake open-source GPL tactic for web frameworks @addy_osmani	191533901326454785
+@cowboy should they add support for other proprietary frameworks? @addy_osmani	191533755754749952
+@cowboy just a thought @addy_osmani	191532843678175233
+@cowboy or we could not reward ppl using the GPL as a way to pretend that their software is OSS when it's actually commercial @addy_osmani	191532825655263232
+@addy_osmani you might consider purchasing a corporate license to avoid the licensing issue :trollface:	191529936106958848
+@addy_osmani does that mean you will be making TodoMVC GPL?	191526740756140032
+@chneukirchen O_O	191270879139856384
+@bphogan yes ;)	191235615558348800
+@petermichaux feel free to use real URLs! Ember is not making you use "#" ;) And buttons work find too /cc @jwajsberg	191229223925587969
+The good news is, the second Open Source kickstarter is much less drama-filled than the first. KUDOS!	191209126146215936
+I just backed http://t.co/LpORzJxQ - Really excited about a new wave of open source kickstarters	191205713312366594
+@adman65 wycats@gmail.com	191146909577121792
+@adman65 no problem :)	190928119807475712
+@headius you should read my blog post where I explain what Tokaido is :) @mentalbrew @steveklabnik	190896675290755074

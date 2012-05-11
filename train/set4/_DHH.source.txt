@@ -1,0 +1,200 @@
+@dennyabraham Yeah. P/e of 2.5 is NUTS :)	200691174657372162
+@racemag Vi gør et godt forsøg denne lørdag i ALMS Laguna Seca! Vi har et super chassis og en mega motor. Målet er klart det øverste trin.	200494709670551553
+@benmoore1982 It's out! See http://t.co/mXdrgOYN	200474103843536896
+@josevalim That looks terrible. I love the syntax we have now.	200270241174007809
+@jeremyricketts NC proved to be an idiot again, so to speak, on this matter just days ago. So I'd call it a pattern at this point.	200269858141769728
+RT @thinkprogress: FACT: Last time North Carolina amended their constitution on marriage it was to ban interracial marriage http://t.co/ ...	200258034293940225
+RT @mileskahn: North Carolina is totally gay for hate.	200230809863585792
+So Facebook's valuation is insane, but I love Zuckerberg's hoodie fuck you to Wall Street analysts: http://t.co/Fayq3JiB	200221509673951232
+@rmm5t For sure. Integration should be a last resort and just an overall check. Units should be the bulk.	200202358326702081
+@jonleighton ~4mins on my air.	200158243006324738
+@duellsy For every line of production code, there's one line of test code.	200153222151806976
+@CallMeMrDaniels The overall calendar works well as that one page. Don't think we'll venture into dependency territory, though.	200151296802701312
+@CallMeMrDaniels About 10K JS lines.	200151124811071488
+@CallMeMrDaniels You can use spanned events for that. That's how we do it: http://t.co/t1bN9JeL	200150448966090752
+@usubov I only write integration tests when I can't find a way to test what I want in units.	200150086917955587
+@ShanghaiNoob 2:30m for the unit tests. I just run the single case that affects what I'm working on, then whole suite before checkin-in.	200149992650969089
+@CallMeMrDaniels We now have dated todo items on the calendar alongside events, so that replaces milestones. Still undecided on TT approach.	200148960915095553
+We've rounded 10K lines of Ruby code for the new Basecamp. Still running a 1:1 code-to-test ratio: http://t.co/pz3vnbXB	200147846685671424
+RT @almsnotes: Let's preview this weekend's #ALMS round at @MazdaRaceway! http://t.co/wSZbCPdU #MRLS @ESPNMotorsports #Corkscrew	199963995661275137
+@mhenders I think I watched that one already. Good stuff.	199869369684201472
+@johndagys Yes please! Loved the joint event.	199843201924861953
+RT @ggreenwald: Terrorists: RT @RepStones if relatives of that family killed in the drone strike decide to target the US, they're 'evil  ...	199836982539591680
+RT @ggreenwald: It's worth comparing media coverage/outrage over a) the Yemeni plot against US that went nowhere & b) US airstrike k ...	199836955582808064
+RT @ggreenwald: The worst part of these "we-killed-more-kids-with-airstrike" stories is we're all supposed to agree it lacks meaning &am ...	199836814360592384
+Having an idea before starting a new company is your 20% downpayment. Not sufficient to guarantee success by any means, but prudent still.	199771487148843008
+@mhsutton They're fucking Tufte's  compared to Air France or Iberia.	199768826685030400
+Working on airline booking systems must be a special kind of hell. The user experience department for European carriers on the lower level.	199764497844551680
+@GeekAndDad Oh, I see the case for the incubators clearly. Makes lots of sense. Just like it did for the CDO bundlers. They're resellers.	199762173302550529
+@blueben Probably not even close. Need to waste a lot more billions.	199761160894021632
+@GeekAndDad Yes, separating the two is probably a good idea if your goal is to churn through the max number of startups. Funny goal, though.	199761057668022272
+@GeekAndDad if you can't boil your argument down to a couple of tweets, it's too complicated :)	199759910953680897
+@FrankDenbow No they weren't. They came with an idea. That it changed to something else later is an entirely different story.	199759421453242368
+@GeekAndDad If you don't even have the courage to come up with an idea to execute, what are you doing starting a company? Much more needed.	199758954312638465
+@GeekAndDad Yes, idea alone is not enough to be successful. But if you can't even come up with one, I question your bad ass execution skills	199757231128969217
+RT @furrygirl: Militarization of police is not just about protests. Masked tactical teams go after suspected prostitutes  http://t.co/FN ...	199756685672329216
+RT @davewiner: Funding "No-Idea" founders is like giving a mortgage to someone who doesn't have a job.  http://t.co/tBNrCY6j	199755976495202304
+The bubble machine requires ever more bath water to keep growing. I think the baby has long since been thrown out.	199755950465351681
+Mortgage crisis metaphor, incubators backing "no idea" founders is like CDO'ing ever shakier mortgages for throughput when quality ran dry.	199755630054096896
+RT @ggreenwald: It's amazing how many Serious national security analysts adopt the 4th grade formulation about killing "Bad Guys"	199754231861878784
+My favorite singer-songwriter @tinadico has a great new acoustic recording out from her coming album "The Other Side": http://t.co/RXGeqfyx	199564143060189185
+@hughevans 2:12.5 on fresh rubber. 1.2 second off Olivier Pla in the sister car.	199264108477030400
+Haven't yet seen the brilliant Truth In 24? I highly recommend it -- it's free from iTunes: http://t.co/HSqmCWkZ -- part II coming soon!	199262895194898432
+Funny how fast expectations change. First you're just happy to be part of it, then you happy to be above average, then you want to win it.	199262465605906432
+@seats @zenmatt The argument is not value vs no value, but how much. 5-6%?! Fuck that.	199164840021983232
+@zenmatt And all the "hassle" is being stern. Which really is not very much hassle at all.	199157382314598400
+@zenmatt I bought two properties without representation and got the 2.5% intended for the buying agent.	199154931402424320
+@ekovar No argument about that. The argument is that the US version of the system is far too expensive compared to other places like UK.	199146852422127616
+@ekovar http://t.co/dGMgj3ik	199145052629499905
+@ekovar Generalizations between countries is the base of evaluating efficiencies. Read the economist article. US is more wasteful.	199143587571695616
+@thijs much less than that in Scandinavia and the uk (see economist article)	199059629207060480
+@entegral For sure. Lots of people already are through the online tools. It's the lagging 80% suckers, though that are creating this drain.	199057726419124224
+@entegral Read the economist article I retweeted. Lots of reasons.	199056824803135488
+@entegral But it doesn't help. One realtor or two, they both have the same objective: close the deal ASAP, regardless of price.	199055098343723008
+@taybenlor Absolutely. I'd rather just pay an hourly rate so the costs are transparent.	199054830025711616
+@entegral But by definition neither is a realtor since they are not acting in your best interest! More important to close than to get a deal	199054572273156096
+@TheAkashKumar Yes, that's my general belief. Already happened to tons of markets thanks to the inet. At least it should depress cost.	199054330492497920
+@johnkevin Yes, showing your own house for sale is a hassle. But to pay 5% for the privilege is obscene in most cases. Cartel pricing fix.	199054046240309248
+@entegral in fact, multiple studies have shown they DON'T try to get you max price. They are better served by a quick deal.	199053811518685184
+@entegral Absolutely not. "Professional" in the US means someone who took a few weeks course. Not that they are master negotiators.	199053614113751040
+@thijs How do you get to 10-15%? Transaction taxes?	199053267534233600
+RT @ebertchicago: "The Avengers" and the Case of the Nearly Disastrous 3D. http://t.co/S0wuzY9w	199053006782730240
+Allowing 5-6% of a property transaction to be lost to the realtors is obscene. Self-representation as a buyer can cut it in half, though.	199050156530876416
+RT @TheEconomist: Why is it so expensive to buy or sell a house in America? http://t.co/vGEliUZ1	199049674974445568
+RT @dhhracing: Checkered flag - P4 out of 17! Maybe not podium, but gotta be happy about finishing and near the top.	198865643171360769
+RT @dhhracing: We are just one hour away from green flag at 6 hours of Spa. @BasLeinders is starting w/ 2 stints. Follow live video: htt ...	198735232688586752
+RT @johndagys: The @FIAWEC Six Hours of Spa-Francorchamps begins at 8:30 am ET. Live Stream here: http://t.co/uOKgCYUU Please RT! #WEC @ ...	198701580453806080
+@brookr Being able to swallow nil would be a most uncommon and surprising behavior. Both for Rails and your code. Completely unexpected.	198487578352156672
+@StevenMcD_code Ha, thanks man. Glad you liked it!	198152647625281536
+@NickBruun teddy bear!	198022267475734530
+@NickBruun blanchimont is not hard flat, but the double left hander is a bitch! Still have a tiny lift in Eau rouge to cure too.	198019663563718656
+RT @dhhracing: The cockpit for this Saturday's #fiawec race at Spa: http://t.co/GZFPEzGg	197696976962326529
+Movies are great, but current seasons of Mad Men and Game of Thrones have convinced me that if I could have only one, it'd be TV shows.	197672914043158529
+"If you are looking for a billion dollar check in the startup game, you are playing for lottery odds", http://t.co/kfMXsfs6	197664718033391617
+RT @snipeyhead: @dhh when you are young, change is easy because you don't have multi-million dollar projects that you're responsible for	197662492103671808
+RT @uberbrady: This video on "progress" by @dhh is making me furious, I have to keep pausing it to keep from breaking my computer.	197662455621623808
+Just one more perl from the Kathy treasure trove on "If some people don't HATE your product, it's mediocre": http://t.co/lwbZ0yiW	197661132226428930
+If I could unleash Jack Baur just once, it would be to go 24 on the sick fucks that pushed Kathy offline five years ago.	197659146756165632
+If you weren't around for Kathy's original run, you can thankfully still enjoy the archives: http://t.co/QduxdRhn. One of my biggest idols.	197658165553283072
+Words to live by: "Be brave or go home", http://t.co/Lt2ByBkz (applies equally well to presentations). I so miss Kathy's regular writing :(	197657152935034880
+@snipeyhead I take it that you do realize what a pitch perfect Mrs Mature you're playing, right :)? 17 yrs + millions and all that jazz.	197606151020490752
+@snipeyhead Last I checked, Basecamp was a multi-million product. But at 17 yrs, you do have me beat. Made Rails two yrs after going pro.	197605125991309312
+@tolles Plenty of "real wealth" was extracted during the dotcom by selling to a bigger fool. Just as unsustainable as today.	197457101356924928
+@timbray @asymco Not a very interesting ratio, imo. Apple is simply better at profiting from their superior software chops through hw ties.	197456493916852224
+@timbray @asymco Apple pays their designers and programmers the same as MSFT/Google and they the same as Apple for hardware assembly.	197446561201008640
+@tolles @mathewi Equity appreciation that's not tied to profits is a mirage. That's the whole point!	197446235794321408
+@timbray @asymco Apple's competitors all have similar labour rates and are still unable to come close to Apple's margins.	197443226729320449
+@mwarkentin He looked like one. Didn't know him a priori.	197442582882693121
+@vladimirprieto thanks man	197424418111234048
+@Bryan_at_JRZ Ha. Related, no doubt.	197424231619899392
+You are not your Twitter follower count and your 1,000 Facebook friends probably don't like you.	197418398819434496
+Everything in social is a fucking leader board and that tricks people into thinking that it's actually important. Epic mind hack.	197418076248080384
+RT @randylovin: @dhh "If you want cheese.........you'll need to hashtag it."	197416702659674112
+Speaking of likes, followers, and check-ins, I can't stand businesses growling for them. Pleeeeease like us, follow us. #ohfuckoff	197416307518476289
+"Hey, how much is that sandwich?", "Two likes, a follower, and a check-in!".	197415851757023232
+The New Economy renders all the boring concepts of revenue and profit obsolete. Your worth is now counted in eyeballs, likes, and followers!	197415686497247232
+While we're on the topic of recycling drivel from the last millennium, let me tell you about The New Economy!	197415428312670209
+@rrwhite So we're not debating business models when we talk about Instagram because they didn't have one nor any interest in one.	197414331854491648
+@bwwrd It'd be hard to make this shit up even if you tried to make a caricature of the bubble mindset.	197413916245110785
+@rrwhite The whole debate here is about the ABSENCE of a business model. Unless you call selling to Facebook a business model.	197413158338576384
+@rrwhite In the same way that buying lottery coupons can be a way out of poverty for some. But to recommend as a general strategy? Ha.	197411988270366720
+@rrwhite It just means it's retarded to suggest as a general purpose strategy and it's emblematic of SF echo chamber thinking.	197411248923623425
+@rrwhite And basing your business strategy off what Instagram did is about as sound as fighting poverty with lottery coupons.	197411017192505344
+@rrwhite Yes, you can attract lots of eyeballs by giving shit away from free. That was never an insight nor a sustainable model.	197410637419249664
+@rrwhite Growth that doesn't lead to revenue, let alone profit, is playing the wanker find-a-bigger-fool game. Also known as the bubble.	197410345961267202
+@rrwhite You're arguing against having revenue because it impedes growth?! That some Onion material right there.	197410090775621632
+@rrwhite You're recycling the eyeballs argument from 1999. That all that matters is growth and first-mover bullshit.	197409862106365953
+@isaacsanders Really? There are tons of free services that people have no interest in paying for.	197409446413090816
+It used to be a joke that revenue was dangerous to bubbly startups, but now it's taken as sage advice. #weareallfucked	197408570407530496
+"…while you're busy trying to figure out how to make money, a competitor isn't, and they're zooming ahead of you in daily active users" #wtf	197408353796898816
+I can't tell if this is an elaborate troll or if this truly is the madness that passes for thinking in SF these days: http://t.co/YFueGqB9	197408233541996544
+Did AT&T just give up on Chicago? The service coverage is atrocious. Telling Apple to rename their shit network 4G apparently did help.	197386590748815361
+Video of my keynote from RailsConf on PROGRESS: http://t.co/GJuzrmVa (thanks to @confreaks from producing this!).	197369462826090496
+Groupon director with the most to lose from a scandal, Howard Schultz of Starbucks, says haste la vista: http://t.co/lThWjx1j stock down 10%	197312444673179649
+RT @rjs: "Facebook looks for designers who are 'builders.' … the vast majority know how to code." http://t.co/di2YT2xD	197117868750536706
+@cardoni Not yet. Should be some time next month.	197082143506169856
+@IanMitchel1 We haven't looked at Spine. I don't believe it was out when we started work on the new Basecamp.	197039233117065216
+@oscardelben I don't know if you have to focus on hard problems, but I'm a huge believer in sticking with it!	196987159541055488
+@ryanyogan Uber	196454648972972032
+@jwmares Roll back the privatization of the prisons. Make it a state/federal responsibility.	195936308412157953
+@boblmartens @wycats They can't exactly choose another provider if they're unhappy with the service!	195929994336284673
+@etdebruin @sdruby Hey, hey. I'm not around San Diego much, but if I come by, let's look into that!	195929122692808705
+@wycats There's supposedly open bidding on the contracts!	195928952970293248
+I'm all about capitalism, but for-profit force is just a terrible idea. Hard enough to avoid Stanford prison experiment w/o profit motive.	195928171697287168
+The prison-industrial complex is truly horrifying. Good surface summary of just how evil the current setup is: http://t.co/mmv41H1x	195927589448192001
+@freerobby @dpickett Do you know how many template languages there are? Or databases? There's no need for total agreement to have progress.	195891458530750464
+@jacobbednarz Sure do.	195884886987513856
+Read through all of the new Basecamp's source code. Not often I can look at some 10K lines of Rails and 10K lines of Coffee and be so happy.	195674871840251905
+@jumph4x Thankfully the two are not mutually exclusive ;)	195625203139747840
+@radexp That's taking the same idea and at least tweaking it. The curebit shit was a complete ripoff.	195624732836626432
+RT @thijs: @dhh Now that’s a fun idea! :) Here’s ours: http://t.co/e1k7Bkcy	195596882368671744
+I'm proud to work with such an exquisite set of swearing sailors @37signals:  http://t.co/bQro7iVc	195593539160248320
+@bascule It's a continuum. You have 100 points to divide across the two bases. Once there's more in the skepticism pot, you're in trouble.	195591925783470080
+@alexshenoy @railsconf It will. I think they said it'd be up in May.	195591603958714368
+@rjs Watching the media explain any economic event is hilarious. Extreme certainty that flips back and forth constantly.	195549573052248064
+@DreeStewart Do it! Spread the word!	195549001909669888
+RT @aarongraves: @dhh On the bright side, we've validated the results of the Stanford Prison Experiment in a big way.	195543340408770560
+RT @jezcaudle: @dhh I used to think that the terrorists had won. Then I realised that this is what governments have always wanted - just ...	195543284523868160
+@ChrisTysh I always like having my balls tickled, so that's my fancy!	195537770758938624
+What an epic of a win for the actual terrorists too: Inflict $60 billion wound, have kids fondled, a nation lined up to be porn scanned.	195535832579440640
+@mysqlboy I'm sure the terrorists would approve.	195535526160371712
+RT @SylkoZakur: @dhh and my 2 year old had to be patted down by three TSA agents because his overall buckles set off the metal detector.	195534281307725824
+@Koalemos Too big to fail politically. Would mean accepting responsibility for a $60B failure.	195534206061920256
+If we're going to pay for a $60 billion security theater, can't they at least teach the actors to sing and dance for the kids? #DisneyTSA	195534095420370944
+@revans Just tweeted about that. Sick.	195533900204879872
+The TSA has cost the US almost $60 billion in the last decade: http://t.co/kEheYuDx -- colossal waste, but now probably Too Big To Fail.	195533475468689409
+@thijs You would not be in doubt if they had. They'd be buying ads in all media to proclaim their $50B catch!	195532159853920257
+Just because I know you love reading about the TSA is mistreating kids, here's a 4-yr old getting the big T treatment: http://t.co/D8h18w1J	195531537641512960
+RT @kagetsuki0: @dhh I had a TSA agent try and steal my notebook computer. He hid it when they checked me. "Found" it when I started fil ...	195531188075642880
+@mattnworb Enough instances show a pattern.	195527601983459329
+While on the topic of "Why TSA is a disgrace and should be dismantled", here's how they treat 7-yr olds w/ disabilities http://t.co/BgQfKGaG	195526561254998018
+@TSAgov Freedom is a buck'o'five, dude. Everyone knows that!	195519226189062146
+@TSAgov Yes, there are about $8 billion in savings if the TSA is demolished :). And that's just the direct costs.	195518455556997121
+(Of course, I think you should be able to bring both your meth, your coke, AND your nail clippers -- without paying the TSA thug toll).	195517886004084736
+TSA won't let you keep your nail clippers, but if you slip them a few benjamins, you can bring your meth or your coke: http://t.co/rGAB2Iro	195517733142675457
+@thillerson @timbray Yes, Lord of the Rings is great. But Game of Thrones is greater.	195362855644704768
+@hkarthik Yes, that is unfortunately sucking a lot of oxygen out of the room. That could have gone to more worthwhile pursuits.	195362540518256642
+@pgkiran Welcome to the light side!	195354691486486530
+Especially amazing too given how many new Rails developers there are. Maybe 2/3s of devs at RailsConf were there for the first time.	195350303711821824
+@pmarsh Some are tighter than others.	195349793483145218
+@kondro "Great" stopped being the criteria long ago. People are having a hell of a time finding average programmers.	195349573332508674
+@timbray You're crazy. They're completely awesome.	195349357506211841
+@girifox For sure. Ruby/Rails programmers are being paid far more these days than even just a few years ago.	195348869805129729
+@ultrasaurus Certainly not equally so.	195348340303609856
+Amazing how tight the Rails job market still is. We've been going for almost a decade. You'd think supply would have met demand by now.	195347729822654464
+RT @techpeace: Need a job? I humbly suggest learning Rails. #railsconf http://t.co/VdOvVCEg	195347294470672384
+@jscheur We find all our people via http://t.co/TyjWl9iY -- good luck!	195338693177901056
+@andy_pe_kr Thanks!	195337154090647552
+@austinbv What makes the files horrible? I love the routing DSL. Encapsulate and name related declarations is a great thing.	195231583995830272
+@richcollins The data should decide? If you consider the URL data, then that's what's happening.	195230221853671425
+@its_damo They will when I bake this into Rails shortly.	195228898374590464
+@adman65 instance_eval is great for these kind of config files where you don't want wrapper ceremony.	195223714277761026
+@TALlama I don't need to simplify them. They all do useful things. But just like you don't put all your models in one file...	195222760061022208
+How I tamed our 500-line routes.rb file in the new Basecamp: https://t.co/mtrsytY7	195221985691832320
+@AstonJ @bwwrd You're allowed more than one.	195194183403831296
+@AstonJ @bwwrd Of course it wouldn't, as evidenced by the overwhelming market support for Apple's products. Anyway, plz unsub me from thread	195193876590493696
+@AstonJ @bwwrd Most people use their browser on any kind of computing device. The browser is the most important app ever made.	195192655171428353
+@robzolkos Yes, it allows me to update people who care about minute-to-minute details on race day and to RT major announcements.	195008772459077632
+RT @dhhracing: The Morgan-Judd #35 car that I'll be driving next week in the 6 hours of Spa for @oakracinglive:  http://t.co/WYBNDgdB ht ...	194966552372711424
+@AstonJ The "game" being capitalism. Certainly Apple had and has higher aspirations than profits. See anything Job's ever wrote.	194920067408998400
+@buddhamagnet Yeah, it's a more sensible explanation that Apple has fooled the entire world than they're simply just better.	194914543451897857
+Net profit of $11.6 billion in one fucking quarter. What a triumph of capitalism: Make the best products, earn the most money. <3 <3 <3	194912721551097856
+The game is scored in profits: Apple just announced that they doubled Q2 profits y/y. Hard to comprehend a company being so fucking bad ass.	194912031026069504
+@jensenracing @BasLeinders I will have to make do :). I'm also the only one of the three without any Le Mans experience, so not all bad.	194877474088304642
+@coreybeaman You bet! Driving for OAK Racing in the #35.	194842285496733698
+@OfDubiousMeans Really? I thought it was an ode to being young and curious - kids excel at that! Ear muffins are overrated.	194484134477967360
+@obie @jameydavis @wycats I keep reading "won't somebody think of the newbies" articles and calls that stuff like coffee confuse them.	194469689982861313
+@obie @wycats A general talk like this is like a Rorschach. People take it to mean things they think it means.	194452803966615552
+@dougdrouillard Basecamp.	194258018643349504
+RT @rtomayko: FALSE DICHOTOMY of the week: "Hugs not drugs" http://t.co/PZEIcYjE	194216226485055488
+@isaacsanders I'm there Monday-Wednesday!	194139560672890882
+@CraigGrannell Give @davewiner a ring. He had the great piece on it this morning.	193472836105547776
+@DarthManning Ha, we need to triple those to keep an eye on people wearing the wrong logo on their cap!	193471863173812224
+The London Olympics appear to be even more locked down than the Beijing ones: http://t.co/zleXjg94 #whosthepolicestate	193453074797432833
+@johndagys @racemag John, the Danish magazine was @racemag :)	193411145909026817
+RT @johndagys: The World Wide Web Of DHH: http://t.co/WKIkaOvY @SPEED @ALMSNotes @DHH @DHHRacing @ConquestRacing @24HoursofLeMans @PLMot ...	193399551191826432
+@randylovin It's better to be the bundler than the bundled!	193388781016064000
+@tubbo All depends on the company, but for your vanilla startup shop? Probably not.	193388186779656193
+@base10 Because then they'd have to use real math. That's not nearly as useful if you're playing the bigger fool game.	193388036933959680
+Incubators are creating the CDO startups by luring in developers with teaser gold too (stock options!), sure to appreciate in value, right?	193386777359290368
+@dotnetchris CDOs had tangible value too: A claim on an underlaying house. Startups have less claim on their programmers.	193386049265864705
