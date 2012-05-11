@@ -1,0 +1,83 @@
+RT @chaliy: Anybody to speak about #erlang for #kievaltnet ? RT or suggest somebody	200920037991784450
+Found an interesting article by Pat Helland from last months #acm queue that I'd missed http://t.co/VwgRvrpN - it's on idempotence	200568900197433344
+Really interesting, short, talk about stuxnet http://t.co/TRCSexDY - sounds a really amazing feat of software dev.	200538738445651968
+RT @mikehadlow: Great post on how the rise of Cloud and PaaS is revolutionizing IT http://t.co/zp2cUlDS	199847939055689728
+No matter what I do, the form inexplicably (it gives no reason) fails validation - just asks me 'Please check if all fields are correct'	199846970217603072
+@Squire_Matt not personally. London has a healthy python community IIRC, there used to be regular dojos I think. Would be a gd place to look	199604756719738881
+@sarkie_dave that going back some :) Not that I know of, OOTB. Thinking about it, you'd almost want a git like repo with an index over it.	197384423711309824
+If #amazon want to make their windows #kindle reader more usable, let me run multiple instances, or at least have n books concurrently open.	197278770082750466
+So far it's been my background to coding for most of the day, & I'm still only just over half way through Siegfried.	195918594696163328
+@helephant we don't have a GUI, just an API, so it's easier. Plain old nunit for us.	195772779352702976
+& with that test suite all green I'm as certain as I can be, for now, that the bug I've been working on for the last 7 hours is fixed. Phew!	195644793416724480
+Best decision I made on my project of the last 15 months was to invest in acceptance tests. We have > 1600 now & they are our thin red line.	195644020440055808
+@tim_g_robinson when in the future I look for a new role, I'll want it to be in an environment where functional langs are typically used.	195618738169589760
+@tim_g_robinson I wish someone on the C# language team would :)	195618245137534976
+If #Microsoft had any respect for their developer community & customers they'd admit #tfs is a disaster & advise on & support migration away	195603167151525888
+@demisbellot most of the time, whatever I'm serialising shouldn't be mutated after deserialisation. Just used as input to a function.	195600303725363200
+@ashic I think that the day I've mastered Haskell like I have C# I'll have made it as a dev :)	195597524747296768
+@ashic I've been doing a fair bit of scheme & erlang recently & much prefer the simplicity of these langs so far.	195595883440648193
+@ashic yeah - I've made a few abortive attempts to get some Haskell on, I always get to a point where I just don't get it anymore.	195595753329135616
+@ashic if C# could support/recognise immutable types (& then optimise their usage in compiler) we'd have a massively better language.	195595055929626624
+@ashic definitely - the more I try and learn/use functional langs - the more I find cherished ideas on how I code challenged and overthrown.	195594740819963905
+@demisbellot I can see that, I've done similar for readability in a kind of builder - I guess these days named ctor arguments could be used.	195594439471800320
+@demisbellot If an object is just a typed tuple to be mutated however then fine, but if it's not used like that it should support its usage.	195592418685501441
+@demisbellot besides, using object initialiser ends up with more code in every usage than a ctor.	195592228725465088
+@demisbellot he should apply that to blog posts :) Balance has to be struck, but in langs like C# terseness is 2nd to understandability IMO	195591876542345216
+@demisbellot saving on typing always turns out to be the worst economy I find.	195590739076448256
+@demisbellot or that it's state is valid for usage (its preconditions fulfilled)	195590583031574528
+@demisbellot surely the ability to look at a type and know that after instantiation it won't be mutated is worth something?	195590472159334401
+@nbarnwell I can't understand why they would. Client fulfils pre-conditions, client get's post-conditions. Shouldn't care how it happens.	195589228682424320
+Write the class with an explicit ctor, readonly backing fields, and expose only necessary getters. == much easier to reason about.	195588597116702721
+Point in case: C# class, auto-properties, all set on construction, never after, all set using  an object initializer, no ctor. Why?	195588271793901569
+The necessity to ensure that code is easily reasoned about is massively underrated I find. Studying Meyer should be damn near obligatory.	195586497079029760
+@Cranialstrain @robashton @anthonysteele it depends a lot on what you want to learn & why - general programming, or a specific capability.	195090020338642945
+@_jimmys @RobAshton @Cranialstrain @AnthonySteele to be fair I've never seen a language that a dev couldn't make crap from :) #justsaying	195089729098760192
+@Cranialstrain agree - wasn't a dig at py for websites (more a dig at js for anything else - but that's another story)	195073062251675648
+@erujolc agreed - pretty sure that's already the case, think he knows some py already anyway	195072347735195648
+@Squire_Matt yep - bash certainly got mentioned	195062645462798336
+@shaochenyu the ruby you use when working with Chef (at least so far for me) is so trivial, it doesn't feel like you're working with a lang.	195060871255425024
+@shaochenyu I'd definitely recommend looking at chef - from my experiments with it, you don't really need to learn ruby to get going.	195060712245166081
+@xavierdecoster I'll talk to you on twitter when you come back to LLN and work here again :p	195057963831001088
+I was asked by a sysadmin yesterday whether he should learn python or javascript. I said python unless he wants to make websites. Opinions?	195057419678781441
+OH "I love the smell of powershell in the morning" - clearly my team have issues ;)	195056537264336896
+Installed silverlight 5 dev tools last night & now have to repair VisualStudio & reapply the service pack. I never get these issues w/emacs.	192561592922152960
+RT @natpryce: Designing software is difficult. But it's a hell of a lot easier than not designing software.	192556024350257153
+The evils that follow a sacrifice of good development practices & principles grow exponentially.	192305172184178688
+@hhariri just read it now - some good advice there. I have some backup on my Mac, but I should probably put something more substantial in.	192290583572787200
+My gmail is down with a '93' code :( Hope it's back soon.	192289613631594496
+RT @dkberman: Remember this day. 551-day-old Instagram is worth $1 billion. 116-year-old New York Times Co.: $967 million.	190763334616875008
+@ashic personally, the more I use package managers, the less I want to use package managers.	190103339483152384
+@stucampbell I did that in the pre-nuget world where everything was simpler if not always easier.	190126477449244672
+I just did a check-in and magically, the nuget packages folder got added to source control. Argggghhh!	190101387420504064
+@ashic tfs is all awesome - between it and lotus notes I'm guaranteed to have my mind blown every day!	190096298647625728
+How to do something as simple as a gitignore in #tfs? Google just throws up stupid answers on StackOverflow & not a lot else.	190086425679626240
+#TFS and #VisualStudio - even more awesome together! http://t.co/YtoJ0QRd	190082633106071553
+Sorry to keep on, but every time I have to write a detailed email in #LotusNotes I figure #IBM must *really* hate their customers.	187499141532880896
+RT @andistuder: watch Makoto Inoue on #dRuby as presented at @lrug @skillsmatter http://t.co/D3vIAvYu #websm	187481483232026625
+RT @ajlopez: How Emacs changed my life http://t.co/wzbWCINM by @yukihiro_matz	185127417994674176
+@jonharrop a maybe monad and don't divide by 0 - but I'm guessing you know that better than me & that I'm missing something in your question	185126509802041345
+Struggled a bit this evening getting my first compojure app running (still not) - but on the plus side, got my emacs setup a bit sweeter.	185124961642479617
+Installed the marmalade package manager for emacs. My emacs just got nicer. Happy.	185109048641859584
+RT @Squire_Matt: @NeilRobbins TFS should be taken down the back paddock and shot. Repeatedly.	185059091738140673
+It's scary to think, that in a world of github (let alone BitBucket & Launchpad), Microsoft think they can make money from hosted TFS.	184947824599896065
+@ptrelford hitting keys & running tests - that's the quick & easy bit regardless of language I find (but I'll grant fn'al can simplify)	184377475546099715
+@kellabyte where my original tweet came from was a view that all the nosql projects being written on JVM have reinvigorated its OSS big time	184373884013903873
+@kellabyte All these other things are just justifications for a worse technical option. And I get the superiority generally of CLR platform.	184373167484174336
+@kellabyte Yes there may be existing cultural attachments/skillsets/investments. But from a clean sheet PoV I can't think why not JVM.	184372938752016384
+@kellabyte I hear you, & accepting lots of what you're saying, still hold that CLR despite tech merits is a poor choice from tech PoV vs JVM	184372685525106689
+@kellabyte Absolutely, but I'd be interested to know the tech benefits that introducing CLR into a JVM world wins that pay for the costs?	184371027516723200
+@kellabyte But every piece of interop comes at a cost. That's why the first law of distributed systems is as it is, right?	184370698381299712
+@kellabyte but doesn't that imply distribution & as we know, that comes with many costs, not least latency, but also complexity	184370497012764672
+@kellabyte If you want to build something which, for instance, would benefit from a Java lib that's not on CLR only choice is costly interop	184370162571550720
+@kellabyte I don't think that argument transfers to the use of libraries. Even if you're using C++ with SQL Server you still use TDS interop	184369927065579520
+@kellabyte ... the quality of the libs & newer langs on the JVM give it the edge (a good edge at that) for a lot of things.	184369691689619457
+@kellabyte true, & there can be a myriad of non-technical reasons for picking one over other, but technically they're so similar I think...	184369518649425922
+@kellabyte much as I like the CLR, appreciate C# and increasingly F#, earn a crust with those techs & exist largely within that community	184366946588962816
+@kellabyte Can do that of course, but it comes at something of a cost I think relative to just using the JVM, esp. w/langs like scala now.	184366723460366336
+@kellabyte mistook the context for this tweet. Thought it was instapaper vs. delicious (hence my prior tweet)	184366365388447747
+Yet again, because of this, working in the CLR world - whatever the relative technical merits of CLR over JVM - feels like a poor relation.	184323775544819712
+Explosion of OSS libs & other progs in the JVM world born out of nosql systems seems to have revitalised JVM OSS beyond crappy enterprise.	184323384652480512
+Sites like this are just another reason why github adds so much more awesome on top of git http://t.co/Izy5bhqo	184317846942261248
+If you're wondering, right now that comes from looking at Storm & seeing it can leverage's Zookeeper. ++more examples out there though.	184324183176646657
+Ok #SQLServer people of the world. Somewhere between #Denali & 2012 RTM I lost the dmv dm_db_log_space_usage - any ideas?	184216102748954624
+RT @alastairs: Why is PowerShell remoting so complicated when SSH is so simple?	184316931539615746
