@@ -17,9 +17,11 @@ public class Dumper {
 
     public static void main(String[] args) throws TwitterException, FileNotFoundException {
 //        dump("NeilRobbins");
-        dump("wycats");
-        dump("DHH");
-        dump("ladygaga");
-        dump("PerezHilton");
+//        dump("wycats");
+//        dump("DHH");
+//        dump("ladygaga");
+//        dump("PerezHilton");
+//        dump("cnnbrk");
+//        dump("guardiannews");
     }
 }
