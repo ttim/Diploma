@@ -34,7 +34,7 @@ public class DotDatasetPreparer {
 
         System.out.println(userToTag);
 
-        output.println("@attribute category {" + Joiner.on(',').join(new HashSet<String>(userToTag.values())) + "}");
+        output.println("@attribute _result_category {" + Joiner.on(',').join(new HashSet<String>(userToTag.values())) + "}");
 
         output.println("@data");
 
@@ -52,7 +52,7 @@ public class DotDatasetPreparer {
         for (Status status : twitter.getUserTimeline(user, new Paging(1, 200))) {
             String text = status.getText().trim();
             // preprocess here? like removing replies etc?
-            text = text.replaceAll("'", "").replaceAll("\n", "");
+            text = text.replaceAll("'", "").replaceAll("[\\s]+", " ");
             output.println("'" + text + "', " + tag);
         }
     }
