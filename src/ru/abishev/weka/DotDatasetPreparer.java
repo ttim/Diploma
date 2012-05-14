@@ -1,6 +1,7 @@
 package ru.abishev.weka;
 
 import com.google.common.base.Joiner;
+import ru.abishev.utils.FileUtils;
 import twitter4j.*;
 
 import java.io.File;
@@ -10,13 +11,19 @@ import java.util.*;
 
 public class DotDatasetPreparer {
     public static void prepareData(File dataSetFile, File outputFile) throws FileNotFoundException, TwitterException, InterruptedException {
-        PrintWriter output = new PrintWriter(outputFile);
+        PrintWriter train = new PrintWriter(new File(outputFile.getAbsolutePath() + ".train.arff"));
+        PrintWriter test = new PrintWriter(new File(outputFile.getAbsolutePath() + ".test.arff"));
+        PrintWriter all = new PrintWriter(new File(outputFile.getAbsolutePath() + ".all.arff"));
 
-        output.println("@relation tweet-to-categories");
-        output.println("@attribute text string");
+        for (PrintWriter output : Arrays.asList(train, test, all)) {
+            output.println("@relation tweet-to-categories");
+            output.println("@attribute text string");
+        }
 
         // read dataset
         Map<String, String> userToTag = new HashMap<String, String>();
+        Map<String, Integer> userToTestCount = new HashMap<String, Integer>();
+        Map<String, Integer> userToTrainCount = new HashMap<String, Integer>();
         String currentTag = null;
 
         Scanner input = new Scanner(dataSetFile);
@@ -26,7 +33,14 @@ public class DotDatasetPreparer {
                 continue;
             }
             if (line.startsWith("\t")) {
-                userToTag.put(line.trim(), currentTag);
+                line = line.trim();
+                String[] es = line.split(" ");
+                if (es.length != 3) {
+                    throw new RuntimeException(es.toString());
+                }
+                userToTag.put(es[0], currentTag);
+                userToTrainCount.put(es[0], Integer.parseInt(es[1]));
+                userToTestCount.put(es[0], Integer.parseInt(es[2]));
             } else {
                 currentTag = line.trim();
             }
@@ -34,30 +48,48 @@ public class DotDatasetPreparer {
 
         System.out.println(userToTag);
 
-        output.println("@attribute _result_category {" + Joiner.on(',').join(new HashSet<String>(userToTag.values())) + "}");
-
-        output.println("@data");
-
-        for (Map.Entry<String, String> userToTagEntry : userToTag.entrySet()) {
-            addUser(output, userToTagEntry.getKey(), userToTagEntry.getValue());
-            Thread.sleep(1000*2);
+        for (PrintWriter output : Arrays.asList(train, test, all)) {
+            output.println("@attribute _result_category {" + Joiner.on(',').join(new HashSet<String>(userToTag.values())) + "}");
+            output.println("@data");
         }
 
-        output.close();
+
+        for (String user : userToTag.keySet()) {
+            addUser(train, test, all, user, userToTag.get(user), userToTrainCount.get(user), userToTestCount.get(user));
+        }
+
+        for (PrintWriter output : Arrays.asList(train, test, all)) {
+            output.close();
+        }
     }
 
-    private static void addUser(PrintWriter output, String user, String tag) throws TwitterException {
-        Twitter twitter = new TwitterFactory().getInstance();
-        System.out.println("Processing " + user + " user");
-        for (Status status : twitter.getUserTimeline(user, new Paging(1, 200))) {
-            String text = status.getText().trim();
-            // preprocess here? like removing replies etc?
-            text = text.replaceAll("'", "").replaceAll("[\\s]+", " ");
-            output.println("'" + text + "', " + tag);
+    private static void addUser(PrintWriter trainFile, PrintWriter testFile, PrintWriter allFile, String user, String tag, int trainCount, int testCount) throws TwitterException, FileNotFoundException {
+        // get all tweets text
+        List<String> tweets = new ArrayList<String>();
+        for (String rawTweet : FileUtils.readLines(new File("./train/tweets/" + user + ".tweets"))) {
+            if (rawTweet.contains("\t")) {
+                tweets.add(rawTweet.substring(0, rawTweet.lastIndexOf("\t")).trim().replaceAll("'", "").replaceAll("[\\s]+", " "));
+            } else {
+                System.out.println("!" + rawTweet);
+            }
+        }
+        Collections.shuffle(tweets);
+
+        if (tweets.size() < trainCount + testCount) {
+            throw new RuntimeException(user);
+        }
+
+        for (int i = 0; i < trainCount; i++) {
+            trainFile.println("'" + tweets.get(i) + "', " + tag);
+            allFile.println("'" + tweets.get(i) + "', " + tag);
+        }
+        for (int i = trainCount; i < trainCount + testCount; i++) {
+            testFile.println("'" + tweets.get(i) + "', " + tag);
+            allFile.println("'" + tweets.get(i) + "', " + tag);
         }
     }
 
     public static void main(String[] args) throws FileNotFoundException, TwitterException, InterruptedException {
-        prepareData(new File("./train/thematic.dataset"), new File("./train/thematic.arff"));
+        prepareData(new File("./train/datasets/thematic.dataset"), new File("./train/thematic"));
     }
 }

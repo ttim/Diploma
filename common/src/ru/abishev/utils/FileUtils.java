@@ -2,7 +2,10 @@ package ru.abishev.utils;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
 public class FileUtils {
     public static class Chunk {
@@ -96,6 +99,15 @@ public class FileUtils {
                 }
             }
         };
+    }
+
+    public static List<String> readLines(File file) throws FileNotFoundException {
+        Scanner input = new Scanner(file);
+        List<String> result = new ArrayList<String>();
+        while (input.hasNextLine()) {
+            result.add(input.nextLine());
+        }
+        return result;
     }
 
     public static void main(String[] args) throws FileNotFoundException {
