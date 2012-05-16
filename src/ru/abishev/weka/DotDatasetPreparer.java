@@ -20,42 +20,18 @@ public class DotDatasetPreparer {
             output.println("@attribute text string");
         }
 
-        // read dataset
-        Map<String, String> userToTag = new HashMap<String, String>();
-        Map<String, Integer> userToTestCount = new HashMap<String, Integer>();
-        Map<String, Integer> userToTrainCount = new HashMap<String, Integer>();
-        String currentTag = null;
-
-        Scanner input = new Scanner(dataSetFile);
-        while (input.hasNextLine()) {
-            String line = input.nextLine();
-            if (line.trim().isEmpty()) {
-                continue;
-            }
-            if (line.startsWith("\t")) {
-                line = line.trim();
-                String[] es = line.split(" ");
-                if (es.length != 3) {
-                    throw new RuntimeException(es.toString());
-                }
-                userToTag.put(es[0], currentTag);
-                userToTrainCount.put(es[0], Integer.parseInt(es[1]));
-                userToTestCount.put(es[0], Integer.parseInt(es[2]));
-            } else {
-                currentTag = line.trim();
-            }
-        }
-
-        System.out.println(userToTag);
+        UsersDataset dataset = new UsersDataset(dataSetFile);
+        System.out.println(dataset.userToTag);
 
         for (PrintWriter output : Arrays.asList(train, test, all)) {
-            output.println("@attribute _result_category {" + Joiner.on(',').join(new HashSet<String>(userToTag.values())) + "}");
+            output.println("@attribute _result_category {" + Joiner.on(',').join(new HashSet<String>(dataset.userToTag.values())) + "}");
             output.println("@data");
         }
 
 
-        for (String user : userToTag.keySet()) {
-            addUser(train, test, all, user, userToTag.get(user), userToTrainCount.get(user), userToTestCount.get(user));
+        for (String user : dataset.userToTag.keySet()) {
+            addUser(train, test, all, user,
+                    dataset.userToTag.get(user), dataset.userToTrainCount.get(user), dataset.userToTestCount.get(user));
         }
 
         for (PrintWriter output : Arrays.asList(train, test, all)) {
