@@ -23,6 +23,7 @@ public class SimpleClassifierTester {
     }
 
     public static void evalForClassifier(String classifierName, File train, File test, Filter stringToVector) throws Exception {
+        System.out.println(classifierName);
         ClassifierTesterUtils.evalForClassifier(getSimpleClassifier(classifierName), train, test, stringToVector);
     }
 
