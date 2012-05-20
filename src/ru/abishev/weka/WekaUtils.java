@@ -1,27 +1,23 @@
 package ru.abishev.weka;
 
-import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
-import weka.filters.unsupervised.attribute.StringToWordVector;
 
 import java.io.*;
 
 public class WekaUtils {
-    public static Instances[] useSimpleWordsModel(Instances... instancesArray) throws Exception {
-        StringToWordVector stringToWordVector = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
-        stringToWordVector.setAttributeIndices((instancesArray[0].attribute("text").index() + 1) + "");
-        stringToWordVector.setInputFormat(instancesArray[0]);
+    public static Instances[] useSimpleWordsModel(Filter stringToVectorTransform, Instances... instancesArray) throws Exception {
+        stringToVectorTransform.setInputFormat(instancesArray[0]);
 
         for (Instances instances : instancesArray) {
-            Filter.useFilter(instances, stringToWordVector);
+            Filter.useFilter(instances, stringToVectorTransform);
         }
 
         Instances[] result = new Instances[instancesArray.length];
         for (int i = 0; i < instancesArray.length; i++) {
-            result[i] = Filter.useFilter(instancesArray[i], stringToWordVector);
+            result[i] = Filter.useFilter(instancesArray[i], stringToVectorTransform);
         }
         return result;
     }
