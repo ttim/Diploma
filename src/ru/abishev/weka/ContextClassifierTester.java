@@ -12,8 +12,6 @@ public class ContextClassifierTester {
     public static Classifier getContextClassifier(String baseClassifierName, String clustererName, Filter stringToVector) {
         Classifier baseClassifier = SimpleClassifierTester.getSimpleClassifier(baseClassifierName);
         Clusterer clusterer = (Clusterer) WekaUtils.readObjectFromFile(new File("./weka/clusterers/" + clustererName));
-
-        // todo: add to clusterer ignoring of two first attributes!
         return new ContextClassifier(baseClassifier, clusterer, stringToVector);
     }
 

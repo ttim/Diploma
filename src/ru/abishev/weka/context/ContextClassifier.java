@@ -1,14 +1,19 @@
 package ru.abishev.weka.context;
 
+import com.google.common.base.Joiner;
+import ru.abishev.twitter.UserTweets;
+import ru.abishev.weka.WekaUtils;
+import ru.abishev.weka.preparearff.UsersDataset;
 import weka.classifiers.Classifier;
 import weka.clusterers.Clusterer;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.filters.Filter;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintWriter;
+import java.io.StringReader;
+import java.util.*;
 
 public class ContextClassifier extends Classifier {
     private final Classifier classifier;
@@ -17,8 +22,9 @@ public class ContextClassifier extends Classifier {
     private final Map<String, ClustersContext> userToClusters = new HashMap<String, ClustersContext>();
 
     public ContextClassifier(Classifier classifier, Clusterer clusterer, Filter stringToVector) {
-        // input to everything - with _user field
-        this.classifier = classifier;
+        // input to classifier - with _user field // for use old classifiers
+        // input to clusterer - without any garbage, only text
+        this.classifier = new CachedClassifier(classifier);
         this.clusterer = clusterer;
         this.stringToVector = stringToVector;
     }
@@ -28,18 +34,36 @@ public class ContextClassifier extends Classifier {
         classifier.buildClassifier(data);
     }
 
+    private String createDatasetForUser(String user) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintWriter output = new PrintWriter(outputStream);
+
+        output.println("@relation tweet-to-categories");
+        output.println("@attribute _current_user string");
+        output.println("@attribute text string");
+        output.println("@attribute _result_category {category}");
+        output.println("@data");
+
+        for (String text : UserTweets.getUserTweetsTexts(user)) {
+            String instance = "'" + user + "'" + "," + "'" + text.replaceAll("'", "") + "', " + "category";
+            output.println(instance);
+        }
+
+        output.close();
+
+        return outputStream.toString();
+    }
+
     @Override
     public double classifyInstance(Instance tweet) throws Exception {
         String user = tweet.stringValue(0);
 
         if (!userToClusters.containsKey(user)) {
-            // prepare user tweets
-
-            // should be as everything else
-
-            Instances tweets = null;
-
-            userToClusters.put(user, new ClustersContext(tweets, clusterer));
+            String tweets = createDatasetForUser(user);
+            Instances instances = new Instances(new StringReader(tweets));
+            instances = Filter.useFilter(instances, stringToVector);
+            WekaUtils.setupClass(instances);
+            userToClusters.put(user, new ClustersContext(user, instances, clusterer));
         }
 
         List<Instance> context = userToClusters.get(user).getContextInstances(tweet);
