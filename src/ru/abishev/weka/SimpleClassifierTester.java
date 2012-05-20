@@ -31,10 +31,14 @@ public class SimpleClassifierTester {
     public static void main(String[] args) throws Exception {
         System.out.println("precision\trecall\tfmeasure");
 
-        // with simple text model
         System.out.println("dataset1");
         evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
+        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
+
+        System.out.println();
+
         System.out.println("dataset2");
         evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
+        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
     }
 }
