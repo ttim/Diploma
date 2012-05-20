@@ -38,10 +38,10 @@ public class WekaUtils {
     }
 
     public static void printEvalStat(Evaluation eval) throws Exception {
-        System.out.println("Summary string");
-        System.out.println(eval.toSummaryString());
-        System.out.println("Matrix string");
-        System.out.println(eval.toMatrixString());
+//        System.out.println("Summary string");
+//        System.out.println(eval.toSummaryString());
+//        System.out.println("Matrix string");
+//        System.out.println(eval.toMatrixString());
         System.out.println("Class details string");
         System.out.println(eval.toClassDetailsString());
     }

@@ -65,6 +65,6 @@ public class SimpleClassifierTester {
 
     public static void main(String[] args) throws Exception {
         evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"));
-//        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"));
+        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"));
     }
 }
