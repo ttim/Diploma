@@ -17,6 +17,7 @@ public class CachedClassifier extends Classifier {
 
     @Override
     public void buildClassifier(Instances data) throws Exception {
+        cache.clear();
         inner.buildClassifier(data);
     }
 

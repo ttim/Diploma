@@ -32,6 +32,7 @@ public class ContextClassifier extends Classifier {
 
     @Override
     public void buildClassifier(Instances data) throws Exception {
+        userToClusters.clear();
         classifier.buildClassifier(data);
     }
 
