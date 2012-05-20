@@ -3,12 +3,11 @@ package ru.abishev.weka;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
 import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.Remove;
 
 import java.io.*;
 
 public class WekaUtils {
-    public static Instances[] useSimpleWordsModel(Filter stringToVectorTransform, Instances... instancesArray) throws Exception {
+    public static Instances[] useWordsModel(Filter stringToVectorTransform, Instances... instancesArray) throws Exception {
         stringToVectorTransform.setInputFormat(instancesArray[0]);
 
         for (Instances instances : instancesArray) {
@@ -20,13 +19,6 @@ public class WekaUtils {
             result[i] = Filter.useFilter(instancesArray[i], stringToVectorTransform);
         }
         return result;
-    }
-
-    public static Instances removeCurrentUserInfo(Instances instances) throws Exception {
-        Remove removeUserInfo = new Remove();
-        removeUserInfo.setAttributeIndices((instances.attribute("_current_user").index() + 1) + "");
-        removeUserInfo.setInputFormat(instances);
-        return Filter.useFilter(instances, removeUserInfo);
     }
 
     public static void setupClass(Instances instances) {

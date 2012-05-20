@@ -13,18 +13,19 @@ import static ru.abishev.weka.WekaUtils.*;
 import static ru.abishev.weka.WekaUtils.printEvalStat;
 
 public class ClassifierTesterUtils {
-    public static final Filter SIMPLE_STRING_TO_VECTOR = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
-//        stringToVectorTransform.setAttributeIndices((instancesArray[0].attribute("text").index() + 1) + "");
+    public static final StringToWordVector SIMPLE_STRING_TO_VECTOR = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
+    static {
+        SIMPLE_STRING_TO_VECTOR.setAttributeIndices("2");
+    }
 
     private static Instances[] readInstances(Filter stringToVectorFilter, File... files) throws Exception {
         Instances[] result = new Instances[files.length];
 
         for (int i = 0; i < files.length; i++) {
             result[i] = read(files[i]);
-            result[i] = removeCurrentUserInfo(result[i]);
         }
 
-        result = useSimpleWordsModel(stringToVectorFilter, result);
+        result = useWordsModel(stringToVectorFilter, result);
 
         for (Instances instances : result) {
             setupClass(instances);
@@ -53,11 +54,9 @@ public class ClassifierTesterUtils {
     }
 
 
-    public static void evalForClassifier(String classifierName, File train, File test, Filter stringToVectorFilter) throws Exception {
-        File classifierFile = new File("./weka/classifiers/" + classifierName);
-        System.out.println(classifierName);
-        testClassifierWithTest((Classifier) readObjectFromFile(classifierFile), train, test, stringToVectorFilter);
-        testClassifierCrossValidation((Classifier) readObjectFromFile(classifierFile), train, stringToVectorFilter);
+    public static void evalForClassifier(Classifier classifier, File train, File test, Filter stringToVectorFilter) throws Exception {
+        testClassifierWithTest(classifier, train, test, stringToVectorFilter);
+        testClassifierCrossValidation(classifier, train, stringToVectorFilter);
         System.out.println("======================================");
         System.out.println();
     }
