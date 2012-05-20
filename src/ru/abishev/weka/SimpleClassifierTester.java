@@ -32,7 +32,7 @@ public class SimpleClassifierTester {
         System.out.println("precision\trecall\tfmeasure");
 
         System.out.println("dataset1");
-        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
+//        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
         evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
 
         System.out.println();

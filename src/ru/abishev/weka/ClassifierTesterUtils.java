@@ -15,7 +15,7 @@ import static ru.abishev.weka.WekaUtils.printEvalStat;
 
 public class ClassifierTesterUtils {
     public static final StringToWordVector SIMPLE_STRING_TO_VECTOR = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
-    public static final Filter WIKI_STRING_TO_VECTOR = new WikiTextModel("text");
+    public static final Filter WIKI_STRING_TO_VECTOR = new WikiTextModel("text", 3);
 
     static {
         SIMPLE_STRING_TO_VECTOR.setAttributeIndices("2");
@@ -28,11 +28,11 @@ public class ClassifierTesterUtils {
             result[i] = read(files[i]);
         }
 
-        result = useWordsModel(stringToVectorFilter, result);
-
         for (Instances instances : result) {
             setupClass(instances);
         }
+
+        result = useWordsModel(stringToVectorFilter, result);
 
         return result;
     }
