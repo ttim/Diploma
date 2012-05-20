@@ -58,7 +58,7 @@ public class WekaUtils {
         }
     }
 
-    private static Object readObjectFromFile(File file) {
+    public static Object readObjectFromFile(File file) {
         try {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(file));
             Object object = input.readObject();

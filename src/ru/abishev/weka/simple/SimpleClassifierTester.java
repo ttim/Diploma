@@ -1,5 +1,6 @@
 package ru.abishev.weka.simple;
 
+import ru.abishev.weka.WekaUtils;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
@@ -48,12 +49,18 @@ public class SimpleClassifierTester {
     }
 
 
-    public static void evalForFiles(File train, File test) throws Exception {
-        System.out.println("Naive bayes");
-        testClassifierCrossValidation(new NaiveBayes(), train);
+    public static void evalForClassifier(String classifierName, File train, File test) throws Exception {
+        System.out.println(classifierName);
         testClassifierWithTest(new NaiveBayes(), train, test);
+        testClassifierCrossValidation((Classifier) WekaUtils.readObjectFromFile(new File("./weka/classifiers/" + classifierName)), train);
         System.out.println("======================================");
         System.out.println();
+    }
+
+    public static void evalForFiles(File train, File test) throws Exception {
+        evalForClassifier("naivebayes", train, test);
+        evalForClassifier("svm", train, test);
+        evalForClassifier("j48", train, test);
     }
 
     public static void main(String[] args) throws Exception {
