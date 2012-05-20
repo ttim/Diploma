@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ClustersContext {
+public class ClustersContext implements Serializable {
     // everything here with _user field
     // but clusterer knows about it too
     private final Clusterer clusterer;

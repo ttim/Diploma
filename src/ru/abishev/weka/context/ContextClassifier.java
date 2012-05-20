@@ -17,10 +17,10 @@ import java.io.StringReader;
 import java.util.*;
 
 public class ContextClassifier extends Classifier {
-    private final Classifier classifier;
-    private final Clusterer clusterer;
-    private final Filter stringToVector;
-    private final Map<String, ClustersContext> userToClusters = new HashMap<String, ClustersContext>();
+    private Classifier classifier;
+    private Clusterer clusterer;
+    private Filter stringToVector;
+    private Map<String, ClustersContext> userToClusters = new HashMap<String, ClustersContext>();
 
     public ContextClassifier(Classifier classifier, Clusterer clusterer, Filter stringToVector) {
         // input to classifier - with _user field // for use old classifiers
