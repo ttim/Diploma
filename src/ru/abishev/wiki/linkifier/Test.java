@@ -1,8 +1,5 @@
 package ru.abishev.wiki.linkifier;
 
-import ru.abishev.twitter.Tweets;
-import twitter4j.Status;
-
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +26,9 @@ public class Test {
     public static void main(String[] args) throws FileNotFoundException {
         testText("Nice source of Ruby-relevant Smalltalk articles: The Smalltalk Report");
 
-        for (Status s : Tweets.DHH_200_TWEETS) {
-            testText(s.getText());
-            System.out.println();
-        }
+//        for (Status s : Tweets.DHH_200_TWEETS) {
+//            testText(s.getText());
+//            System.out.println();
+//        }
     }
 }

@@ -1,6 +1,7 @@
 package ru.abishev.weka;
 
 import com.google.common.base.Joiner;
+import ru.abishev.twitter.UserTweets;
 import ru.abishev.utils.FileUtils;
 import twitter4j.*;
 
@@ -41,14 +42,7 @@ public class DotDatasetPreparer {
 
     private static void addUser(PrintWriter trainFile, PrintWriter testFile, PrintWriter allFile, String user, String tag, int trainCount, int testCount) throws TwitterException, FileNotFoundException {
         // get all tweets text
-        List<String> tweets = new ArrayList<String>();
-        for (String rawTweet : FileUtils.readLines(new File("./train/tweets/" + user + ".tweets"))) {
-            if (rawTweet.contains("\t")) {
-                tweets.add(rawTweet.substring(0, rawTweet.lastIndexOf("\t")).trim().replaceAll("'", "").replaceAll("[\\s]+", " "));
-            } else {
-                System.out.println("!" + rawTweet);
-            }
-        }
+        List<String> tweets = UserTweets.getUserTweetsTexts(user);
         Collections.shuffle(tweets);
 
         if (tweets.size() < trainCount + testCount) {
@@ -66,6 +60,7 @@ public class DotDatasetPreparer {
     }
 
     public static void main(String[] args) throws FileNotFoundException, TwitterException, InterruptedException {
-        prepareData(new File("./train/datasets/thematic.dataset"), new File("./train/thematic"));
+//        prepareData(new File("./train/datasets/thematic.dataset"), new File("./train/thematic"));
+        prepareData(new File("./train/datasets/usernewscompany.dataset"), new File("./train/usernewscompany"));
     }
 }

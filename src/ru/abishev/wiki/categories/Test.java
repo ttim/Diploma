@@ -1,10 +1,7 @@
 package ru.abishev.wiki.categories;
 
-import ru.abishev.twitter.Tweets;
 import ru.abishev.wiki.categories.data.Category;
 import ru.abishev.wiki.linkifier.*;
-import twitter4j.Status;
-import twitter4j.Tweet;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -39,11 +36,6 @@ public class Test {
 //                pages.add(anchor.pageId);
 //            }
 //        }
-        for (Tweet tweet : Tweets.VISUAL_STUDIO_HASHTAG_TWEETS) {
-            for (AnchorStatistic anchor : linkifier.linkify(tweet.getText())) {
-                pages.add(anchor.pageId);
-            }
-        }
 
         System.out.println("Pages count: " + pages.size());
 
