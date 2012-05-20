@@ -1,7 +1,6 @@
-package ru.abishev.weka;
+package ru.abishev.weka.preparearff;
 
 import com.google.common.base.Joiner;
-import ru.abishev.utils.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;

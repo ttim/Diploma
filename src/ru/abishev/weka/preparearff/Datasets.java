@@ -1,4 +1,4 @@
-package ru.abishev.weka;
+package ru.abishev.weka.preparearff;
 
 import java.util.Arrays;
 import java.util.List;

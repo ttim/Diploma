@@ -1,4 +1,4 @@
-package ru.abishev.weka;
+package ru.abishev.weka.preparearff;
 
 import java.io.File;
 import java.io.FileNotFoundException;

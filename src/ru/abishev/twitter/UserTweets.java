@@ -39,7 +39,7 @@ public class UserTweets {
     public static List<String> getUserTweetsTexts(String screenName) {
         List<String> texts = new ArrayList<String>();
         for (Status status : getUserTweets(screenName)) {
-            texts.add(status.getText().replaceAll("[\\s]+", " ") + "\t" + status.getId());
+            texts.add(status.getText().replaceAll("[\\s]+", " "));
         }
         return texts;
     }

@@ -1,8 +1,7 @@
-package ru.abishev.weka;
+package ru.abishev.weka.preparearff;
 
 import com.google.common.base.Joiner;
 import ru.abishev.twitter.UserTweets;
-import ru.abishev.utils.FileUtils;
 import twitter4j.*;
 
 import java.io.File;
@@ -18,6 +17,7 @@ public class DotDatasetPreparer {
 
         for (PrintWriter output : Arrays.asList(train, test, all)) {
             output.println("@relation tweet-to-categories");
+            output.println("@attribute _current_user string");
             output.println("@attribute text string");
         }
 
@@ -50,17 +50,19 @@ public class DotDatasetPreparer {
         }
 
         for (int i = 0; i < trainCount; i++) {
-            trainFile.println("'" + tweets.get(i) + "', " + tag);
-            allFile.println("'" + tweets.get(i) + "', " + tag);
+            String instance = "'" + user + "'" + "," + "'" + tweets.get(i).replaceAll("'", "") + "', " + tag;
+            trainFile.println(instance);
+            allFile.println(instance);
         }
         for (int i = trainCount; i < trainCount + testCount; i++) {
-            testFile.println("'" + tweets.get(i) + "', " + tag);
-            allFile.println("'" + tweets.get(i) + "', " + tag);
+            String instance = "'" + user + "'" + "," + "'" + tweets.get(i).replaceAll("'", "") + "', " + tag;
+            testFile.println(instance);
+            allFile.println(instance);
         }
     }
 
     public static void main(String[] args) throws FileNotFoundException, TwitterException, InterruptedException {
-//        prepareData(new File("./train/datasets/thematic.dataset"), new File("./train/thematic"));
+        prepareData(new File("./train/datasets/thematic.dataset"), new File("./train/thematic"));
         prepareData(new File("./train/datasets/usernewscompany.dataset"), new File("./train/usernewscompany"));
     }
 }
