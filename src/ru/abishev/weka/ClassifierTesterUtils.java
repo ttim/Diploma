@@ -36,9 +36,9 @@ public class ClassifierTesterUtils {
 
     public static void testClassifierCrossValidation(Classifier classifier, File instancesFile, Filter stringToVectorFilter) throws Exception {
         Instances instances = readInstances(stringToVectorFilter, instancesFile)[0];
-        System.out.println("10% cross validation evaluation");
+        System.out.println("25% cross validation evaluation");
         Evaluation eval = new Evaluation(instances);
-        eval.crossValidateModel(classifier, instances, 10, new Random(1));
+        eval.crossValidateModel(classifier, instances, 4, new Random(1));
         printEvalStat(eval);
     }
 
