@@ -17,9 +17,29 @@ public class ClustersContext {
     // but clusterer knows about it too
     private final Clusterer clusterer;
 
-    private final Map<Integer, List<Instance>> clusters = new HashMap<Integer, List<Instance>>();
+    private Map<Integer, List<Instance>> clusters = new HashMap<Integer, List<Instance>>();
+
+    private File getCacheFile(String userName, Instances userTweets, Clusterer clusterer) throws IOException {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
+        objectOutputStream.writeObject(userName);
+        objectOutputStream.writeObject(userTweets);
+        objectOutputStream.writeObject(clusterer);
+        objectOutputStream.close();
+
+        return new File("./data/clusters_cache/" + userName + "_" + output.toString().hashCode());
+    }
 
     public ClustersContext(String userName, Instances userTweets, Clusterer clusterer) throws Exception {
+        File cache = getCacheFile(userName, userTweets, clusterer);
+        if (cache.exists()) {
+            ObjectInputStream input = new ObjectInputStream(new FileInputStream(cache));
+            this.clusterer = (Clusterer) input.readObject();
+            this.clusters = (Map<Integer, List<Instance>>) input.readObject();
+            input.close();
+            return;
+        }
+
         FilteredClusterer filteredClusterer = new FilteredClusterer();
         filteredClusterer.setClusterer(cloneClusterer(clusterer));
         Remove remove = new Remove();
@@ -41,6 +61,12 @@ public class ClustersContext {
         }
 
         System.out.println("Builded clusters context for " + userName);
+
+        // write to cache
+        ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(cache));
+        output.writeObject(this.clusterer);
+        output.writeObject(this.clusters);
+        output.close();
     }
 
     public List<Instance> getContextInstances(Instance tweet) throws Exception {
