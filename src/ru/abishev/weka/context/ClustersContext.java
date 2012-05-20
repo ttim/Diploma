@@ -37,6 +37,7 @@ public class ClustersContext {
             this.clusterer = (Clusterer) input.readObject();
             this.clusters = (Map<Integer, List<Instance>>) input.readObject();
             input.close();
+            System.out.println("Loaded clusters context for " + userName);
             return;
         }
 
