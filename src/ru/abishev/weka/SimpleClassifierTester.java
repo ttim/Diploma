@@ -3,7 +3,6 @@ package ru.abishev.weka;
 import weka.classifiers.Classifier;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.Remove;
 
 import java.io.*;
 
@@ -11,12 +10,9 @@ public class SimpleClassifierTester {
     public static Classifier getSimpleClassifier(String classifierName) {
         Classifier classifier = (Classifier) WekaUtils.readObjectFromFile(new File("./weka/classifiers/" + classifierName));
 
-        Remove removeUserInfo = new Remove();
-        removeUserInfo.setAttributeIndices("1");
-
         FilteredClassifier filteredClassifier = new FilteredClassifier();
         filteredClassifier.setClassifier(classifier);
-        filteredClassifier.setFilter(removeUserInfo);
+        filteredClassifier.setFilter(WekaUtils.getRemovingFilter());
 
         return filteredClassifier;
 //        return classifier;

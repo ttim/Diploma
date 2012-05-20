@@ -3,10 +3,17 @@ package ru.abishev.weka;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
 import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.Remove;
 
 import java.io.*;
 
 public class WekaUtils {
+    public static Filter getRemovingFilter() {
+        Remove removeUserInfo = new Remove();
+        removeUserInfo.setAttributeIndices("1");
+        return removeUserInfo;
+    }
+
     public static Instances[] useWordsModel(Filter stringToVectorTransform, Instances... instancesArray) throws Exception {
         stringToVectorTransform.setInputFormat(instancesArray[0]);
 
