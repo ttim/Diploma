@@ -11,6 +11,7 @@ import weka.core.Instances;
 import weka.filters.Filter;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.util.*;
@@ -34,7 +35,7 @@ public class ContextClassifier extends Classifier {
         classifier.buildClassifier(data);
     }
 
-    private String createDatasetForUser(String user) {
+    private static String createDatasetForUser(String user) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintWriter output = new PrintWriter(outputStream);
 
@@ -45,7 +46,7 @@ public class ContextClassifier extends Classifier {
         output.println("@data");
 
         for (String text : UserTweets.getUserTweetsTexts(user)) {
-            String instance = "'" + user + "'" + "," + "'" + text.replaceAll("'", "") + "', " + "category";
+            String instance = "'" + user + "'" + "," + "'" + text.replaceAll("[\\\\]", " ").replaceAll("'", "") + "', " + "category";
             output.println(instance);
         }
 
@@ -87,5 +88,11 @@ public class ContextClassifier extends Classifier {
             }
         }
         return maxKey;
+    }
+
+    public static void main(String[] args) throws IOException {
+        String tweets = createDatasetForUser("pzmyers");
+        System.out.println(tweets);
+        Instances instances = new Instances(new StringReader(tweets));
     }
 }
