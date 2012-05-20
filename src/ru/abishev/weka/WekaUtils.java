@@ -32,13 +32,28 @@ public class WekaUtils {
         instances.setClass(instances.attribute("_result_category"));
     }
 
-    public static void printEvalStat(Evaluation eval) throws Exception {
+    public static void printEvalStat(Evaluation eval, Instances data) throws Exception {
 //        System.out.println("Summary string");
 //        System.out.println(eval.toSummaryString());
 //        System.out.println("Matrix string");
 //        System.out.println(eval.toMatrixString());
-        System.out.println("Class details string");
-        System.out.println(eval.toClassDetailsString());
+//        System.out.println("Class details string");
+//        System.out.println(eval.toClassDetailsString());
+
+        // calc average precision
+        int numClasses = data.numClasses();
+        double precision = 0, recall = 0, fmeasure = 0;
+        for (int i = 0; i < numClasses; i++) {
+            precision += eval.precision(i);
+            recall += eval.recall(i);
+            fmeasure += eval.fMeasure(i);
+        }
+        precision /= numClasses;
+        recall /= numClasses;
+        fmeasure /= numClasses;
+
+        System.out.printf("%.3f\t%.3f\t%.3f%n", precision, recall, fmeasure);
+
     }
 
     public static Instances read(File file) {

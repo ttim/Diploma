@@ -14,6 +14,7 @@ import static ru.abishev.weka.WekaUtils.printEvalStat;
 
 public class ClassifierTesterUtils {
     public static final StringToWordVector SIMPLE_STRING_TO_VECTOR = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
+
     static {
         SIMPLE_STRING_TO_VECTOR.setAttributeIndices("2");
     }
@@ -34,30 +35,29 @@ public class ClassifierTesterUtils {
         return result;
     }
 
-    public static void testClassifierCrossValidation(Classifier classifier, File instancesFile, Filter stringToVectorFilter) throws Exception {
+    public static void testClassifierCrossValidation(String classifierPrintName, Classifier classifier, File instancesFile, Filter stringToVectorFilter) throws Exception {
         Instances instances = readInstances(stringToVectorFilter, instancesFile)[0];
-        System.out.println("25% cross validation evaluation");
+        System.out.println(classifierPrintName + " / " + "25% cross validation evaluation");
         Evaluation eval = new Evaluation(instances);
         eval.crossValidateModel(classifier, instances, 4, new Random(1));
-        printEvalStat(eval);
+        printEvalStat(eval, instances);
     }
 
-    public static void testClassifierWithTest(Classifier classifier, File instancesForTrain, File instancesForTest, Filter stringToVectorFilter) throws Exception {
+    public static void testClassifierWithTest(String classifierPrintName, Classifier classifier, File instancesForTrain, File instancesForTest, Filter stringToVectorFilter) throws Exception {
         Instances[] result = readInstances(stringToVectorFilter, instancesForTrain, instancesForTest);
         Instances trainInstances = result[0], testInstances = result[1];
 
-        System.out.println("with test evaluation");
+        System.out.println(classifierPrintName + " / " + "with test evaluation");
         Evaluation eval = new Evaluation(trainInstances);
         classifier.buildClassifier(trainInstances);
         eval.evaluateModel(classifier, testInstances);
-        printEvalStat(eval);
+        printEvalStat(eval, trainInstances);
     }
 
 
-    public static void evalForClassifier(Classifier classifier, File train, File test, Filter stringToVectorFilter) throws Exception {
-        testClassifierWithTest(classifier, train, test, stringToVectorFilter);
-        testClassifierCrossValidation(classifier, train, stringToVectorFilter);
-        System.out.println("======================================");
+    public static void evalForClassifier(String classifierPrintName, Classifier classifier, File train, File test, Filter stringToVectorFilter) throws Exception {
+        testClassifierWithTest(classifierPrintName, classifier, train, test, stringToVectorFilter);
+        testClassifierCrossValidation(classifierPrintName, classifier, train, stringToVectorFilter);
         System.out.println();
     }
 }

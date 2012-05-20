@@ -37,7 +37,7 @@ public class ClustersContext implements Serializable {
             this.clusterer = (Clusterer) input.readObject();
             this.clusters = (Map<Integer, List<Instance>>) input.readObject();
             input.close();
-            System.out.println("Loaded clusters context for " + userName);
+//            System.out.println("Loaded clusters context for " + userName);
             return;
         }
 
@@ -61,7 +61,7 @@ public class ClustersContext implements Serializable {
             clusters.get(cluster).add(instance);
         }
 
-        System.out.println("Builded clusters context for " + userName);
+//        System.out.println("Builded clusters context for " + userName);
 
         // write to cache
         ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(cache));

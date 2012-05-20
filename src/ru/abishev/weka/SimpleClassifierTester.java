@@ -18,19 +18,23 @@ public class SimpleClassifierTester {
 //        return classifier;
     }
 
-    public static void evalForClassifier(String classifierName, File train, File test, Filter stringToVector) throws Exception {
-        System.out.println(classifierName);
-        ClassifierTesterUtils.evalForClassifier(getSimpleClassifier(classifierName), train, test, stringToVector);
+    public static void evalForClassifier(String classifierName, File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
+        ClassifierTesterUtils.evalForClassifier("simple / " + textModelPrintName + " / " + classifierName, getSimpleClassifier(classifierName), train, test, stringToVector);
     }
 
-    public static void evalForFiles(File train, File test, Filter stringToVector) throws Exception {
-        evalForClassifier("naivebayes", train, test, stringToVector);
-        evalForClassifier("svm", train, test, stringToVector);
-        evalForClassifier("j48", train, test, stringToVector);
+    public static void evalForFiles(File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
+        evalForClassifier("naivebayes", train, test, stringToVector, textModelPrintName);
+        evalForClassifier("svm", train, test, stringToVector, textModelPrintName);
+        evalForClassifier("j48", train, test, stringToVector, textModelPrintName);
     }
 
     public static void main(String[] args) throws Exception {
-        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR);
-        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR);
+        System.out.println("precision\trecall\tfmeasure");
+
+        // with simple text model
+        System.out.println("dataset1");
+        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
+        System.out.println("dataset2");
+        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
     }
 }
