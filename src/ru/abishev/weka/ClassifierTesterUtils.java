@@ -1,9 +1,13 @@
 package ru.abishev.weka;
 
+import ru.abishev.weka.wikitextmodel.LinkifierAlgo;
 import ru.abishev.weka.wikitextmodel.WikiTextModel;
+import ru.abishev.wiki.linkifier.Linkifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
+import weka.core.stemmers.Stemmer;
+import weka.core.tokenizers.Tokenizer;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
@@ -14,8 +18,12 @@ import static ru.abishev.weka.WekaUtils.*;
 import static ru.abishev.weka.WekaUtils.printEvalStat;
 
 public class ClassifierTesterUtils {
+    static {
+        LinkifierAlgo.linkify("");
+    }
+
     public static final StringToWordVector SIMPLE_STRING_TO_VECTOR = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
-    public static final Filter WIKI_STRING_TO_VECTOR = new WikiTextModel("text", 3);
+    public static final Filter WIKI_STRING_TO_VECTOR = WikiTextModel.getWikiTextModel(3, "2");
 
     static {
         SIMPLE_STRING_TO_VECTOR.setAttributeIndices("2");
