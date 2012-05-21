@@ -9,6 +9,8 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 
 import static ru.abishev.wiki.categories.DbUtils.executeSql;
 
@@ -16,6 +18,8 @@ public class PagesToDbSaver implements WikiDumpAnalyser {
     private final File db;
     private Connection connection;
     private PreparedStatement statement;
+
+    private Set<Long> ids = new HashSet<Long>();
 
     public PagesToDbSaver(File outputDbFile) {
         db = outputDbFile;
@@ -34,6 +38,12 @@ public class PagesToDbSaver implements WikiDumpAnalyser {
 
     @Override
     public void analysePage(WikiPage page) throws Exception {
+        if (ids.contains(page.id)) {
+            System.out.println("=(");
+            return;
+        }
+        ids.add(page.id);
+
 //        System.out.println(page);
         statement.setLong(1, page.id);
         statement.setString(2, page.title);
