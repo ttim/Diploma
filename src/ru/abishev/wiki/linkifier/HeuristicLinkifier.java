@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class HeuristicLinkifier implements Linkifier {
-    private final int MAX_COUNT_FROM_ONE_WORD = 3;
+    private final int MAX_COUNT_FROM_ONE_WORD = 1;
     private final double MIN_PERCENT_FROM_FIRST = 0.2;
     private final Linkifier inner;
 

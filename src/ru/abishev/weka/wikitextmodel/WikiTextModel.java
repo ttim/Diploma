@@ -3,16 +3,15 @@ package ru.abishev.weka.wikitextmodel;
 import ru.abishev.wiki.categories.CategoriesCollector;
 import ru.abishev.wiki.categories.data.Category;
 import ru.abishev.wiki.linkifier.*;
-import ru.abishev.wiki.model.AnchorsStat;
 import weka.core.*;
 import weka.filters.SimpleStreamFilter;
 
 import java.io.FileNotFoundException;
-import java.sql.SQLException;
 import java.util.*;
 
 public class WikiTextModel extends SimpleStreamFilter {
     private static Linkifier linkifier;
+    private static Map<String, Set<String>> textToCategoriesCache = new HashMap<String, Set<String>>();
 
     static {
         try {
@@ -114,6 +113,10 @@ public class WikiTextModel extends SimpleStreamFilter {
     }
 
     private Set<String> getCategoriesForText(String text) {
+        if (textToCategoriesCache.containsKey(text)) {
+            return textToCategoriesCache.get(text);
+        }
+
         System.out.println("get categories for " + text);
 
         // first - get pages
@@ -137,6 +140,9 @@ public class WikiTextModel extends SimpleStreamFilter {
         }
 
         System.out.println("categories " + categories);
+
+        textToCategoriesCache.put(text, categories);
+
         return categories;
     }
 }
