@@ -36,17 +36,27 @@ public class DbUtils {
         return connection;
     }
 
-    public static void executeSql(String sql, File dbFile) throws ClassNotFoundException, SQLException {
+    public static void executeSql(String sql, File dbFile) throws SQLException {
         Connection conn = getConnectionForDbFile(dbFile);
         conn.createStatement().execute(sql);
     }
 
-    public static <T> List<T> executeQuerySql(String sql, String columnName, Class<T> elementClazz, File dbFile) throws ClassNotFoundException, SQLException {
+    public static <T> List<T> executeQuerySql(String sql, String columnName, Class<T> elementClazz, File dbFile) throws SQLException {
         Connection conn = getConnectionForDbFile(dbFile);
         ResultSet _result = conn.createStatement().executeQuery(sql);
         List<T> result = new ArrayList<T>();
         while (_result.next()) {
             result.add((T) _result.getObject(columnName));
+        }
+        return result;
+    }
+
+    public static List<String> executeQuerySqlString(String sql, String columnName, File dbFile) throws SQLException {
+        Connection conn = getConnectionForDbFile(dbFile);
+        ResultSet _result = conn.createStatement().executeQuery(sql);
+        List<String> result = new ArrayList<String>();
+        while (_result.next()) {
+            result.add(_result.getString(columnName));
         }
         return result;
     }

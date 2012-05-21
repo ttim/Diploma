@@ -76,6 +76,7 @@ public class WikiTextModel extends MapFilter {
 
     @Override
     public String map(String input) {
+        // todo: and save all hashtags?
         return Joiner.on(' ').join(getCategoriesForText(input));
     }
 }

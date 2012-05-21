@@ -153,6 +153,7 @@ public class LinkifierAlgo {
 
         // 2 - overlapping ratio
         Map<Integer, Double> overlap = new HashMap<Integer, Double>();
+
         // todo
 
         // 3 - result
@@ -196,7 +197,7 @@ public class LinkifierAlgo {
 
         int num = 0;
         for (Map.Entry<Integer, Double> entry : getSortedEntries(text)) {
-            if (entry.getValue() >= 0.3 && num < 5) {
+            if (entry.getValue() >= 0.3 && num <= 7) {
                 result.add(entry.getKey());
             }
         }

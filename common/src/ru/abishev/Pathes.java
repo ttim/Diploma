@@ -10,4 +10,5 @@ public class Pathes {
     public static final File WIKI_NORMALIZED_ANCHORS_STAT = new File("./data/stat_5_sorted.txt");
     public static final File WIKI_ALL_WORDS_STAT = new File("./data/all-words-stat.txt");
     public static final File PAGES_INDEX = new File("./data/pages-index.csv");
+    public static final File PAGES_DB = new File("./data/db/pages");
 }
