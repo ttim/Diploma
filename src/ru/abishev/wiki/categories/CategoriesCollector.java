@@ -24,19 +24,19 @@ public class CategoriesCollector {
 //        FORBIDDEN_CATEGORIES.addAll(Utils.getSubcategories(Categories.RAW.getByName("Fundamental_categories")));
     }
 
-    public static Set<Category> collectCategories(long pageId) throws ClassNotFoundException, SQLException {
+    public static Set<Category> collectCategories(long pageId, int maxDepth) throws ClassNotFoundException, SQLException {
         // first - get categories for page
         Set<Category> categories = new HashSet<Category>();
         for (Category category : getPageCategories(pageId)) {
-            categories.addAll(getUpCategories(category, 5));
+            categories.addAll(getUpCategories(category, maxDepth));
         }
         return categories;
     }
 
-    public static Map<Category, Integer> rateCategoriesForPages(long... pages) throws ClassNotFoundException, SQLException {
+    public static Map<Category, Integer> rateCategoriesForPages(int maxDepth, long... pages) throws ClassNotFoundException, SQLException {
         Map<Category, Integer> result = new HashMap<Category, Integer>();
         for (long pageId : pages) {
-            for (Category category : collectCategories(pageId)) {
+            for (Category category : collectCategories(pageId, maxDepth)) {
                 if (!result.containsKey(category)) {
                     result.put(category, 0);
                 }
@@ -106,7 +106,7 @@ public class CategoriesCollector {
         int pageId = 27404990; // haskell programming language
         getPageCategories(pageId); // just for static init
         System.out.println("Getting categories for page " + pageId);
-        Set<Category> categories = collectCategories(pageId);
+        Set<Category> categories = collectCategories(5, pageId);
         for (Category category : categories) {
             System.out.println(category);
         }

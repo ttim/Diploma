@@ -45,7 +45,7 @@ public class Test {
             ids[i] = pages.get(i);
         }
 
-        Map<Category, Integer> categories = CategoriesCollector.rateCategoriesForPages(ids);
+        Map<Category, Integer> categories = CategoriesCollector.rateCategoriesForPages(5, ids);
         System.out.println("Distinct categories size: " + categories.size());
 
         // print top categories

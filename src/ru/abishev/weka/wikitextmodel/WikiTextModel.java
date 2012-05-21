@@ -1,11 +1,27 @@
 package ru.abishev.weka.wikitextmodel;
 
+import ru.abishev.wiki.categories.CategoriesCollector;
+import ru.abishev.wiki.categories.data.Category;
+import ru.abishev.wiki.linkifier.*;
+import ru.abishev.wiki.model.AnchorsStat;
 import weka.core.*;
 import weka.filters.SimpleStreamFilter;
 
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.*;
 
 public class WikiTextModel extends SimpleStreamFilter {
+    private static Linkifier linkifier;
+
+    static {
+        try {
+            linkifier = new HeuristicLinkifier(new FilteringLinkifier(SimpleLinkifier.INSTANCE));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private static final int MAX_CATEGORIES_COUNT = 10000;
     private static final String CATEGORY_PREFIX = "__c_";
 
@@ -98,8 +114,29 @@ public class WikiTextModel extends SimpleStreamFilter {
     }
 
     private Set<String> getCategoriesForText(String text) {
-        // use maxDepth
-        System.out.println("get categories for text " + text);
-        return new HashSet<String>(Arrays.asList("1", "2"));
+        System.out.println("get categories for " + text);
+
+        // first - get pages
+        Set<Integer> pages = new HashSet<Integer>();
+        for (AnchorStatistic stat : linkifier.linkify(text)) {
+            pages.add(stat.pageId);
+        }
+        System.out.println("pages " + pages);
+
+        // second - get categories
+        Set<String> categories = new HashSet<String>();
+        for (int pageId : pages) {
+            try {
+                for (Category category : CategoriesCollector.collectCategories(pageId, maxDepth)) {
+                    categories.add(category.name);
+                }
+            } catch (Exception e) {
+                // todo: ?
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("categories " + categories);
+        return categories;
     }
 }
