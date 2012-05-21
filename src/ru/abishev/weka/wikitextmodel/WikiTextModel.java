@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WikiTextModel extends SimpleStreamFilter {
+    private static final boolean debug = false;
+
     private static Linkifier linkifier;
     private static Map<String, Set<String>> textToCategoriesCache = new HashMap<String, Set<String>>();
 
@@ -62,7 +64,9 @@ public class WikiTextModel extends SimpleStreamFilter {
                 attrInfo.addElement(new Attribute(CATEGORY_PREFIX + i));
             }
         } else {
-            System.out.println("no text field...");
+            if (debug) {
+                System.out.println("no text field...");
+            }
         }
         structure = new Instances(inputFormat.relationName() + "-wiki", attrInfo, 10000);
         structure.setClass(structure.attribute(inputFormat.classAttribute().index()));
@@ -117,14 +121,18 @@ public class WikiTextModel extends SimpleStreamFilter {
             return textToCategoriesCache.get(text);
         }
 
-        System.out.println("get categories for " + text);
+        if (debug) {
+            System.out.println("get categories for " + text);
+        }
 
         // first - get pages
         Set<Integer> pages = new HashSet<Integer>();
         for (AnchorStatistic stat : linkifier.linkify(text)) {
             pages.add(stat.pageId);
         }
-        System.out.println("pages " + pages);
+        if (debug) {
+            System.out.println("pages " + pages);
+        }
 
         // second - get categories
         Set<String> categories = new HashSet<String>();
@@ -139,7 +147,9 @@ public class WikiTextModel extends SimpleStreamFilter {
             }
         }
 
-        System.out.println("categories " + categories);
+        if (debug) {
+            System.out.println("categories " + categories);
+        }
 
         textToCategoriesCache.put(text, categories);
 
