@@ -6,21 +6,44 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DbUtils {
+    private static Map<String, Connection> filePathToConnection = new HashMap<String, Connection>();
+
+    private static Connection _getConnectionForDbFile(File dbFile) {
+        try {
+            Class.forName("org.h2.Driver");
+            return DriverManager.
+                    getConnection("jdbc:h2:" + dbFile.getAbsolutePath(), "sa", "");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Connection getConnectionForDbFile(File dbFile) {
+        Connection connection = filePathToConnection.get(dbFile.getAbsolutePath());
+        try {
+            if (connection != null && connection.isValid(10)) {
+                return connection;
+            }
+        } catch (SQLException e) {
+        }
+        connection = _getConnectionForDbFile(dbFile);
+        filePathToConnection.put(dbFile.getAbsolutePath(), connection);
+        return connection;
+    }
+
     public static void executeSql(String sql, File dbFile) throws ClassNotFoundException, SQLException {
-        Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.
-                getConnection("jdbc:h2:" + dbFile.getAbsolutePath(), "sa", "");
+        Connection conn = getConnectionForDbFile(dbFile);
         conn.createStatement().execute(sql);
         conn.close();
     }
 
     public static <T> List<T> executeQuerySql(String sql, String columnName, Class<T> elementClazz, File dbFile) throws ClassNotFoundException, SQLException {
-        Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.
-                getConnection("jdbc:h2:" + dbFile.getAbsolutePath(), "sa", "");
+        Connection conn = getConnectionForDbFile(dbFile);
         ResultSet _result = conn.createStatement().executeQuery(sql);
         List<T> result = new ArrayList<T>();
         while (_result.next()) {
