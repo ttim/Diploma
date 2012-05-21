@@ -39,7 +39,6 @@ public class DbUtils {
     public static void executeSql(String sql, File dbFile) throws ClassNotFoundException, SQLException {
         Connection conn = getConnectionForDbFile(dbFile);
         conn.createStatement().execute(sql);
-        conn.close();
     }
 
     public static <T> List<T> executeQuerySql(String sql, String columnName, Class<T> elementClazz, File dbFile) throws ClassNotFoundException, SQLException {
@@ -49,7 +48,6 @@ public class DbUtils {
         while (_result.next()) {
             result.add((T) _result.getObject(columnName));
         }
-        conn.close();
         return result;
     }
 }
