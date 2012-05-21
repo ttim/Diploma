@@ -9,7 +9,7 @@ import weka.filters.SimpleStreamFilter;
 import java.util.*;
 
 public class WikiTextModel extends SimpleStreamFilter {
-    private static final boolean debug = false;
+    static final boolean debug = false;
 
     private static Map<String, Set<String>> textToCategoriesCache = new HashMap<String, Set<String>>();
 
@@ -116,10 +116,7 @@ public class WikiTextModel extends SimpleStreamFilter {
         }
 
         // first - get pages
-        Set<Integer> pages = LinkifierAlgo.linkify(text);
-        if (debug) {
-            System.out.println("pages " + pages);
-        }
+        Set<Integer> pages = LinkifierAlgo.linkifyWithLimit(text);
 
         // second - get categories
         Set<String> categories = new HashSet<String>();
@@ -136,6 +133,7 @@ public class WikiTextModel extends SimpleStreamFilter {
 
         if (debug) {
             System.out.println("categories " + categories);
+            System.out.println();
         }
 
         textToCategoriesCache.put(text, categories);
