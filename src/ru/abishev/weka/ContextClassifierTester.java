@@ -1,9 +1,7 @@
 package ru.abishev.weka;
 
 import ru.abishev.weka.context.ContextClassifier;
-import scala.testing.Show;
 import weka.classifiers.Classifier;
-import weka.classifiers.meta.FilteredClassifier;
 import weka.clusterers.Clusterer;
 import weka.filters.Filter;
 
@@ -32,17 +30,21 @@ public class ContextClassifierTester {
         evalForFilesAndClusterer("xmeans", train, test, stringToVector, textModelPrintName);
     }
 
+    private static void evaluate(Filter wordModel, String wordModelPrintName) throws Exception {
+        System.out.println("dataset1");
+        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), wordModel, wordModelPrintName);
+        System.out.println();
+        System.out.println("dataset2");
+        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), wordModel, wordModelPrintName);
+    }
+
     public static void main(String[] args) throws Exception {
         System.out.println("precision\trecall\tfmeasure");
 
-        System.out.println("dataset1");
-        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
-        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
-
+        evaluate(ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
         System.out.println();
-
-        System.out.println("dataset2");
-        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
-        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
+        System.out.println("=============================================================");
+        System.out.println();
+        evaluate(ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
     }
 }
