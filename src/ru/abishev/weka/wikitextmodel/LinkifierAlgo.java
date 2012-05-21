@@ -5,6 +5,7 @@ import ru.abishev.Pathes;
 import ru.abishev.wiki.categories.data.Pages;
 import ru.abishev.wiki.linkifier.*;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 import static ru.abishev.wiki.linkifier.LinkifierUtils.splitOnPunctuation;
@@ -12,22 +13,40 @@ import static ru.abishev.wiki.linkifier.LinkifierUtils.splitOnPunctuation;
 public class LinkifierAlgo {
     private static LinkifierAlgo INSTANCE = new LinkifierAlgo();
 
+    private final int COMMON_WORDS_COUNT = 10;
+
     private final AnchorStatistic[] anchors;
 
     private final int[] next;
     private final int[] anchorId;
     private final Map<String, Integer> first;
-    private final Map<String, Integer> count; // from word to count links with this word
     private int wordsCount;
 
+    private Set<String> wordsToFilter;
+
+    private void initStopWords() {
+        try {
+            this.wordsToFilter = new HashSet<String>();
+
+            Scanner input = new Scanner(Pathes.WIKI_ALL_WORDS_STAT);
+            for (int i = 0; i < COMMON_WORDS_COUNT; i++) {
+                String line = input.nextLine();
+                wordsToFilter.add(line.substring(line.indexOf("|") + 1).toLowerCase());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     LinkifierAlgo() {
+        initStopWords();
+
         anchors = AnchorStatistic.readStatistics(Pathes.WIKI_NORMALIZED_ANCHORS_STAT);
         // lower case word -> indexes
 
         next = new int[anchors.length * 3];
         anchorId = new int[anchors.length * 3];
         first = new HashMap<String, Integer>();
-        count = new HashMap<String, Integer>();
         wordsCount = 0;
 
         int num = 0;
@@ -39,11 +58,6 @@ public class LinkifierAlgo {
                     next[wordsCount] = first.get(word);
                 }
                 first.put(word, wordsCount);
-                if (!count.containsKey(word)) {
-                    count.put(word, anchor.count);
-                } else {
-                    count.put(word, count.get(word) + anchor.count);
-                }
             }
             num++;
         }
@@ -56,7 +70,7 @@ public class LinkifierAlgo {
     private ArrayList<AnchorStatistic> collectForWord(String word) {
         ArrayList<AnchorStatistic> anchors = new ArrayList<AnchorStatistic>();
 
-        if (!first.containsKey(word) || word == null || word.length() < 4) {
+        if (!first.containsKey(word) || word == null || word.length() < 4 || wordsToFilter.contains(word.toLowerCase())) {
             return anchors;
         }
 
@@ -188,10 +202,10 @@ public class LinkifierAlgo {
         }
 
         if (WikiTextModel.debug) {
-            System.out.print("pages");
-            for (int id : result) {
-                System.out.print(" " + Pages.INSTANCE.getById(id));
-            }
+//            System.out.print("pages");
+//            for (int id : result) {
+//                System.out.print(" " + Pages.INSTANCE.getById(id).title);
+//            }
         }
 
         return result;

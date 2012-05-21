@@ -9,7 +9,7 @@ import weka.filters.SimpleStreamFilter;
 import java.util.*;
 
 public class WikiTextModel extends SimpleStreamFilter {
-    static final boolean debug = false;
+    static final boolean debug = true;
 
     private static Map<String, Set<String>> textToCategoriesCache = new HashMap<String, Set<String>>();
 

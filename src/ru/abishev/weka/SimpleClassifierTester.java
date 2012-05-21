@@ -39,7 +39,7 @@ public class SimpleClassifierTester {
     public static void main(String[] args) throws Exception {
         System.out.println("precision\trecall\tfmeasure");
 
-        evaluate(ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
+//        evaluate(ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
         System.out.println();
         System.out.println("=============================================================");
         System.out.println();
