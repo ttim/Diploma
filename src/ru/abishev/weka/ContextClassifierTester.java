@@ -19,8 +19,8 @@ public class ContextClassifierTester {
     }
 
     public static void evalForFilesAndClusterer(String clustererName, File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
-        evalForClassifier("naivebayes", clustererName, train, test, stringToVector, textModelPrintName);
-        evalForClassifier("svm", clustererName, train, test, stringToVector, textModelPrintName);
+//        evalForClassifier("naivebayes", clustererName, train, test, stringToVector, textModelPrintName);
+//        evalForClassifier("svm", clustererName, train, test, stringToVector, textModelPrintName);
         evalForClassifier("j48", clustererName, train, test, stringToVector, textModelPrintName);
     }
 
@@ -42,9 +42,9 @@ public class ContextClassifierTester {
         System.out.println("precision\trecall\tfmeasure");
 
         evaluate(ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
-        System.out.println();
-        System.out.println("=============================================================");
-        System.out.println();
-        evaluate(ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
+//        System.out.println();
+//        System.out.println("=============================================================");
+//        System.out.println();
+//        evaluate(ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
     }
 }

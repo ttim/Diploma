@@ -6,22 +6,12 @@ import ru.abishev.wiki.linkifier.*;
 import weka.core.*;
 import weka.filters.SimpleStreamFilter;
 
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WikiTextModel extends SimpleStreamFilter {
     private static final boolean debug = false;
 
-    private static Linkifier linkifier;
     private static Map<String, Set<String>> textToCategoriesCache = new HashMap<String, Set<String>>();
-
-    static {
-        try {
-            linkifier = new HeuristicLinkifier(new FilteringLinkifier(SimpleLinkifier.INSTANCE));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private static final int MAX_CATEGORIES_COUNT = 10000;
     private static final String CATEGORY_PREFIX = "__c_";
@@ -126,10 +116,7 @@ public class WikiTextModel extends SimpleStreamFilter {
         }
 
         // first - get pages
-        Set<Integer> pages = new HashSet<Integer>();
-        for (AnchorStatistic stat : linkifier.linkify(text)) {
-            pages.add(stat.pageId);
-        }
+        Set<Integer> pages = LinkifierAlgo.linkify(text);
         if (debug) {
             System.out.println("pages " + pages);
         }
