@@ -2,16 +2,19 @@ package ru.abishev.weka.wikitextmodel;
 
 import com.google.common.base.Joiner;
 import ru.abishev.Pathes;
+import ru.abishev.wiki.categories.PageRetriever;
 import ru.abishev.wiki.categories.data.Pages;
 import ru.abishev.wiki.linkifier.*;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.*;
 
 import static ru.abishev.wiki.linkifier.LinkifierUtils.splitOnPunctuation;
 
 public class LinkifierAlgo {
     private static LinkifierAlgo INSTANCE = new LinkifierAlgo();
+    private static PageRetriever PAGE_RETRIEVER = new PageRetriever(Pathes.PAGES_DB);
 
     private final int COMMON_WORDS_COUNT = 10;
 
@@ -94,6 +97,9 @@ public class LinkifierAlgo {
         // 0 - extracting terms
         Set<String> terms = new HashSet<String>();
         Set<String> words = new HashSet<String>(Arrays.asList(splitOnPunctuation(text.toLowerCase())));
+        // filter stop words
+        words.removeAll(wordsToFilter);
+
         String checkString = " " + Joiner.on(' ').join(Arrays.asList(splitOnPunctuation(text.toLowerCase()))) + " ";
 
         // prepare AnchorStatistic -> normalizedTitle
@@ -102,7 +108,7 @@ public class LinkifierAlgo {
             for (AnchorStatistic statistic : collectForWord(word)) {
                 boolean ok = true;
                 for (String _word : splitOnPunctuation(statistic.text.toLowerCase())) {
-                    if (!words.contains(_word)) {
+                    if (!words.contains(_word) && !wordsToFilter.contains(_word)) {
                         ok = false;
                         break;
                     }
@@ -145,16 +151,31 @@ public class LinkifierAlgo {
 
             for (int pageId : pageIdToCount.keySet()) {
                 double p = pageIdToCount.get(pageId) * 1.0 / curCount;
-                if (!linkingProbability.containsKey(pageId) || (p > linkingProbability.get(pageId))) {
-                    linkingProbability.put(pageId, p);
+                if (p > 0.05) {
+                    if (!linkingProbability.containsKey(pageId) || (p > linkingProbability.get(pageId))) {
+                        linkingProbability.put(pageId, p);
+                    }
                 }
             }
         }
 
         // 2 - overlapping ratio
         Map<Integer, Double> overlap = new HashMap<Integer, Double>();
-
-        // todo
+        for (int pageId : linkingProbability.keySet()) {
+            String page = "";
+            try {
+                page = PAGE_RETRIEVER.getContent(pageId);
+            } catch (SQLException e) {
+                // ...
+            }
+            int count = 0;
+            for (String word : words) {
+                if (page.contains(word)) {
+                    count++;
+                }
+            }
+            overlap.put(pageId, count * 1.0 / words.size());
+        }
 
         // 3 - result
         Map<Integer, Double> pages = new HashMap<Integer, Double>();
