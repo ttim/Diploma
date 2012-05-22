@@ -42,9 +42,9 @@ public class ContextClassifierTester {
         System.out.println("precision\trecall\tfmeasure");
 
         evaluate(ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
-//        System.out.println();
-//        System.out.println("=============================================================");
-//        System.out.println();
-//        evaluate(ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
+        System.out.println();
+        System.out.println("=============================================================");
+        System.out.println();
+        evaluate(ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
     }
 }
