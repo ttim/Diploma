@@ -76,7 +76,12 @@ public class WikiTextModel extends MapFilter {
 
     @Override
     public String map(String input) {
-        // todo: and save all hashtags?
-        return Joiner.on(' ').join(getCategoriesForText(input));
+        Set<String> words = new HashSet<String>(getCategoriesForText(input));
+        for (String word : input.split(" ")) {
+            if (word.startsWith("#")) {
+                words.add(word.substring(1));
+            }
+        }
+        return Joiner.on(' ').join(words);
     }
 }
