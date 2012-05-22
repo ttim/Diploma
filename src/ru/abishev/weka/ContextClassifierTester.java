@@ -19,8 +19,8 @@ public class ContextClassifierTester {
     }
 
     public static void evalForFilesAndClusterer(String clustererName, File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
-//        evalForClassifier("naivebayes", clustererName, train, test, stringToVector, textModelPrintName);
-//        evalForClassifier("svm", clustererName, train, test, stringToVector, textModelPrintName);
+        evalForClassifier("naivebayes", clustererName, train, test, stringToVector, textModelPrintName);
+        evalForClassifier("svm", clustererName, train, test, stringToVector, textModelPrintName);
         evalForClassifier("j48", clustererName, train, test, stringToVector, textModelPrintName);
     }
 
