@@ -25,7 +25,7 @@ public class ContextClassifierTester {
     }
 
     public static void evalForFiles(File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
-//        evalForFilesAndClusterer("kmeans20", train, test, stringToVector, textModelPrintName);
+        evalForFilesAndClusterer("kmeans20", train, test, stringToVector, textModelPrintName);
         evalForFilesAndClusterer("kmeans100", train, test, stringToVector, textModelPrintName);
         evalForFilesAndClusterer("xmeans", train, test, stringToVector, textModelPrintName);
     }
@@ -33,9 +33,9 @@ public class ContextClassifierTester {
     private static void evaluate(String wordModel) throws Exception {
         Filter stringToVector = "simple-text-model".equals(wordModel) ? ClassifierTesterUtils.getSimpleStringToVectorTransform() : ClassifierTesterUtils.getWikiStringToVectorTransform();
 
-//        System.out.println("dataset1");
-//        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), stringToVector, wordModel);
-//        System.out.println();
+        System.out.println("dataset1");
+        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), stringToVector, wordModel);
+        System.out.println();
         System.out.println("dataset2");
         evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), stringToVector, wordModel);
     }
@@ -43,7 +43,7 @@ public class ContextClassifierTester {
     public static void main(String[] args) throws Exception {
         System.out.println("precision\trecall\tfmeasure");
 
-//        evaluate("simple-text-model");
+        evaluate("simple-text-model");
         System.out.println();
         System.out.println("=============================================================");
         System.out.println();

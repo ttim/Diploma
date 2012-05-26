@@ -23,7 +23,9 @@ public class ClassifierTesterUtils {
     }
 
     public static StringToWordVector getSimpleStringToVectorTransform() {
-        return (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
+        StringToWordVector transform = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
+        transform.setAttributeIndices("2");
+        return transform;
     }
 
     public static Filter getWikiStringToVectorTransform() {
