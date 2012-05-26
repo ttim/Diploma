@@ -18,31 +18,32 @@ public class SimpleClassifierTester {
 //        return classifier;
     }
 
-    public static void evalForClassifier(String classifierName, File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
+    public static void evalForClassifier(String classifierName, File train, File test, String textModelPrintName) throws Exception {
+        Filter stringToVector = "simple-text-model".equals(textModelPrintName) ? ClassifierTesterUtils.getSimpleStringToVectorTransform() : ClassifierTesterUtils.getWikiStringToVectorTransform();
         ClassifierTesterUtils.evalForClassifier("simple / " + textModelPrintName + " / " + classifierName, getSimpleClassifier(classifierName), train, test, stringToVector);
     }
 
-    public static void evalForFiles(File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
-        evalForClassifier("naivebayes", train, test, stringToVector, textModelPrintName);
-        evalForClassifier("svm", train, test, stringToVector, textModelPrintName);
-        evalForClassifier("j48", train, test, stringToVector, textModelPrintName);
+    public static void evalForFiles(File train, File test, String textModelPrintName) throws Exception {
+        evalForClassifier("naivebayes", train, test, textModelPrintName);
+        evalForClassifier("svm", train, test, textModelPrintName);
+        evalForClassifier("j48", train, test, textModelPrintName);
     }
 
-    public static void evaluate(Filter wordModel, String wordModelPrintName) throws Exception {
+    public static void evaluate(String wordModelPrintName) throws Exception {
         System.out.println("dataset1");
-        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), wordModel, wordModelPrintName);
+        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), wordModelPrintName);
         System.out.println();
         System.out.println("dataset2");
-        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), wordModel, wordModelPrintName);
+        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), wordModelPrintName);
     }
 
     public static void main(String[] args) throws Exception {
         System.out.println("precision\trecall\tfmeasure");
 
-        evaluate(ClassifierTesterUtils.SIMPLE_STRING_TO_VECTOR, "simple-text-model");
+        evaluate("simple-text-model");
         System.out.println();
         System.out.println("=============================================================");
         System.out.println();
-        evaluate(ClassifierTesterUtils.WIKI_STRING_TO_VECTOR, "wiki-text-model");
+        evaluate("wiki-text-model");
     }
 }

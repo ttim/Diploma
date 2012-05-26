@@ -22,11 +22,12 @@ public class ClassifierTesterUtils {
         LinkifierAlgo.linkify("");
     }
 
-    public static final StringToWordVector SIMPLE_STRING_TO_VECTOR = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
-    public static final Filter WIKI_STRING_TO_VECTOR = WikiTextModel.getWikiTextModel(1, "2");
+    public static StringToWordVector getSimpleStringToVectorTransform() {
+        return (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
+    }
 
-    static {
-        SIMPLE_STRING_TO_VECTOR.setAttributeIndices("2");
+    public static Filter getWikiStringToVectorTransform() {
+        return WikiTextModel.getWikiTextModel(1, "2");
     }
 
     private static Instances[] readInstances(Filter stringToVectorFilter, File... files) throws Exception {
