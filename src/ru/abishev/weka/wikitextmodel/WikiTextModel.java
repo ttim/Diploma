@@ -70,6 +70,9 @@ public class WikiTextModel extends MapFilter {
         }
 
         textToCategoriesCache.put(text, categories);
+        if (textToCategoriesCache.size() % 500 == 0) {
+            System.out.println(textToCategoriesCache.size());
+        }
 
         return categories;
     }

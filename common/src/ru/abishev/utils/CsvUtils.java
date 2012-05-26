@@ -32,7 +32,7 @@ public class CsvUtils {
                        result.add(data.trim());
                        break;
                    } else {
-                       result.add(data.substring(0, index));
+                       result.add(new String(data.substring(0, index)));
                        data = data.substring(index+1);
                    }
                }
