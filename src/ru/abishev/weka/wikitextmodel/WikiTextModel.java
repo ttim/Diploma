@@ -10,12 +10,13 @@ import weka.filters.MultiFilter;
 import weka.filters.SimpleStreamFilter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
+import java.io.File;
 import java.util.*;
 
 public class WikiTextModel extends MapFilter {
     static final boolean debug = false;
 
-    private static Map<String, Set<String>> textToCategoriesCache = new HashMap<String, Set<String>>();
+    private DbMap dbCache;
 
     private final int maxDepth;
 
@@ -37,13 +38,10 @@ public class WikiTextModel extends MapFilter {
 
     private WikiTextModel(int maxDepth) {
         this.maxDepth = maxDepth;
+        this.dbCache = new DbMap(new File("./data/db/wikitransform_version" + VERSION + "_depth" + maxDepth), 10000);
     }
 
     private Set<String> getCategoriesForText(String text) {
-        if (textToCategoriesCache.containsKey(text)) {
-            return textToCategoriesCache.get(text);
-        }
-
         if (debug) {
             System.out.println("get categories for " + text);
         }
@@ -69,22 +67,33 @@ public class WikiTextModel extends MapFilter {
             System.out.println();
         }
 
-        textToCategoriesCache.put(text, categories);
-        if (textToCategoriesCache.size() % 500 == 0) {
-            System.out.println(textToCategoriesCache.size());
-        }
-
         return categories;
+    }
+
+    private Set<String> extractHashtags(String text) {
+        Set<String> tags = new HashSet<String>();
+        for (String word : text.split(" ")) {
+            if (word.startsWith("#")) {
+                tags.add(word.substring(1));
+            }
+        }
+        return tags;
     }
 
     @Override
     public String map(String input) {
-        Set<String> words = new HashSet<String>(getCategoriesForText(input));
-//        for (String word : input.split(" ")) {
-//            if (word.startsWith("#")) {
-//                words.add(word.substring(1));
-//            }
-//        }
-        return Joiner.on(' ').join(words);
+        String result = dbCache.get(input);
+
+        if (result == null) {
+            Set<String> words = new HashSet<String>(getCategoriesForText(input));
+//        words.addAll(extractHashtags(input));
+            result = Joiner.on(' ').join(words);
+
+            dbCache.put(input, result);
+        }
+
+        return result;
     }
+
+    private static final String VERSION = "1";
 }
