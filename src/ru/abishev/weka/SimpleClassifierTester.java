@@ -1,49 +1,46 @@
 package ru.abishev.weka;
 
-import weka.classifiers.Classifier;
-import weka.classifiers.meta.FilteredClassifier;
-import weka.filters.Filter;
-
-import java.io.*;
+import ru.abishev.weka.api.ClassifierFactory;
+import ru.abishev.weka.api.Dataset;
+import ru.abishev.weka.api.WordModelFactory;
+import ru.abishev.weka.impl.Classifiers;
+import ru.abishev.weka.impl.Datasets;
+import ru.abishev.weka.impl.WordModels;
 
 public class SimpleClassifierTester {
-    public static Classifier getSimpleClassifier(String classifierName) {
-        Classifier classifier = (Classifier) WekaUtils.readObjectFromFile(new File("./weka/classifiers/" + classifierName));
+    public static void evaluateForDataset(Dataset dataset) throws Exception {
+        // config
+        WordModelFactory[] wordModels = new WordModelFactory[]{
+                WordModels.SIMPLE_WORD_MODEL,
+                WordModels.WIKI_WORD_MODEL
+        };
 
-        FilteredClassifier filteredClassifier = new FilteredClassifier();
-        filteredClassifier.setClassifier(classifier);
-        filteredClassifier.setFilter(WekaUtils.getRemovingFilter());
+        ClassifierFactory[] classifiers = new ClassifierFactory[]{
+                Classifiers.NAIVE_BAYES,
+                Classifiers.SVM,
+                Classifiers.J48
+        };
+        // end config
 
-        return filteredClassifier;
-//        return classifier;
-    }
-
-    public static void evalForClassifier(String classifierName, File train, File test, String textModelPrintName) throws Exception {
-        Filter stringToVector = "simple-text-model".equals(textModelPrintName) ? ClassifierTesterUtils.getSimpleStringToVectorTransform() : ClassifierTesterUtils.getWikiStringToVectorTransform();
-        ClassifierTesterUtils.evalForClassifier("simple / " + textModelPrintName + " / " + classifierName, getSimpleClassifier(classifierName), train, test, stringToVector);
-    }
-
-    public static void evalForFiles(File train, File test, String textModelPrintName) throws Exception {
-        evalForClassifier("naivebayes", train, test, textModelPrintName);
-        evalForClassifier("svm", train, test, textModelPrintName);
-        evalForClassifier("j48", train, test, textModelPrintName);
-    }
-
-    public static void evaluate(String wordModelPrintName) throws Exception {
-        System.out.println("dataset1");
-        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), wordModelPrintName);
+        System.out.println(dataset.getFullName());
+        for (WordModelFactory wordModel : wordModels) {
+            for (ClassifierFactory classifier : classifiers) {
+                String printName = "simple / " + wordModel.getFullName() + " / " + classifier.getFullName();
+                ClassifierTesterUtils.evalForClassifier(printName, classifier.getClassifier(), dataset, wordModel.getWordModel());
+            }
+        }
         System.out.println();
-        System.out.println("dataset2");
-        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), wordModelPrintName);
+        System.out.println("=============================================================");
+        System.out.println();
     }
 
     public static void main(String[] args) throws Exception {
         System.out.println("precision\trecall\tfmeasure");
+        System.out.println();
 
-        evaluate("simple-text-model");
-        System.out.println();
-        System.out.println("=============================================================");
-        System.out.println();
-        evaluate("wiki-text-model");
+        evaluateForDataset(Datasets.FIRST_CROSS);
+        evaluateForDataset(Datasets.FIRST_TRAINTEST);
+        evaluateForDataset(Datasets.SECOND_CROSS);
+        evaluateForDataset(Datasets.SECOND_TRAINTEST);
     }
 }

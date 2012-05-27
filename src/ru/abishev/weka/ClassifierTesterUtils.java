@@ -1,15 +1,11 @@
 package ru.abishev.weka;
 
+import ru.abishev.weka.api.Dataset;
 import ru.abishev.weka.wikitextmodel.LinkifierAlgo;
-import ru.abishev.weka.wikitextmodel.WikiTextModel;
-import ru.abishev.wiki.linkifier.Linkifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
-import weka.core.stemmers.Stemmer;
-import weka.core.tokenizers.Tokenizer;
 import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.StringToWordVector;
 
 import java.io.File;
 import java.util.Random;
@@ -20,16 +16,6 @@ import static ru.abishev.weka.WekaUtils.printEvalStat;
 public class ClassifierTesterUtils {
     static {
         LinkifierAlgo.linkify("");
-    }
-
-    public static StringToWordVector getSimpleStringToVectorTransform() {
-        StringToWordVector transform = (StringToWordVector) readObjectFromFile(new File("./weka/string_to_word_vector"));
-        transform.setAttributeIndices("2");
-        return transform;
-    }
-
-    public static Filter getWikiStringToVectorTransform() {
-        return WikiTextModel.getWikiTextModel(1, "2");
     }
 
     private static Instances[] readInstances(Filter stringToVectorFilter, File... files) throws Exception {
@@ -48,29 +34,33 @@ public class ClassifierTesterUtils {
         return result;
     }
 
-    public static void testClassifierCrossValidation(String classifierPrintName, Classifier classifier, File instancesFile, Filter stringToVectorFilter) throws Exception {
-        Instances instances = readInstances(stringToVectorFilter, instancesFile)[0];
-        System.out.println(classifierPrintName + " / " + "25% cross validation evaluation");
+    public static void testClassifierCrossValidation(String classifierPrintName, Classifier classifier, Dataset.CrossValidationDataset dataset, Filter stringToVectorFilter) throws Exception {
+        Instances instances = readInstances(stringToVectorFilter, dataset.trainFile)[0];
+        System.out.println(classifierPrintName);
         Evaluation eval = new Evaluation(instances);
-        eval.crossValidateModel(classifier, instances, 4, new Random(1));
+        eval.crossValidateModel(classifier, instances, dataset.foldsCount, new Random(1));
+
         printEvalStat(eval, instances);
     }
 
-    public static void testClassifierWithTest(String classifierPrintName, Classifier classifier, File instancesForTrain, File instancesForTest, Filter stringToVectorFilter) throws Exception {
-        Instances[] result = readInstances(stringToVectorFilter, instancesForTrain, instancesForTest);
+    public static void testClassifierWithTest(String classifierPrintName, Classifier classifier, Dataset.TrainTestDataset dataset, Filter stringToVectorFilter) throws Exception {
+        Instances[] result = readInstances(stringToVectorFilter, dataset.trainFile, dataset.testFile);
         Instances trainInstances = result[0], testInstances = result[1];
 
-        System.out.println(classifierPrintName + " / " + "with test evaluation");
+        System.out.println(classifierPrintName);
         Evaluation eval = new Evaluation(trainInstances);
         classifier.buildClassifier(trainInstances);
         eval.evaluateModel(classifier, testInstances);
+
         printEvalStat(eval, trainInstances);
     }
 
 
-    public static void evalForClassifier(String classifierPrintName, Classifier classifier, File train, File test, Filter stringToVectorFilter) throws Exception {
-        testClassifierWithTest(classifierPrintName, classifier, train, test, stringToVectorFilter);
-        testClassifierCrossValidation(classifierPrintName, classifier, train, stringToVectorFilter);
-        System.out.println();
+    public static void evalForClassifier(String classifierPrintName, Classifier classifier, Dataset dataset, Filter stringToVectorFilter) throws Exception {
+        if (dataset instanceof Dataset.CrossValidationDataset) {
+            testClassifierCrossValidation(classifierPrintName, classifier, (Dataset.CrossValidationDataset) dataset, stringToVectorFilter);
+        } else {
+            testClassifierWithTest(classifierPrintName, classifier, (Dataset.TrainTestDataset) dataset, stringToVectorFilter);
+        }
     }
 }
