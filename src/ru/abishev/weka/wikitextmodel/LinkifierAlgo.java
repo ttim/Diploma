@@ -123,6 +123,22 @@ public class LinkifierAlgo {
             }
         }
 
+        // update terms
+        Set<String> toDelete = new HashSet<String>();
+        for (String term : terms) {
+            boolean isOk = true;
+            for (String term2 : terms) {
+                if (term2.length() > term.length() && term2.contains(term)) {
+                    isOk = false;
+                    break;
+                }
+            }
+            if (!isOk) {
+                toDelete.add(term);
+            }
+        }
+        terms.removeAll(toDelete);
+
         // 1 - linking probability
         Map<Integer, Double> linkingProbability = new HashMap<Integer, Double>();
 
@@ -218,7 +234,7 @@ public class LinkifierAlgo {
 
         int num = 0;
         for (Map.Entry<Integer, Double> entry : getSortedEntries(text)) {
-            if (entry.getValue() >= 0.3 && num <= 7) {
+            if (entry.getValue() >= 0.35 && num <= 5) {
                 result.add(entry.getKey());
             }
         }

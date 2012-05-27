@@ -25,7 +25,7 @@ public class WordModels {
     };
 
     public static WordModelFactory WIKI_WORD_MODEL = new WordModelFactory() {
-        private static final int maxDepth = 1;
+        private static final int maxDepth = 4;
 
         @Override
         public Filter getWordModel() {
