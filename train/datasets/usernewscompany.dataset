@@ -1,18 +1,18 @@
 news
-    latimes 100 50
-    MoscowTimes 100 50
-    saturdaystar 100 50
-    HDNER 100 50
-    telegraphnews 100 50
+    latimes 100 20
+    MoscowTimes 100 20
+    saturdaystar 100 20
+    HDNER 10 50
+    telegraphnews 10 50
 user
-    ladygaga 100 50
-    tony 100 50
-    johnbreslin 100 50
-    PerezHilton 100 50
-    davejmatthews 100 50
+    ladygaga 100 20
+    tony 10 50
+    johnbreslin 100 20
+    PerezHilton 100 20
+    davejmatthews 10 50
 company
-    compudah 100 50
-    wedforless 100 50
-    youarepretty 100 50
-    dealnaydotcom 100 50
-    arielgabriel 100 50
+    compudah 100 20
+    wedforless 10 50
+    youarepretty 100 20
+    dealnaydotcom 10 50
+    arielgabriel 100 20
