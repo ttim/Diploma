@@ -1,22 +1,22 @@
 math
 	AlgebraFact 100 20
 	Math_Bits 100 20
-	mathguide 10 50
+	mathguide 100 20
 physics
 	CERN 100 20
 	materion 100 20
-	PhysicsNews 10 50
+	PhysicsNews 100 20
 chemistry
 	ChemistryBooks 100 20
 	NatureChemistry 100 20
-	ChemistryWorld 10 50
+	ChemistryWorld 100 20
 biology
 	pzmyers 100 20
 	CHoytPhD 100 20
-	tlemberger 10 50
-	BioscienceNews 10 50
+	tlemberger 100 20
+	BioscienceNews 100 20
 programming
-	codinghorror 10 50
+	codinghorror 100 20
 	carnage4life 100 20
-	stevenf 10 50
+	stevenf 100 20
 	jasonfried 100 20
