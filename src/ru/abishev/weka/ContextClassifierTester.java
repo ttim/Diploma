@@ -38,7 +38,7 @@ public class ContextClassifierTester {
             for (ClassifierFactory baseClassifier : classifiers) {
                 for (ClustererFactory clusterer : clusterers) {
                     Filter createdWordModel = wordModel.getWordModel();
-                    Classifier classifier = new ContextClassifier(baseClassifier.getClassifier(), clusterer.getClusterer(), createdWordModel);
+                    Classifier classifier = new ContextClassifier(baseClassifier, clusterer, wordModel.getFullName(), createdWordModel);
                     String printName = "context / " + wordModel.getFullName() + " / " + baseClassifier.getFullName() + "-" + clusterer.getFullName();
                     ClassifierTesterUtils.evalForClassifier(printName, classifier, dataset, createdWordModel);
                 }

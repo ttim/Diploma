@@ -25,14 +25,16 @@ public class WordModels {
     };
 
     public static WordModelFactory WIKI_WORD_MODEL = new WordModelFactory() {
+        private static final int maxDepth = 1;
+
         @Override
         public Filter getWordModel() {
-            return WikiTextModel.getWikiTextModel(1, "2");
+            return WikiTextModel.getWikiTextModel(maxDepth, "2");
         }
 
         @Override
         public String getFullName() {
-            return "wiki-word-model";
+            return "wiki-word-model-depth-" + maxDepth;
         }
     };
 

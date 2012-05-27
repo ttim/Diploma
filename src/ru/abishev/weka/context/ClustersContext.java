@@ -19,19 +19,12 @@ public class ClustersContext implements Serializable {
 
     private Map<Integer, List<Instance>> clusters = new HashMap<Integer, List<Instance>>();
 
-    private File getCacheFile(String userName, Instances userTweets, Clusterer clusterer) throws IOException {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
-        objectOutputStream.writeObject(userName);
-        objectOutputStream.writeObject(userTweets);
-        objectOutputStream.writeObject(clusterer);
-        objectOutputStream.close();
-
-        return new File("./data/clusters_cache/" + userName + "_" + output.toString().hashCode());
+    private File getCacheFile(String userName, String idForClusters) {
+        return new File("./data/clusters_cache/" + userName + "-" + idForClusters);
     }
 
-    public ClustersContext(String userName, Instances userTweets, Clusterer clusterer) throws Exception {
-        File cache = getCacheFile(userName, userTweets, clusterer);
+    public ClustersContext(String userName, Instances userTweets, Clusterer clusterer, String idForClusters) throws Exception {
+        File cache = getCacheFile(userName, idForClusters);
         if (cache.exists()) {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(cache));
             this.clusterer = (Clusterer) input.readObject();

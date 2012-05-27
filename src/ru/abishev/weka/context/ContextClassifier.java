@@ -1,9 +1,10 @@
 package ru.abishev.weka.context;
 
-import com.google.common.base.Joiner;
 import ru.abishev.twitter.UserTweets;
 import ru.abishev.weka.WekaUtils;
-import ru.abishev.weka.preparearff.UsersDataset;
+import ru.abishev.weka.api.ClassifierFactory;
+import ru.abishev.weka.api.ClustererFactory;
+import ru.abishev.weka.api.WordModelFactory;
 import weka.classifiers.Classifier;
 import weka.clusterers.Clusterer;
 import weka.core.Instance;
@@ -19,15 +20,21 @@ import java.util.*;
 public class ContextClassifier extends Classifier {
     private Classifier classifier;
     private Clusterer clusterer;
-    private Filter stringToVector;
+    private Filter wordModel;
+
     private Map<String, ClustersContext> userToClusters = new HashMap<String, ClustersContext>();
 
-    public ContextClassifier(Classifier classifier, Clusterer clusterer, Filter stringToVector) {
+    private String idForClusters;
+
+    public ContextClassifier(ClassifierFactory classifier, ClustererFactory clusterer, String wordModelName, Filter wordModel) {
         // input to classifier - with _user field // for use old classifiers
         // input to clusterer - without any garbage, only text
-        this.classifier = new CachedClassifier(classifier);
-        this.clusterer = clusterer;
-        this.stringToVector = stringToVector;
+
+        this.idForClusters = clusterer.getFullName() + "-" + wordModelName;
+
+        this.classifier = new CachedClassifier(classifier.getClassifier());
+        this.clusterer = clusterer.getClusterer();
+        this.wordModel = wordModel;
     }
 
     @Override
@@ -63,9 +70,9 @@ public class ContextClassifier extends Classifier {
         if (!userToClusters.containsKey(user)) {
             String tweets = createDatasetForUser(user);
             Instances instances = new Instances(new StringReader(tweets));
-            instances = Filter.useFilter(instances, stringToVector);
+            instances = Filter.useFilter(instances, wordModel);
             WekaUtils.setupClass(instances);
-            userToClusters.put(user, new ClustersContext(user, instances, clusterer));
+            userToClusters.put(user, new ClustersContext(user, instances, clusterer, idForClusters));
         }
 
         List<Instance> context = userToClusters.get(user).getContextInstances(tweet);
