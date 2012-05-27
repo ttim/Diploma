@@ -17,7 +17,7 @@ public class ContextClassifierTester {
         // config
         WordModelFactory[] wordModels = new WordModelFactory[]{
                 WordModels.SIMPLE_WORD_MODEL,
-//                WordModels.WIKI_WORD_MODEL
+                WordModels.WIKI_WORD_MODEL
         };
 
         ClassifierFactory[] classifiers = new ClassifierFactory[]{
