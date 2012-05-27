@@ -34,6 +34,7 @@ public class ContextClassifierTester {
         // end config
 
         System.out.println(dataset.getFullName());
+        System.out.println("precision\trecall\tfmeasure");
         for (WordModelFactory wordModel : wordModels) {
             for (ClassifierFactory baseClassifier : classifiers) {
                 for (ClustererFactory clusterer : clusterers) {
@@ -48,7 +49,7 @@ public class ContextClassifierTester {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("precision\trecall\tfmeasure");
+        System.out.println("Context classifier");
         System.out.println();
 
         evaluateForDataset(Datasets.FIRST_TRAINTEST);
