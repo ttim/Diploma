@@ -20,7 +20,7 @@ public class ClustersContext implements Serializable {
     private Map<Integer, List<Instance>> clusters = new HashMap<Integer, List<Instance>>();
 
     private File getCacheFile(String userName, String idForClusters) {
-        return new File("./data/clusters_cache/" + userName + "-" + idForClusters);
+        return new File("./data/clusters_cache/" + idForClusters + "-" + userName);
     }
 
     public ClustersContext(String userName, Instances userTweets, Clusterer clusterer, String idForClusters) throws Exception {

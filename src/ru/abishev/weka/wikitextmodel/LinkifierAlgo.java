@@ -16,7 +16,7 @@ public class LinkifierAlgo {
     private static LinkifierAlgo INSTANCE = new LinkifierAlgo();
     private static PageRetriever PAGE_RETRIEVER = new PageRetriever(Pathes.PAGES_DB);
 
-    private final int COMMON_WORDS_COUNT = 10;
+    private final int COMMON_WORDS_COUNT = 20;
 
     private final AnchorStatistic[] anchors;
 
