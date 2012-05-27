@@ -16,7 +16,7 @@ import java.util.*;
 public class WikiTextModel extends MapFilter {
     static final boolean debug = false;
 
-    private DbMap dbCache;
+    private transient DbMap dbCache;
 
     private final int maxDepth;
 

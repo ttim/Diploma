@@ -28,17 +28,20 @@ public class DbMap {
 
     private void checkDb() throws SQLException {
         if (!new File(db.getAbsolutePath() + ".h2.db").exists()) {
-            String sql = "CREATE TABLE test(key TEXT, value TEXT);";
+            String sql = "CREATE TABLE test(keyHash INT, key TEXT, value TEXT);";
+            System.out.println("Sql to execute: " + sql);
+            executeSql(sql, db);
 
+            sql = "CREATE INDEX keyIndex ON TEST(keyHash)";
             System.out.println("Sql to execute: " + sql);
             executeSql(sql, db);
         }
 
         if (getStatement == null) {
-            getStatement = DbUtils.getConnectionForDbFile(db).prepareStatement("SELECT value FROM test WHERE key = ?");
+            getStatement = DbUtils.getConnectionForDbFile(db).prepareStatement("SELECT value FROM test WHERE keyHash = ? AND key = ?");
         }
         if (setStatement == null) {
-            setStatement = DbUtils.getConnectionForDbFile(db).prepareStatement("INSERT INTO test VALUES (?, ?)");
+            setStatement = DbUtils.getConnectionForDbFile(db).prepareStatement("INSERT INTO test VALUES (?, ?, ?)");
         }
     }
 
@@ -51,7 +54,8 @@ public class DbMap {
         List<String> result = new ArrayList<String>();
         try {
             checkDb();
-            getStatement.setString(1, key);
+            getStatement.setInt(1, key.hashCode());
+            getStatement.setString(2, key);
             ResultSet _result = getStatement.executeQuery();
 
             while (_result.next()) {
@@ -66,6 +70,9 @@ public class DbMap {
         }
 
         inner.put(key, result.get(0));
+        if (inner.size() > memoryCacheSize) {
+            inner.clear();
+        }
 
         return result.get(0);
     }
@@ -73,8 +80,9 @@ public class DbMap {
     public void put(String key, String value) {
         try {
             checkDb();
-            setStatement.setString(1, key);
-            setStatement.setString(2, value);
+            setStatement.setInt(1, key.hashCode());
+            setStatement.setString(2, key);
+            setStatement.setString(3, value);
             setStatement.execute();
             inner.put(key, value);
             if (inner.size() > memoryCacheSize) {
