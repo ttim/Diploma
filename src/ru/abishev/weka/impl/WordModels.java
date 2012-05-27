@@ -20,7 +20,7 @@ public class WordModels {
 
         @Override
         public String getFullName() {
-            return "simple-word-model";
+            return "bag-of-words";
         }
     };
 

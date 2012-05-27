@@ -56,7 +56,7 @@ public class ClassifierTesterUtils {
 
 
     public static void evalForClassifier(String classifierName, Classifier classifier, Dataset dataset, Filter wordModel) throws Exception {
-        System.out.println(classifierName);
+        System.out.print(classifierName + "\t");
         if (dataset instanceof Dataset.CrossValidationDataset) {
             testClassifierCrossValidation(classifier, (Dataset.CrossValidationDataset) dataset, wordModel);
         } else {

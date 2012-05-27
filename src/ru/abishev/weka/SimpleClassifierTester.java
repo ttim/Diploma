@@ -25,7 +25,7 @@ public class SimpleClassifierTester {
         System.out.println(dataset.getFullName());
         for (WordModelFactory wordModel : wordModels) {
             for (ClassifierFactory classifier : classifiers) {
-                String printName = "simple / " + wordModel.getFullName() + " / " + classifier.getFullName();
+                String printName = wordModel.getFullName() + "\t" + classifier.getFullName();
                 ClassifierTesterUtils.evalForClassifier(printName, classifier.getClassifier(), dataset, wordModel.getWordModel());
             }
         }
@@ -33,7 +33,8 @@ public class SimpleClassifierTester {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("precision\trecall\tfmeasure");
+        System.out.println("Simple classifier");
+        System.out.println("word-model\tclassifier\tprecision\trecall\tfmeasure");
         System.out.println();
 
         evaluateForDataset(Datasets.FIRST_TRAINTEST);
