@@ -30,17 +30,16 @@ public class SimpleClassifierTester {
             }
         }
         System.out.println();
-        System.out.println("=============================================================");
-        System.out.println();
     }
 
     public static void main(String[] args) throws Exception {
         System.out.println("precision\trecall\tfmeasure");
         System.out.println();
 
-        evaluateForDataset(Datasets.FIRST_CROSS);
         evaluateForDataset(Datasets.FIRST_TRAINTEST);
-        evaluateForDataset(Datasets.SECOND_CROSS);
         evaluateForDataset(Datasets.SECOND_TRAINTEST);
+
+        evaluateForDataset(Datasets.FIRST_CROSS);
+        evaluateForDataset(Datasets.SECOND_CROSS);
     }
 }

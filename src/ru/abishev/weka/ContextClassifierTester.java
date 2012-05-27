@@ -1,52 +1,60 @@
-//package ru.abishev.weka;
-//
-//import ru.abishev.weka.context.ContextClassifier;
-//import weka.classifiers.Classifier;
-//import weka.clusterers.Clusterer;
-//import weka.filters.Filter;
-//
-//import java.io.File;
-//
-//public class ContextClassifierTester {
-//    public static Classifier getContextClassifier(String baseClassifierName, String clustererName, Filter stringToVector) {
-//        Classifier baseClassifier = SimpleClassifierTester.getSimpleClassifier(baseClassifierName);
-//        Clusterer clusterer = (Clusterer) WekaUtils.readObjectFromFile(new File("./weka/clusterers/" + clustererName));
-//        return new ContextClassifier(baseClassifier, clusterer, stringToVector);
-//    }
-//
-//    public static void evalForClassifier(String baseClassifierName, String clustererName, File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
-//        ClassifierTesterUtils.evalForClassifier("context / " + textModelPrintName + " / " + baseClassifierName + "-" + clustererName, getContextClassifier(baseClassifierName, clustererName, stringToVector), train, test, stringToVector);
-//    }
-//
-//    public static void evalForFilesAndClusterer(String clustererName, File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
-//        evalForClassifier("naivebayes", clustererName, train, test, stringToVector, textModelPrintName);
-//        evalForClassifier("svm", clustererName, train, test, stringToVector, textModelPrintName);
-//        evalForClassifier("j48", clustererName, train, test, stringToVector, textModelPrintName);
-//    }
-//
-//    public static void evalForFiles(File train, File test, Filter stringToVector, String textModelPrintName) throws Exception {
-//        evalForFilesAndClusterer("kmeans20", train, test, stringToVector, textModelPrintName);
-//        evalForFilesAndClusterer("kmeans100", train, test, stringToVector, textModelPrintName);
-//        evalForFilesAndClusterer("xmeans", train, test, stringToVector, textModelPrintName);
-//    }
-//
-//    private static void evaluate(String wordModel) throws Exception {
-//        Filter stringToVector = "simple-text-model".equals(wordModel) ? ClassifierTesterUtils.getSimpleStringToVectorTransform() : ClassifierTesterUtils.getWikiStringToVectorTransform();
-//
-//        System.out.println("dataset1");
-//        evalForFiles(new File("./train/thematic.train.arff"), new File("./train/thematic.test.arff"), stringToVector, wordModel);
-//        System.out.println();
-//        System.out.println("dataset2");
-//        evalForFiles(new File("./train/usernewscompany.train.arff"), new File("./train/usernewscompany.test.arff"), stringToVector, wordModel);
-//    }
-//
-//    public static void main(String[] args) throws Exception {
-//        System.out.println("precision\trecall\tfmeasure");
-//
-////        evaluate("simple-text-model");
-//        System.out.println();
-//        System.out.println("=============================================================");
-//        System.out.println();
-//        evaluate("wiki-text-model");
-//    }
-//}
+package ru.abishev.weka;
+
+import ru.abishev.weka.api.ClassifierFactory;
+import ru.abishev.weka.api.ClustererFactory;
+import ru.abishev.weka.api.Dataset;
+import ru.abishev.weka.api.WordModelFactory;
+import ru.abishev.weka.context.ContextClassifier;
+import ru.abishev.weka.impl.Classifiers;
+import ru.abishev.weka.impl.Clusterers;
+import ru.abishev.weka.impl.Datasets;
+import ru.abishev.weka.impl.WordModels;
+import weka.classifiers.Classifier;
+import weka.filters.Filter;
+
+public class ContextClassifierTester {
+    public static void evaluateForDataset(Dataset dataset) throws Exception {
+        // config
+        WordModelFactory[] wordModels = new WordModelFactory[]{
+                WordModels.SIMPLE_WORD_MODEL,
+//                WordModels.WIKI_WORD_MODEL
+        };
+
+        ClassifierFactory[] classifiers = new ClassifierFactory[]{
+                Classifiers.NAIVE_BAYES,
+                Classifiers.SVM,
+                Classifiers.J48
+        };
+
+        ClustererFactory[] clusterers = new ClustererFactory[]{
+                Clusterers.KMEANS_20,
+                Clusterers.KMEANS_100,
+                Clusterers.XMEANS
+        };
+        // end config
+
+        System.out.println(dataset.getFullName());
+        for (WordModelFactory wordModel : wordModels) {
+            for (ClassifierFactory baseClassifier : classifiers) {
+                for (ClustererFactory clusterer : clusterers) {
+                    Filter createdWordModel = wordModel.getWordModel();
+                    Classifier classifier = new ContextClassifier(baseClassifier.getClassifier(), clusterer.getClusterer(), createdWordModel);
+                    String printName = "context / " + wordModel.getFullName() + " / " + baseClassifier.getFullName() + "-" + clusterer.getFullName();
+                    ClassifierTesterUtils.evalForClassifier(printName, classifier, dataset, createdWordModel);
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) throws Exception {
+        System.out.println("precision\trecall\tfmeasure");
+        System.out.println();
+
+        evaluateForDataset(Datasets.FIRST_TRAINTEST);
+        evaluateForDataset(Datasets.SECOND_TRAINTEST);
+
+        evaluateForDataset(Datasets.FIRST_CROSS);
+        evaluateForDataset(Datasets.SECOND_CROSS);
+    }
+}
