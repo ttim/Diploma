@@ -12,6 +12,10 @@ import ru.abishev.weka.impl.WordModels;
 import weka.classifiers.Classifier;
 import weka.filters.Filter;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+
 public class ClassifiersTester {
     public static void evaluateForDataset(Dataset dataset) throws Exception {
         // config
@@ -55,10 +59,20 @@ public class ClassifiersTester {
     }
 
     public static void main(String[] args) throws Exception {
-        evaluateForDataset(Datasets.FIRST_TRAINTEST);
-        evaluateForDataset(Datasets.SECOND_TRAINTEST);
+        ByteArrayOutputStream errorStream = new ByteArrayOutputStream();
+        PrintStream err = new PrintStream(errorStream);
+        System.setErr(err);
 
-        evaluateForDataset(Datasets.FIRST_CROSS);
-        evaluateForDataset(Datasets.SECOND_CROSS);
+        try {
+            evaluateForDataset(Datasets.FIRST_TRAINTEST);
+            evaluateForDataset(Datasets.SECOND_TRAINTEST);
+
+            evaluateForDataset(Datasets.FIRST_CROSS);
+            evaluateForDataset(Datasets.SECOND_CROSS);
+        } finally {
+            System.out.println();
+            System.out.println("Error stream");
+            System.out.println(errorStream.toString());
+        }
     }
 }
