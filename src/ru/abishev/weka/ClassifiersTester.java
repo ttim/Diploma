@@ -12,7 +12,7 @@ import ru.abishev.weka.impl.WordModels;
 import weka.classifiers.Classifier;
 import weka.filters.Filter;
 
-public class ContextClassifierTester {
+public class ClassifiersTester {
     public static void evaluateForDataset(Dataset dataset) throws Exception {
         // config
         WordModelFactory[] wordModels = new WordModelFactory[]{
@@ -37,6 +37,12 @@ public class ContextClassifierTester {
         System.out.println("text-model\tclassifier\tclusterer\tprecision\trecall\tfmeasure");
         for (WordModelFactory wordModel : wordModels) {
             for (ClassifierFactory baseClassifier : classifiers) {
+                {
+                    // simple classifier
+                    String printName = wordModel.getFullName() + "\t" + baseClassifier.getFullName() + "\t";
+                    ClassifierTesterUtils.evalForClassifier(printName, baseClassifier.getClassifier(), dataset, wordModel.getWordModel());
+                }
+
                 for (ClustererFactory clusterer : clusterers) {
                     Filter createdWordModel = wordModel.getWordModel();
                     Classifier classifier = new ContextClassifier(baseClassifier, clusterer, wordModel.getFullName(), createdWordModel);
@@ -49,9 +55,6 @@ public class ContextClassifierTester {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Context classifier");
-        System.out.println();
-
         evaluateForDataset(Datasets.FIRST_TRAINTEST);
         evaluateForDataset(Datasets.SECOND_TRAINTEST);
 
