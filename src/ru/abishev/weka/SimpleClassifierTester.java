@@ -23,7 +23,7 @@ public class SimpleClassifierTester {
         // end config
 
         System.out.println(dataset.getFullName());
-        System.out.println("precision\trecall\tfmeasure");
+        System.out.println("text-model\tclassifier\tprecision\trecall\tfmeasure");
         for (WordModelFactory wordModel : wordModels) {
             for (ClassifierFactory classifier : classifiers) {
                 String printName = wordModel.getFullName() + "\t" + classifier.getFullName();

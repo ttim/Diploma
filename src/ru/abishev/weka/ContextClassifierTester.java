@@ -34,13 +34,13 @@ public class ContextClassifierTester {
         // end config
 
         System.out.println(dataset.getFullName());
-        System.out.println("precision\trecall\tfmeasure");
+        System.out.println("text-model\tclassifier\tclusterer\tprecision\trecall\tfmeasure");
         for (WordModelFactory wordModel : wordModels) {
             for (ClassifierFactory baseClassifier : classifiers) {
                 for (ClustererFactory clusterer : clusterers) {
                     Filter createdWordModel = wordModel.getWordModel();
                     Classifier classifier = new ContextClassifier(baseClassifier, clusterer, wordModel.getFullName(), createdWordModel);
-                    String printName = "context / " + wordModel.getFullName() + " / " + baseClassifier.getFullName() + "-" + clusterer.getFullName();
+                    String printName = wordModel.getFullName() + "\t" + baseClassifier.getFullName() + "\t" + clusterer.getFullName();
                     ClassifierTesterUtils.evalForClassifier(printName, classifier, dataset, createdWordModel);
                 }
             }
