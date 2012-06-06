@@ -1,0 +1,133 @@
+\documentclass[specialist,subf,href,colorlinks=true
+%,times        % шрифт Times как основной
+%,fixint=false % отключить прямые знаки интегралов
+]{disser}
+
+\usepackage[
+  a4paper, mag=1000, includefoot,
+  left=3cm, right=1.5cm, top=2cm, bottom=2cm, headsep=1cm, footskip=1cm
+]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\ifpdf\usepackage{epstopdf}\fi
+
+% Точка с запятой в качестве разделителя между номерами цитирований
+%\setcitestyle{semicolon}
+
+% Использовать полужирное начертание для векторов
+\let\vec=\mathbf
+
+% Включать подсекции в оглавление
+\setcounter{tocdepth}{2}
+
+\graphicspath{{fig/}}
+
+%----------------------------------------------------------------
+\begin{document}
+
+%
+% Титульный лист на русском языке
+%
+\thispagestyle{empty}
+\begin{center}
+САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
+Математико-механический факультет\\
+\end{center}
+%\vspace{1cm}
+\begin{center}
+Кафедра системного программирования\\
+\end{center}
+\vspace{2cm}
+\begin{center}
+    \Large{Классификация микроблогов с использованием Википедии} \\
+\end{center}
+\vspace{1cm}
+\begin{center}
+    \normalsize{Дипломная работа студента 545 группы} \\
+    \large{Абишева Тимура Маратовича}
+\end{center}
+\vspace{3cm}
+\noindent
+\begin{center}
+    \small
+    \begin{tabular}{lcl}
+        Научный руководитель & \dotuline{\phantom{кошерная подпись}} & к.\,ф.-м.\,н., доцент\\
+        & /подпись/ & Барашев Д.В.\\
+        Рецензент & \dotuline{\phantom{кошерная подпись}} & к.\,ф.-м.\,н., доцент\\
+        & /подпись/&  Шалымов Д. С. \\
+        ``Допустить к защите'' & \dotuline{\phantom{кошерная подпись}} & д.ф.-м.н., профессор\\
+        заведующий кафедрой, & /подпись/& Терехов А.Н.\\
+    \end{tabular}
+\end{center}
+\vspace{\fill}
+\begin{center}
+    \small
+    Санкт-Петербург\\2012
+\end{center}
+\pagebreak
+
+%%
+%% Titlepage in English
+%%
+\thispagestyle{empty}
+\begin{center}
+SAINT PETERSBURG STATE UNIVERSITY\\
+Mathematics & Mechanics Faculty\\
+\end{center}
+%\vspace{1cm}
+\begin{center}
+Software Engineering Chair\\
+\end{center}
+\vspace{2cm}
+\begin{center}
+    \Large{Micro blog posts classification using Wikipedia} \\
+\end{center}
+\begin{center}
+    \large{Graduate paper} \\
+    \normalsize{by} \\
+    \large{Timur Abishev}
+\end{center}
+\vspace{3cm}
+\noindent
+\begin{center}
+    \small
+    \begin{tabular}{lcl}
+        Supervisor & \dotuline{\phantom{кошерная подпись}} & PhD, Associated Professor\\
+        & .................. & D. V. Barashev\\
+        Reviewer & \dotuline{\phantom{кошерная подпись}} & PhD, Associated Professor\\
+        & .................. & D. S. Shalymov\\
+        ``Approved by'' & \dotuline{\phantom{кошерная подпись}} & Professor \\
+        Head of Department, & .................. &  A. N. Terekhov\\
+    \end{tabular}
+\end{center}
+\vspace{\fill}
+\begin{center}
+    \small
+    Saint Petersburg\\2012
+\end{center}
+\pagebreak
+%%% end of title pages
+
+
+\tableofcontents
+
+\input{abstract}
+\input{intro}
+\input{preliminaries}
+\input{review}
+\input{main}
+\input{experiments}
+\input{tech}
+\input{results}
+\input{appendix}
+
+\bibliography{thesis}
+\bibliographystyle{gost705}
+\end{document}
+
